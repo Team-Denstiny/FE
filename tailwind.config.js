@@ -12,6 +12,7 @@ export default {
         'noto': ['Noto Sans KR'], 
       },
       fontSize: {
+        'small': '10px',
         'base': '14px', 
       },
     },

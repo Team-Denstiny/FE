@@ -1,10 +1,10 @@
 import React from "react";
-import TapBar from "../../components/common/TopBar";
+import TapBar from "../../components/common/Topbar";
 
 const SigninPage: React.FC = () => {
     return (
         <div>
-            <TapBar text="로그인" /> {/* TapBar를 JSX 형태로 사용 */}
+            <TapBar text="로그인" />
         </div>
     );
 }
