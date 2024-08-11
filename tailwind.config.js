@@ -7,6 +7,7 @@ export default {
     extend: {
       colors: {
         gray: '#F2F2F2', 
+        textgray:'#7E8689'
       },
         fontFamily: {
         'noto': ['Noto Sans KR'], 

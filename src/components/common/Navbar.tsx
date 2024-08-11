@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import home from "../../assets/Navbar/home.png"
-import homeClick from "../../assets/Navbar/homeClick.png"
-import heart from "../../assets/Navbar/heart.png"
-import heartClick from "../../assets/Navbar/heartClick.png"
-import community from "../../assets/Navbar/community.png"
-import profile from "../../assets/Navbar/profile.png"
-import profileClick from "../../assets/Navbar/profileClick.png"
+import home from "../../assets/navbar/home.png"
+import homeClick from "../../assets/navbar/homeClick.png"
+import heart from "../../assets/navbar/heart.png"
+import heartClick from "../../assets/navbar/heartClick.png"
+import community from "../../assets/navbar/community.png"
+import profile from "../../assets/navbar/profile.png"
+import profileClick from "../../assets/navbar/profileClick.png"
 
 interface NavbarProps {
     text: string; 
