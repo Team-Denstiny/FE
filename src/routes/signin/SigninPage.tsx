@@ -1,10 +1,116 @@
-import React from "react";
-import TapBar from "../../components/common/Topbar";
+import React, {useState, ChangeEvent, FormEvent} from "react";
+import TapBar from "../../components/common/TopBar";
 
+import LoginPage from "./LoginPage";
+import styled from "styled-components";
+import MainText from "../../components/common/BlueText";
+import {LOGIN_POST} from "../../address"
+import { GrayLink, GrayText } from "../../components/common/GrayText";
+import '../../index.css'
+import axios from "axios";
+
+
+const FindContainer = styled.div`
+    position: relative;
+    line-height: 20px;
+    padding-right: 20px;
+    text-align: right;
+`
+
+const MiddleTextContainer = styled.div`
+    position: relative;
+    padding-bottom: 20px;
+    padding-top: 60px;
+    text-align: center;
+`
+
+const ButtonContainer = styled.div` 
+    display: flex;
+    height: 10vh; /* 전체 화면 높이 */
+    flex-direction: column; /* 요소들을 세로로 나열 */
+    align-items: center; /* 수평 중앙 정렬 */
+    justify-content: center; /* 수직 중앙 정렬 *
+`
 const SigninPage: React.FC = () => {
+    const [formValues, setFormValues] = useState<{userEmail: string; userPasswd: string;}>({
+        userEmail: '',
+        userPasswd: ''
+    });
+    
+    const handleChange = (Event: ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = Event.target;
+        setFormValues(prevValues => ({
+            ...prevValues,
+            [name]: value
+        }));
+    };
+    const letsLogin = async (event: FormEvent<HTMLFormElement>) => {
+
+        event.preventDefault();
+
+        const headers = {
+            'email': formValues.userEmail,
+            'password': formValues.userPasswd,
+        };
+
+        axios.post(LOGIN_POST, headers, { withCredentials: true })
+            .then(response => {
+                const resp = response.data
+                if (resp["result"] == 200) {
+
+                }
+                else {
+                    console.log("Error");
+                }
+            })
+            .catch(error => {
+                console.error("Error : ", error)
+            });
+    };
+
     return (
         <div>
             <TapBar text="로그인" />
+
+            <MainText fontWeight={400}>
+                언제, 어디서든
+                <br />
+                치과 정보와 시간이 필요할 땐
+            </MainText>
+
+            <MainText fontSize="20px" fontWeight={'bold'}>
+                모두의 치과
+            </MainText>
+
+            <form onSubmit={letsLogin}>
+            <ButtonContainer>
+                <input className="blueTextBox blueDefault" placeholder="이메일" 
+                    name="userEmail" value={formValues.userEmail} onChange={handleChange}/>
+                <br />
+                <input className="blueTextBox blueDefault" type="password" placeholder="비밀번호"
+                    name="userPasswd" value={formValues.userPasswd} onChange={handleChange}/>
+                <br />
+                <button className="blueButton blueDefault" type="submit"> 로그인 </button>
+            </ButtonContainer>
+            </form>
+
+            <FindContainer>
+                <a className="grayLink grayText" href="/find-id">아이디 찾기</a>
+                <div className="spacing grayText"> | </div> 
+                <a className="grayLink grayText" href="/find-id">비밀번호 찾기</a>
+            </FindContainer>
+
+            <MiddleTextContainer>
+                <div className="grayText">
+                    SNS로 간편하게 시작하기
+                </div>
+            </MiddleTextContainer> 
+            <LoginPage />
+            <MiddleTextContainer>
+                <div className="grayText"> 덴스티니가 처음이신가요? </div>
+                <div className="spacing" />
+                <GrayLink href="/createrId" fontWeight={700} decoration="underline">회원가입 하기</GrayLink>
+            </MiddleTextContainer> 
         </div>
     );
 }

@@ -54,6 +54,89 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+
+/* -- < Baejh724 추가 csscs 내용들 /> --*/
+
+/* 텍스트들  */
+.grayText {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    color: gray;
+    font-size: 14px;
+    text-decoration:none;
+    display: inline-block;
+}
+.spacing {
+  margin-left: 10px;
+  margin-right: 10px;
+  display: inline-block;
+}
+.grayLink:hover {
+    text-decoration: underline; /* 호버 시 밑줄 추가 */
+    color: #002F6C; /* 호버 시 색상 변경 */
+}
+
+.blueTextBox {
+  display: block;
+  position: relative;
+  border: 2px solid #0047AD;
+  background-color: white;
+
+  text-align: left;
+  color: #000;
+
+  font-weight: 300;
+}
+
+.blueButton {
+  display: inline-block;
+  background-color:#0047AD;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+
+  line-height: 0px;
+
+  font-weight: 500;
+}
+
+.blueDefault {
+  width: 350px;
+  height: 40px;
+  padding: 10px 20px;
+
+  font-family: 'Noto Sans KR', sans-serif;
+  font-style: normal;
+  font-size: 16px;
+
+  border-radius: 50px;
+  box-sizing: border-box; /* 패딩과 테두리 포함한 크기 계산 */
+  outline: none; /* 포커스 시 테두리 제거 */
+}
+
+
+.blueButton:hover {
+  background-color: #002F6C;
+}
+.blueButton:focus {
+  outline: none;
+}
+.blueTextBox:focus {
+  border: #002f00;
+  box-shadow: 0 0 4px #002F6C;
+}
+
+/* -- < Baejh724 추가 csscs 내용들 /> --*/
+
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  gap: 0 50px;
+}
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

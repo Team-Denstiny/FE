@@ -22,7 +22,7 @@ const TapBar: React.FC<TapBarProps> = ({ text }) => {
                 style={{ position: 'absolute', left: '20px', top: '13px' }} 
                 onClick={handleBackClick} 
             />
-            <div className="font-noto font-medium text-base" style={{ position: 'absolute', left: '175px', top: '14px' }}>
+            <div className="font-noto font-medium text-base" style={{ position: 'absolute', left: '175px', top: '14px', color: "black"}}>
                 {text}
             </div>
         </div>

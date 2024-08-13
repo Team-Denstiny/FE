@@ -1,0 +1,47 @@
+.login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px 0;
+}
+
+.kakao {
+    background-color: #FEE500;
+    color: #3C1E1E;
+}
+
+.kakao-round {
+    background-color: #FEE500;
+    color: #3C1E1E;
+    width: 40px; /* 버튼의 너비 */
+    height: 40px; /* 버튼의 높이 */
+    border-radius: 50%; /* 원형으로 만듦 */
+    padding: 0;
+}
+
+.kakao:hover {
+    background-color: #E6CC00;
+}
+
+.naver {
+    background-color: #03C75A;
+    color: white;
+}
+
+.naver-round {
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   padding: 0;
+}
+
+.naver:hover {
+    background-color: #02B152;
+}

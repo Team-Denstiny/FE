@@ -1,7 +1,8 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Route } from "react-router-dom";
 import SigninPage from "../routes/signin/SigninPage";
 import Layout from "../routes/Layout";
 import HomePage from "../routes/home/HomePage";
+import ResendPage from "../routes/signin/Resend";
 
 export const mainRouter = [
 
@@ -23,7 +24,12 @@ export const mainRouter = [
             </Layout>
         )
     },
-   
+    {
+        path: "/signin/endpoint",
+        element: (
+            <ResendPage />
+        )
+    }
 ];
 
 const router = createBrowserRouter(mainRouter);
