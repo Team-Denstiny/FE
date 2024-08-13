@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/common/Navbar";
 import logo from "../../assets/main/logo.png"
 import search  from "../../assets/main/search.png"
@@ -10,12 +11,13 @@ import Calendar from "../../components/main/Calender";
 
 const HomePage: React.FC = () => {
     const userName = '배별하';
+    const navigate = useNavigate();
 
     return (
         <div>
             <div className="flex relative pt-6 pb-12">
                 <img src={logo} style={{ position: 'absolute', left: '20px'}}  ></img>
-                <img src={search} style={{ position: 'absolute', left: '346px'}} ></img>
+                <img src={search} style={{ position: 'absolute', left: '346px'}} onClick={()=>navigate('/search')}></img>
             </div>
             <img src={top}></img>
             <div className="flex relative gap-5 pt-6 pl-5 pb-12">
