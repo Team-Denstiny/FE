@@ -5,6 +5,7 @@ interface TextProps {
     fontSize?:string;
     fontWeight?:string | number;
     decoration?:string;
+    paddingLeft?:string;
 }
 
 export const GrayText = styled.div<TextProps>`
@@ -13,6 +14,7 @@ export const GrayText = styled.div<TextProps>`
     color: gray;
     font-size: ${(props) => props.fontSize || '14px'};
     font-weight: ${(props) => props.fontWeight || 400};
+    padding-left: ${(props) => props.paddingLeft || '0px'};
     text-decoration: none;  
 `;
 

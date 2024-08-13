@@ -58,6 +58,16 @@ button:focus-visible {
 /* -- < Baejh724 추가 csscs 내용들 /> --*/
 
 /* 텍스트들  */
+.blackText {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    color: black;
+    font-size: 14px;
+    text-decoration:none;
+    display: inline-block;
+}
+
 .grayText {
     font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
@@ -101,10 +111,32 @@ button:focus-visible {
   font-weight: 500;
 }
 
+.blueButtonSmall {
+  display: inline-block;
+  color: #0047AD;
+  border: 2px solid #0047AD;
+  cursor: pointer;
+  text-align: center;
+
+  line-height: 0px;
+
+  font-weight: 500;
+}
+
+.blueButtonSmall:hover{
+  background-color: #002F6C;
+  color: white;
+}
+.blueButtonSmall:focus {
+  background-color: #002F6C;
+  color: white;
+  outline: none;
+}
+
 .blueDefault {
   width: 350px;
   height: 40px;
-  padding: 10px 20px;
+  padding: 20px 20px;
 
   font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
@@ -127,6 +159,93 @@ button:focus-visible {
   box-shadow: 0 0 4px #002F6C;
 }
 
+
+/* 체크무늬 */
+
+/* styles.css */
+.custom-checkbox {
+  position: relative;
+  margin-left: 5%;
+  margin-right: -3%;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 2px solid white;
+  border-radius: 20px;
+  background-color: gray;
+  cursor: pointer;
+}
+
+.custom-checkbox::before {
+  border-color: black;
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 7px;
+  width: 8px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+}
+.custom-checkbox:checked {
+  background-color: #0047AD;
+  border-color: #0047AD;
+}
+
+.custom-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 7px;
+  width: 8px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+}
+
+.custom-small-checkbox {
+  position: relative;
+  margin-left: 5%;
+  margin-right: 0%;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 2px solid white;
+  border-radius: 20px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.custom-small-checkbox::before {
+  border-color: black;
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 7px;
+  width: 8px;
+  height: 12px;
+  border: solid black;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+}
+.custom-small-checkbox:checked {
+  background-color: white;
+  border-color: white;
+}
+
+.custom-small-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 7px;
+  width: 8px;
+  height: 12px;
+  border: solid #0047AD;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+}
 /* -- < Baejh724 추가 csscs 내용들 /> --*/
 
 

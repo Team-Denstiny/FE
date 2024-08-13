@@ -6,16 +6,16 @@ interface TextProps {
     paddingLeft?:string;
 }
 
-const MainText = styled.div<TextProps>`
+const BlackText = styled.div<TextProps>`
     display: inline-block;
-    color: #0047AD;
+    color: black;
     font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
-    font-size: ${(props) => props.fontSize || '20px'};
-    font-weight: ${(props) => props.fontWeight || 400};
+    font-size: ${(props) => props.fontSize || '13px'};
+    font-weight: ${(props) => props.fontWeight || 700};
     padding-left: ${(props) => props.paddingLeft || '20px'};
     line-height: 34px;
     text-align: left;
   `;
 
-export default MainText;
+export default BlackText;

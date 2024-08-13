@@ -10,6 +10,10 @@ import '../../index.css'
 import axios from "axios";
 
 
+const TextContainer = styled.div`
+    padding-top: 20px;
+`
+
 const FindContainer = styled.div`
     position: relative;
     line-height: 20px;
@@ -26,7 +30,7 @@ const MiddleTextContainer = styled.div`
 
 const ButtonContainer = styled.div` 
     display: flex;
-    height: 10vh; /* 전체 화면 높이 */
+    height: 30vh;
     flex-direction: column; /* 요소들을 세로로 나열 */
     align-items: center; /* 수평 중앙 정렬 */
     justify-content: center; /* 수직 중앙 정렬 *
@@ -72,6 +76,8 @@ const SigninPage: React.FC = () => {
         <div>
             <TapBar text="로그인" />
 
+            <TextContainer> 
+
             <MainText fontWeight={400}>
                 언제, 어디서든
                 <br />
@@ -81,6 +87,7 @@ const SigninPage: React.FC = () => {
             <MainText fontSize="20px" fontWeight={'bold'}>
                 모두의 치과
             </MainText>
+            </TextContainer>
 
             <form onSubmit={letsLogin}>
             <ButtonContainer>
@@ -109,8 +116,9 @@ const SigninPage: React.FC = () => {
             <MiddleTextContainer>
                 <div className="grayText"> 덴스티니가 처음이신가요? </div>
                 <div className="spacing" />
-                <GrayLink href="/createrId" fontWeight={700} decoration="underline">회원가입 하기</GrayLink>
+                <GrayLink href="/signin/create" fontWeight={700} decoration="underline">회원가입 하기</GrayLink>
             </MiddleTextContainer> 
+
         </div>
     );
 }
