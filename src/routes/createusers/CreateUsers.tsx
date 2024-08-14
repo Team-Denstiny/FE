@@ -4,34 +4,15 @@ import MainText from "../../components/common/BlueText";
 import styled from 'styled-components';
 import '../../index.css'
 import BlackText from "../../components/common/BlackText";
+import {
+    TextContainer,
+    BlackTextContainer,
+    ButtonContainer,
+    CheckboxContainer,
+    ButtonContainerSmall
+}from '../../components/common/Utility'
 import { GrayText } from "../../components/common/GrayText";
 
-const TextContainer = styled.div`
-    padding-top:30px;
-`
-
-const BlackTextContainer = styled.div`
-    padding-top:20px;
-`
-
-const ButtonContainer = styled.div` 
-    display: flex;
-    padding-top: 10px;
-    flex-direction: column; /* 요소들을 세로로 나열 */
-    align-items: center; /* 수평 중앙 정렬 */
-    justify-content: center; /* 수직 중앙 정렬 *
-`
-const CheckboxContainer = styled.div`
-    display: flex;
-    align-items: center; /* 수평 중앙 정렬 */
-    justify-content: left; /* 수직 중앙 정렬 *
-`
-const ButtonContainerSmall = styled.div`
-    display: flex;
-    padding-top: 10px;
-    align-items: center; /* 수평 중앙 정렬 */
-    justify-content: center; /* 수직 중앙 정렬 *
-`
 const CreateUsers: React.FC = () => {
 
     return (

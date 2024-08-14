@@ -1,16 +1,23 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; 
+import {
+   denstinyBlue 
+} from "../../color"
 import back from "../../assets/Back.png";
 
 interface TapBarProps {
     text: string; 
 }
 
-const TapBar: React.FC<TapBarProps> = ({ text }) => {
+const TapBarMyPage: React.FC<TapBarProps> = ({ text }) => {
     const navigate = useNavigate(); 
 
     const handleBackClick = () => {
         navigate(-1); // 이전 페이지로 이동
+    };
+
+    const handleModifyClick = () => {
+        navigate('./modify');
     };
 
     return (
@@ -25,8 +32,21 @@ const TapBar: React.FC<TapBarProps> = ({ text }) => {
             <div className="font-noto font-medium text-base" style={{ position: 'absolute', left: '154px', top: '14px', color: "black"}}>
                 {text}
             </div>
+
+            <button className="blueButton" 
+                style={{position:"absolute", 
+                            width:'26px', 
+                            height:'24px', 
+                            top:'14px', 
+                            left:'345px',
+                            fontWeight:900,
+                            fontSize:'12px',
+                            backgroundColor:'white',
+                            color: denstinyBlue,
+                            border:'none'}}
+                onClick={handleModifyClick}>수정</button>
         </div>
     );
 }
 
-export default TapBar;
+export default TapBarMyPage;

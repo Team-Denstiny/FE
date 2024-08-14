@@ -6,35 +6,15 @@ import styled from "styled-components";
 import MainText from "../../components/common/BlueText";
 import {LOGIN_POST} from "../../address"
 import { GrayLink, GrayText } from "../../components/common/GrayText";
+import {TextContainer, 
+    FindContainer, 
+    MiddleTextContainer, 
+    ButtonContainer
+} from '../../components/common/Utility'
 import '../../index.css'
 import axios from "axios";
 
 
-const TextContainer = styled.div`
-    padding-top: 20px;
-`
-
-const FindContainer = styled.div`
-    position: relative;
-    line-height: 20px;
-    padding-right: 20px;
-    text-align: right;
-`
-
-const MiddleTextContainer = styled.div`
-    position: relative;
-    padding-bottom: 20px;
-    padding-top: 60px;
-    text-align: center;
-`
-
-const ButtonContainer = styled.div` 
-    display: flex;
-    height: 30vh;
-    flex-direction: column; /* 요소들을 세로로 나열 */
-    align-items: center; /* 수평 중앙 정렬 */
-    justify-content: center; /* 수직 중앙 정렬 *
-`
 const SigninPage: React.FC = () => {
     const [formValues, setFormValues] = useState<{userEmail: string; userPasswd: string;}>({
         userEmail: '',
@@ -85,7 +65,7 @@ const SigninPage: React.FC = () => {
             </MainText>
 
             <MainText fontSize="20px" fontWeight={'bold'}>
-                모두의 치과
+                모두의 치과 '덴스티니'
             </MainText>
             </TextContainer>
 

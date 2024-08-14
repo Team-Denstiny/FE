@@ -1,0 +1,29 @@
+.image-container {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container-big {
+    margin-left: 10px;
+}
+
+.profile-image-big {
+    width: 64px; /* Adjust the size as needed */
+    height: 64px; /* Adjust the size as needed */
+    object-fit: cover;
+    border-radius: 50%; /* Make it circular */
+}
+
+.profile-image {
+    width: 128px; /* Adjust the size as needed */
+    height: 128px; /* Adjust the size as needed */
+    object-fit: cover;
+    border-radius: 50%; /* Make it circular */
+}
+
+.default-image {
+    background-color: lightgray; /* Default gray background */
+    border: 2px solid darkgray; /* Optional border to emphasize the circle */
+}
