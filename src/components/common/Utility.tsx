@@ -136,3 +136,24 @@ export const VerticalLine = styled.div<LineProps>`
     background-color : ${(props) => props.backgroundColor || 'gray'};
     margin: 0 auto;
 `
+
+interface TextProps2 {
+    fontStyle?: string,
+    fontWeight?: string | number,
+    color?:string,
+    fontSize?:string,
+    textDecoration:string,
+    display:string,
+    textAlign:string
+}
+export const TextCheckContainer = styled.p<TextProps2>`
+    font-family: 'Noto Sans KR', sans-serif;
+    font-style: ${(props) => props.fontStyle || 'normal'};
+    font-weight: ${(props) => props.fontWeight || 300};
+    color: ${(props) => props.color || 'gray'};
+    font-size: ${(props) => props.fontSize || '14px'};
+    text-align: ${(props) => props.textAlign || 'left'};
+    text-decoration: ${(props) => props.textDecoration || 'none'};
+    padding-left: 20px;
+    display: ${(props) => props.display || 'block'};
+`

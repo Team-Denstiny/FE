@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import TopBar from "../../components/common/TopBar";
 import MainText from "../../components/common/BlueText";
 import styled from 'styled-components';
@@ -9,12 +9,34 @@ import {
     BlackTextContainer,
     ButtonContainer,
     CheckboxContainer,
-    ButtonContainerSmall
+    ButtonContainerSmall,
+    TextCheckContainer
 }from '../../components/common/Utility'
 import { GrayText } from "../../components/common/GrayText";
+import AddressSearch from "../../components/common/AddressSearch";
+import SearchIcon from '../../assets/Search.png';
 
 const CreateUsers: React.FC = () => {
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [isValid, setIsValid] = useState(true);
 
+    const [myAddress, setMyAddress] = useState('');
+    const [myCoords, setCoords] = useState<{x: string, y: string}>({x: '', y: ''});
+    
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(e.target.value);
+    };
+    
+    const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setConfirmPassword(e.target.value);
+        setIsValid(e.target.value === password);
+    };
+
+    const handleMyAddress = (seletctAddr: string, x:string, y:string) => {
+        setMyAddress(seletctAddr);
+        setCoords({x, y});
+    };
     return (
         <div>
             <TopBar text="로그인" />
@@ -25,17 +47,30 @@ const CreateUsers: React.FC = () => {
                 </MainText>
             </TextContainer>
 
-            <BlackTextContainer>
+            <BlackTextContainer style={{marginBottom: '-20px'}}>
                 <BlackText> 이용 정보 입력</BlackText>
                 <ButtonContainer>
                     <input className="blueTextBox blueDefault" placeholder="이메일을 입력하세요" />
                     <br />
-                    <input className="blueTextBox blueDefault" type="password" placeholder="비밀번호를 입력하세요" />
+                    <input className="blueTextBox blueDefault" type="password" 
+                            onChange={handlePasswordChange} value={password} placeholder="비밀번호를 입력하세요" />
                     <br />
-                    <input className="blueTextBox blueDefault" type="password" placeholder="비밀번호를 한번 더 입력하세요" />
+                    <input className="blueTextBox blueDefault" type="password" placeholder="비밀번호를 한번 더 입력하세요" 
+                            onChange={handleConfirmPasswordChange} />
                     <br />
+
                 </ButtonContainer>
             </BlackTextContainer>
+            {!isValid && confirmPassword && (
+                <TextCheckContainer color="red">
+                            동일한 비밀번호를 입력하세요
+                </TextCheckContainer>
+            )}
+            {isValid && confirmPassword && (
+                <TextCheckContainer color="blue">
+                    비밀번호가 일치합니다
+                </TextCheckContainer>
+            )}
 
             <BlackTextContainer>
                 <BlackText> 개인 정보 입력</BlackText>
@@ -56,7 +91,14 @@ const CreateUsers: React.FC = () => {
                         <div className="blueButtonSmall blueDefault" style={{width: '105px'}}> 재전송</div>
                     </ButtonContainerSmall>
                     <br />
-                    <input className="blueTextBox blueDefault" placeholder="도로명, 지번, 건물명 검색" />
+                    <div className="searchContainer" style={{ position: 'relative', width: '350px' }}>
+                        <input className="blueTextBox blueDefault" 
+                                placeholder="도로명, 지번, 건물명 검색" 
+                                value={myAddress}
+                                onChange={(e) => setMyAddress(e.target.value)}
+                                style={{width:'100%', paddingRight: '40px'}}/>
+                        <AddressSearch buttonSize="30px" onComplete={handleMyAddress}/>
+                    </div>
                 </ButtonContainer>
                 <GrayText paddingLeft="20px" fontWeight={500} fontSize="12px">
                     주소를 입력하면 근처 병원을 쉽게 찾을 수 있어요
@@ -91,7 +133,6 @@ const CreateUsers: React.FC = () => {
                     <GrayText paddingLeft="5px" fontSize="12px"> [선택] 광고성 정보 수신/마케팅 활용 동의</GrayText>
                 </CheckboxContainer>
             </BlackTextContainer>
-
 
             <ButtonContainer>
                 <br /> <br />
