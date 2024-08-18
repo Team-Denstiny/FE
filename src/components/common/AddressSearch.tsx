@@ -8,7 +8,7 @@ declare global {
 }
 
 interface AddressSearchProps {
-  onComplete: (address: string) => void;
+  onComplete: (address: string, x: string, y: string) => void;
   buttonSize: string;
 }
 
@@ -17,7 +17,9 @@ const AddressSearch: React.FC<AddressSearchProps> = ({ onComplete, buttonSize}) 
     new window.daum.Postcode({
       oncomplete: function (data: any) {
         const fullAddress = data.roadAddress || data.jibunAddress;
-        onComplete(fullAddress); // 선택된 주소를 부모로 전달
+        const x = data.x; //좌표 추출
+        const y = data.y;
+        onComplete(fullAddress, x, y); // 선택된 주소를 부모로 전달
       },
     }).open();
   };
