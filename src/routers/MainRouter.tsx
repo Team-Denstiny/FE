@@ -1,6 +1,7 @@
 import { createBrowserRouter, useLocation } from "react-router-dom";
 import SigninPage from "../routes/signin/SigninPage";
 import Layout from "../routes/Layout";
+import NavLayout from "../routes/NavLayout";
 import HomePage from "../routes/home/HomePage";
 import SearchPage from "../routes/home/SearchPage";
 import SearchDetail from "../routes/home/SearchDetailPage";
@@ -21,9 +22,9 @@ export const mainRouter = [
     {
         path: "/",
         element:(
-            <Layout>
+            <NavLayout text="home">
                 <HomePage/>
-            </Layout>
+            </NavLayout>
         )
        
     },

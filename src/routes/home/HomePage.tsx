@@ -30,7 +30,7 @@ const HomePage: React.FC = () => {
             </div>
             <MonthCalendar/>
             
-            <Navbar text="home"></Navbar>
+            
         </div>
     )
 }

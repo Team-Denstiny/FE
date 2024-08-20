@@ -43,12 +43,13 @@ const Navbar: React.FC<NavbarProps> = ({ text }) => {
     }
 
     return (
-        <div className="w-[390px] h-[60px] flex relative" style={{paddingTop: '6px', paddingLeft: '36px', gap: '52px', position: 'fixed', bottom: '0',}}>
-        <img src={homeImg} alt="home" style={{width: '40px', height: '52px'}} onClick={() => handleNavClick('')} />
-            <img src={heartImg} alt="heart" style={{width: '40px', height: '52px'}} onClick={() => handleNavClick('heart')} />
-            <img src={communityImg} alt="community" style={{width: '40px', height: '52px'}} onClick={() => handleNavClick('community')} />
-            <img src={profileImg} alt="profile" style={{width: '40px', height: '52px'}} onClick={() => handleNavClick('profile')} />
+        <div className="w-full h-[60px] flex bg-white pl-[36px] gap-[52px] absolute bottom-0 left-0">
+            <img src={homeImg} alt="home" className="w-[40px] h-[52px]" onClick={() => handleNavClick('')} />
+            <img src={heartImg} alt="heart" className="w-[40px] h-[52px]" onClick={() => handleNavClick('heart')} />
+            <img src={communityImg} alt="community" className="w-[40px] h-[52px]" onClick={() => handleNavClick('community')} />
+            <img src={profileImg} alt="profile" className="w-[40px] h-[52px]" onClick={() => handleNavClick('profile')} />
         </div>
+    
     
     
     );
