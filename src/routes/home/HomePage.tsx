@@ -7,7 +7,7 @@ import top from "../../assets/main/topimage.png"
 import navimg1 from "../../assets/main/navimg.png"
 import navimg2 from "../../assets/main/navimg2.png"
 import navimg3 from "../../assets/main/navimg3.png"
-import Calendar from "../../components/main/Calender";
+import MonthCalendar from "../../components/main/Calender";
 
 const HomePage: React.FC = () => {
     const userName = '배별하';
@@ -28,7 +28,7 @@ const HomePage: React.FC = () => {
             <div className="font-noto font-bold text-base pl-5">
                 {userName}님의 예약 일정
             </div>
-            <Calendar/>
+            <MonthCalendar/>
             
             <Navbar text="home"></Navbar>
         </div>

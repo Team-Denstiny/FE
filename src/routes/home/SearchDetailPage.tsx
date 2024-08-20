@@ -27,6 +27,8 @@ const SearchDetail: React.FC = () => {
 
             <SettingBar location="서울 강남구" sorting="거리순" />
 
+            
+
         </div>
 
     )
