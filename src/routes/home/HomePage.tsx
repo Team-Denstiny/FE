@@ -7,7 +7,7 @@ import top from "../../assets/main/topimage.png"
 import navimg1 from "../../assets/main/navimg.png"
 import navimg2 from "../../assets/main/navimg2.png"
 import navimg3 from "../../assets/main/navimg3.png"
-import MonthCalendar from "../../components/main/Calender";
+import MonthCalendar from "../../components/common/Calender";
 
 const HomePage: React.FC = () => {
     const userName = '배별하';
