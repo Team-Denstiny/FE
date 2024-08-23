@@ -1,20 +1,18 @@
-import React, {useState} from "react";
-import TopBar from "../../components/common/TopBar";
-import MainText from "../../components/common/BlueText";
-import styled from 'styled-components';
-import '../../index.css'
+import React, { useState } from "react";
+import AddressSearch from "../../components/common/AddressSearch";
 import BlackText from "../../components/common/BlackText";
+import MainText from "../../components/common/BlueText";
+import { GrayText } from "../../components/common/GrayText";
+import TopBar from "../../components/common/TopBar";
 import {
-    TextContainer,
     BlackTextContainer,
     ButtonContainer,
-    CheckboxContainer,
     ButtonContainerSmall,
-    TextCheckContainer
-}from '../../components/common/Utility'
-import { GrayText } from "../../components/common/GrayText";
-import AddressSearch from "../../components/common/AddressSearch";
-import SearchIcon from '../../assets/Search.png';
+    CheckboxContainer,
+    TextCheckContainer,
+    TextContainer
+} from '../../components/common/Utility';
+import '../../index.css';
 
 const CreateUsers: React.FC = () => {
     const [password, setPassword] = useState('');
@@ -22,7 +20,7 @@ const CreateUsers: React.FC = () => {
     const [isValid, setIsValid] = useState(true);
 
     const [myAddress, setMyAddress] = useState('');
-    const [myCoords, setCoords] = useState<{x: string, y: string}>({x: '', y: ''});
+    const [myCoords, setCoords] = useState<{x: number, y: number}>({x: 0.0, y: 0.0});
     
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
@@ -33,7 +31,7 @@ const CreateUsers: React.FC = () => {
         setIsValid(e.target.value === password);
     };
 
-    const handleMyAddress = (seletctAddr: string, x:string, y:string) => {
+    const handleMyAddress = (seletctAddr: string, y:number, x:number) => {
         setMyAddress(seletctAddr);
         setCoords({x, y});
     };
@@ -42,7 +40,7 @@ const CreateUsers: React.FC = () => {
             <TopBar text="로그인" />
             <TextContainer>
                 <MainText fontWeight={700}> 간단한 회원가입으로 </MainText>
-                <MainText fontWeight={400} > 
+                <MainText fontWeight={400}> 
                     필요한 치과와 정보를 확인하세요!
                 </MainText>
             </TextContainer>

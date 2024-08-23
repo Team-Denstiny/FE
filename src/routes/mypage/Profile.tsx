@@ -1,25 +1,37 @@
+import axios from "axios";
 import React from "react";
-import TapBarMyPage from "./TopBarMyProfile";
+import { GET_MY_INFO } from "../../address";
+import test from "../../assets/test.jpg";
 import Navbar from "../../components/common/Navbar";
 import {
-    VerticalLine,
-    BlackText
-} from '../../components/common/Utility'
+    BlackText,
+    VerticalLine
+} from '../../components/common/Utility';
 import {
-    USERID,
-    ACCESS_TOKEN
-} from "../../GlobalVariable"
-import SmallButton from "./SmallButton";
+    ACCESS_TOKEN,
+    USERID
+} from "../../GlobalVariable";
 import BigButton from "./BigButton";
+import SmallButton from "./SmallButton";
 import TapBarMyProfile from "./TopBarMyProfile";
-import test from "../../assets/test.jpg"
 
 const Profile: React.FC = () => {
     const userId = localStorage.getItem(USERID);
     const userToken = localStorage.getItem(ACCESS_TOKEN);
+    const apiAddress = GET_MY_INFO + userId;
     const userName = "홍길동";
     const userProfileImg = test;
     const email = "baejh724@gmail.com"
+    axios.get(apiAddress, {withCredentials: true })
+      .then(response => {
+        const status = response.data['result']['result_code']
+        if (status == 200) {
+          const token = response.headers['authorization']; // 응답 헤더에서 토큰을 추출
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching auth token:', error);
+      });
 
     return (
         <div>

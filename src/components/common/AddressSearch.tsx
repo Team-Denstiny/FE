@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import SearchIcon from '../../assets/Search.png';
 
 declare global {
@@ -8,18 +8,51 @@ declare global {
 }
 
 interface AddressSearchProps {
-  onComplete: (address: string, x: string, y: string) => void;
+  onComplete: (address: string, x: number, y: number) => void;
   buttonSize: string;
 }
+
+
+
+const getCoordinatesFromAddress = async (address: string) => {
+  const API_KEY = '9670bb1770652a98ad47a42b359ceb2c';
+  const url = `https://dapi.kakao.com/v2/local/search/address.json?query=${encodeURIComponent(address)}`;
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        Authorization: `KakaoAK ${API_KEY}`,
+      },
+    });
+    const data = await response.json();
+
+    if (data.documents.length > 0) {
+      const { x, y } = data.documents[0].address;
+      return { x, y };
+    } else {
+      throw new Error('주소에 대한 좌표를 찾을 수 없습니다.');
+    }
+  } catch (error) {
+    console.error('좌표를 가져오는 중 오류 발생:', error);
+    return null;
+  }
+};
+
 
 const AddressSearch: React.FC<AddressSearchProps> = ({ onComplete, buttonSize}) => {
   const openPostcodePopup = () => {
     new window.daum.Postcode({
-      oncomplete: function (data: any) {
-        const fullAddress = data.roadAddress || data.jibunAddress;
-        const x = data.x; //좌표 추출
-        const y = data.y;
-        onComplete(fullAddress, x, y); // 선택된 주소를 부모로 전달
+      oncomplete: async function (data: any) {
+        const fullAddress = data.jibunAddress || data.roadAddress;
+        const coords = await getCoordinatesFromAddress(fullAddress);
+
+        if (coords) {
+          const { x, y } = coords;
+          onComplete(fullAddress, x, y);
+        }
+        else {
+          onComplete(fullAddress, 0.0, 0.0);
+        }
       },
     }).open();
   };

@@ -1,13 +1,15 @@
-import { createBrowserRouter, Route } from "react-router-dom";
-import SigninPage from "../routes/signin/SigninPage";
-import Layout from "../routes/Layout";
+import { createBrowserRouter } from "react-router-dom";
+import CreateAddress from "../routes/createusers/CreateAddress";
+import CreateUsers from "../routes/createusers/CreateUsers";
 import HomePage from "../routes/home/HomePage";
-import ResendPage from "../routes/signin/Resend";
-import CreateUsers from "../routes/createusers/CreateUsers"
+import Layout from "../routes/Layout";
 import Layout2 from "../routes/Layout2";
-import Profile from "../routes/mypage/Profile";
-import MyPage from "../routes/mypage/MyPage";
 import ModifyMyPage from "../routes/mypage/ModfiyMyProfile";
+import MyPage from "../routes/mypage/MyPage";
+import Profile from "../routes/mypage/Profile";
+import GetMyId from "../routes/signin/GetMyId";
+import ResendPage from "../routes/signin/Resend";
+import SigninPage from "../routes/signin/SigninPage";
 
 export const mainRouter = [
 
@@ -18,7 +20,6 @@ export const mainRouter = [
                 <HomePage/>
             </Layout>
         )
-       
     },
     
     {
@@ -33,6 +34,20 @@ export const mainRouter = [
         path: "/signin/endpoint",
         element: (
             <ResendPage />
+        )
+    },
+    {
+        path: "/getMyId",
+        element: (
+            <GetMyId />
+        )
+    },
+    {
+        path: "/signin/endpoint/createAddress",
+        element: (
+            <Layout>
+                <CreateAddress />
+            </Layout>
         )
     },
     {

@@ -1,11 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import axios, { InternalAxiosRequestConfig, AxiosHeaders} from 'axios';
-import {
-  SERVER_ENDPOINT,
-  MAIN_PAGE
-} from "../../address.ts";
-import { useNavigate } from 'react-router-dom';
-import RedirectHome from '../../redirect/GoHome.tsx';
+import axios, { AxiosHeaders, InternalAxiosRequestConfig } from 'axios';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 axios.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   const token = localStorage.getItem('authToken');
@@ -25,43 +20,25 @@ axios.interceptors.request.use((config: InternalAxiosRequestConfig) => {
 
 
 function ResendPage() {
-  const [authToken, setAuthToken] = useState<string | null>(null);
-  const [autoId, setAuthId] = useState<string | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const header = {
-    "address": MAIN_PAGE
-  }
   useEffect(() => {
-    axios.post(SERVER_ENDPOINT, header, { withCredentials: true })
-      .then(response => {
 
-        const status = response.data['result']['result_code']
-        if (status == 200) {
-
-          const token = response.headers['authorization']; // 응답 헤더에서 토큰을 추출
-
-          if (token) {
-            setAuthToken(token);
-            console.log(token);
-            localStorage.setItem('authToken', token); // 로컬 스토리지에 저장
-          }
-        
-          // id 가져오기
-          const my_id = response.data['body']['id'];
-          if (my_id) {
-            setAuthId(my_id);
-            console.log(my_id);
-            localStorage.setItem('autoId', my_id);
-          }
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching auth token:', error);
-      });
-  }, [navigate]);
+    const queryParams = new URLSearchParams(location.search);
+    const status = queryParams.get("status");
+    if (status == "created") {
+      console.log("회원 가입 페이지로 이동");
+      navigate('./createAddress');
+    }
+    else if (status == "logined") {
+      console.log("메인 페이지로 이동"); 
+      navigate('/getMyId');
+    }
+  }, [location.search, navigate]);
 
   return (
+    <div />
     /*
     <div>
       <h2>Authentication Example</h2>
@@ -80,7 +57,6 @@ function ResendPage() {
       )}
     </div>
     */ 
-   <RedirectHome />
   );
 }
 

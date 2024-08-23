@@ -1,21 +1,23 @@
-import React, {useState, ChangeEvent, FormEvent} from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TapBar from "../../components/common/TopBar";
 
-import LoginPage from "./LoginPage";
-import styled from "styled-components";
-import MainText from "../../components/common/BlueText";
-import {LOGIN_POST} from "../../address"
-import { GrayLink, GrayText } from "../../components/common/GrayText";
-import {TextContainer, 
-    FindContainer, 
-    MiddleTextContainer, 
-    ButtonContainer
-} from '../../components/common/Utility'
-import '../../index.css'
 import axios from "axios";
+import { LOGIN_POST } from "../../address";
+import MainText from "../../components/common/BlueText";
+import { GrayLink } from "../../components/common/GrayText";
+import {
+    ButtonContainer,
+    FindContainer,
+    MiddleTextContainer,
+    TextContainer
+} from '../../components/common/Utility';
+import '../../index.css';
+import LoginPage from "./LoginPage";
 
 
 const SigninPage: React.FC = () => {
+    const navigate = useNavigate();
     const [formValues, setFormValues] = useState<{userEmail: string; userPasswd: string;}>({
         userEmail: '',
         userPasswd: ''
@@ -31,6 +33,7 @@ const SigninPage: React.FC = () => {
     const letsLogin = async (event: FormEvent<HTMLFormElement>) => {
 
         event.preventDefault();
+        const pass_check = false;
 
         const headers = {
             'email': formValues.userEmail,
@@ -39,13 +42,21 @@ const SigninPage: React.FC = () => {
 
         axios.post(LOGIN_POST, headers, { withCredentials: true })
             .then(response => {
-                const resp = response.data
-                if (resp["result"] == 200) {
-
-                }
+                const resp_check = response.data["result"]
+                if (resp_check) {
+                    const resp = resp_check["resultCode"];
+                    const my_id = response.data["body"]["id"];
+                    if (resp == 200) {
+                        console.log("성공~ : ", my_id);
+                        localStorage.setItem('autoId', my_id);
+                        navigate("/");
+                    }
+                } 
                 else {
                     console.log("Error");
+                    alert("로그인 오류!");
                 }
+                //toast.error("로그인 오류!");
             })
             .catch(error => {
                 console.error("Error : ", error)
