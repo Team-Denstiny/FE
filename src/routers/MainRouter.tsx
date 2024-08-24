@@ -45,8 +45,8 @@ export const mainRouter = [
                 <SearchRoute/>
             </Layout>
         )
-    }
-   
+    },
+
 ];
 
 const router = createBrowserRouter(mainRouter);
