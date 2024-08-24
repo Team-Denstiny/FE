@@ -1,15 +1,16 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { GET_MY_INFO } from "../../address";
 import test from "../../assets/test.jpg";
+import LoginCheck from "../../components/common/LoginCheck";
 import Navbar from "../../components/common/Navbar";
 import {
-    BlackText,
-    VerticalLine
+  BlackText,
+  VerticalLine
 } from '../../components/common/Utility';
 import {
-    ACCESS_TOKEN,
-    USERID
+  ACCESS_TOKEN,
+  USERID
 } from "../../GlobalVariable";
 import BigButton from "./BigButton";
 import SmallButton from "./SmallButton";
@@ -22,6 +23,9 @@ const Profile: React.FC = () => {
     const userName = "홍길동";
     const userProfileImg = test;
     const email = "baejh724@gmail.com"
+    useEffect(() => {
+      LoginCheck("로그인 부터 하쇼", "false");
+    });
     axios.get(apiAddress, {withCredentials: true })
       .then(response => {
         const status = response.data['result']['result_code']

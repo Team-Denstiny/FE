@@ -1,5 +1,4 @@
-import styled from "styled-components"
-import React from "react";
+import styled from "styled-components";
 
 export const TextContainer = styled.div`
     padding-top: 20px;
@@ -46,7 +45,7 @@ export const CheckboxContainer = styled.div`
 `
 export const ButtonContainerSmall = styled.div`
     display: flex;
-    padding-top: 10px;
+    padding-top: 0px;
     align-items: center; /* 수평 중앙 정렬 */
     justify-content: center; /* 수직 중앙 정렬 *
 `
@@ -142,9 +141,9 @@ interface TextProps2 {
     fontWeight?: string | number,
     color?:string,
     fontSize?:string,
-    textDecoration:string,
-    display:string,
-    textAlign:string
+    textDecoration?:string,
+    display?:string,
+    textAlign?:string
 }
 export const TextCheckContainer = styled.p<TextProps2>`
     font-family: 'Noto Sans KR', sans-serif;

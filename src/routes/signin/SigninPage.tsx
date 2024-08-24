@@ -1,28 +1,38 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import TapBar from "../../components/common/TopBar";
-
 import axios from "axios";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { LOGIN_POST } from "../../address";
 import MainText from "../../components/common/BlueText";
 import { GrayLink } from "../../components/common/GrayText";
+import LoginCheck from "../../components/common/LoginCheck";
+import TapBar from "../../components/common/TopBar";
 import {
     ButtonContainer,
     FindContainer,
     MiddleTextContainer,
     TextContainer
 } from '../../components/common/Utility';
+import {
+    LOGIN_CHECK,
+    USERID
+} from "../../GlobalVariable";
 import '../../index.css';
 import LoginPage from "./LoginPage";
 
 
 const SigninPage: React.FC = () => {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        LoginCheck();
+    });
+
+
     const [formValues, setFormValues] = useState<{userEmail: string; userPasswd: string;}>({
         userEmail: '',
         userPasswd: ''
-    });
-    
+    });    
+
     const handleChange = (Event: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = Event.target;
         setFormValues(prevValues => ({
@@ -48,7 +58,8 @@ const SigninPage: React.FC = () => {
                     const my_id = response.data["body"]["id"];
                     if (resp == 200) {
                         console.log("성공~ : ", my_id);
-                        localStorage.setItem('autoId', my_id);
+                        localStorage.setItem(LOGIN_CHECK, "true");
+                        localStorage.setItem(USERID, my_id);
                         navigate("/");
                     }
                 } 
@@ -81,7 +92,7 @@ const SigninPage: React.FC = () => {
             </TextContainer>
 
             <form onSubmit={letsLogin}>
-            <ButtonContainer>
+            <ButtonContainer style={{marginTop: "50px"}}>
                 <input className="blueTextBox blueDefault" placeholder="이메일" 
                     name="userEmail" value={formValues.userEmail} onChange={handleChange}/>
                 <br />
@@ -92,7 +103,7 @@ const SigninPage: React.FC = () => {
             </ButtonContainer>
             </form>
 
-            <FindContainer>
+            <FindContainer style={{marginTop: "20px"}}>
                 <a className="grayLink grayText" href="/find-id">아이디 찾기</a>
                 <div className="spacing grayText"> | </div> 
                 <a className="grayLink grayText" href="/find-id">비밀번호 찾기</a>

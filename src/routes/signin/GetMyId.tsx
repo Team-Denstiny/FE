@@ -2,8 +2,13 @@
 import axios from 'axios';
 import { useState } from 'react';
 import {
-    SERVER_ENDPOINT
+  SERVER_ENDPOINT
 } from "../../address";
+import {
+  ACCESS_TOKEN,
+  LOGIN_CHECK,
+  USERID
+} from "../../GlobalVariable";
 import RedirectHome from '../../redirect/GoHome';
 
 function GetMyId() {
@@ -21,7 +26,7 @@ function GetMyId() {
           if (token) {
             setAuthToken(token);
             console.log(token);
-            localStorage.setItem('authToken', token); // 로컬 스토리지에 저장
+            localStorage.setItem(ACCESS_TOKEN, token); // 로컬 스토리지에 저장
           }
         
           // id 가져오기
@@ -29,7 +34,8 @@ function GetMyId() {
           if (my_id) {
             setAuthId(my_id);
             console.log(my_id);
-            localStorage.setItem('autoId', my_id);
+            localStorage.setItem(LOGIN_CHECK, "true");
+            localStorage.setItem(USERID, my_id);
           }
         }
       })

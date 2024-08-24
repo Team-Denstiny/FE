@@ -1,19 +1,25 @@
 import React from "react";
-import TapBarMyPage from "./TopBarMyPage";
+import {
+    LOGOUT
+} from "../../address";
+import ProfileImg from "../../components/common/ProfileImg";
 import {
     BlackText,
     VerticalLine
-} from '../../components/common/Utility'
+} from '../../components/common/Utility';
 import {
-    USERID,
-    ACCESS_TOKEN
-} from "../../GlobalVariable"
+    ACCESS_TOKEN,
+    USERID
+} from "../../GlobalVariable";
 import { PutInfo } from "./MyInfo";
 import SmallButton from "./SmallButton";
-import SmallButtonOnly from "./SmallButtonOnly";
-import ProfileImg from "../../components/common/ProfileImg";
+import {
+    SmallButtonOnly, SmallButtonOnlyBack
+} from "./SmallButtonOnly";
+import TapBarMyPage from "./TopBarMyPage";
 
-import test from "../../assets/test.jpg"
+import { useNavigate } from "react-router-dom";
+import test from "../../assets/test.jpg";
 
 
 const MyPage: React.FC = () => {
@@ -25,7 +31,9 @@ const MyPage: React.FC = () => {
     const userNickname = "고길동";
     const userPhoneNumber = "010-1234-5678";
     const userAddress = "서울 강남구 봉은사 5길";
-    const userImgUrl = test
+    const userImgUrl = test;
+
+    const navigate = useNavigate();
 
     return (
         <div>
@@ -52,7 +60,7 @@ const MyPage: React.FC = () => {
 
             
             <div style={{marginBottom:'12px'}} />
-            <SmallButtonOnly name="로그아웃" link="./logout" />      
+            <SmallButtonOnlyBack name="로그아웃" link={LOGOUT}/>
             <SmallButtonOnly name="회원탈퇴" link="./delete" />      
         </div>
     )

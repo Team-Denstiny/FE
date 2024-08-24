@@ -1,8 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; 
-import {
-   denstinyBlue 
-} from "../../color"
+import { useNavigate } from "react-router-dom";
 import back from "../../assets/Back.png";
 
 interface TapBarProps {
@@ -33,18 +30,11 @@ const TapBarMyPage: React.FC<TapBarProps> = ({ text }) => {
                 {text}
             </div>
 
-            <button className="blueButton" 
-                style={{position:"absolute", 
-                            width:'26px', 
-                            height:'24px', 
-                            top:'14px', 
-                            left:'345px',
-                            fontWeight:900,
-                            fontSize:'12px',
-                            backgroundColor:'white',
-                            color: denstinyBlue,
-                            border:'none'}}
-                onClick={handleModifyClick}>수정</button>
+            <button className="absolute w-[26px] h-[24px] top-[14px] left-[345px] 
+                font-bold text-[12px] bg-white text-denstiniyBlue border-none"
+                onClick={handleModifyClick}>
+                    수정
+                </button>
         </div>
     );
 }

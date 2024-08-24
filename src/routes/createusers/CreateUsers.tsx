@@ -1,4 +1,8 @@
+import axios from "axios";
 import React, { useState } from "react";
+import {
+    NICKNAKME_CHECK
+} from "../../address";
 import AddressSearch from "../../components/common/AddressSearch";
 import BlackText from "../../components/common/BlackText";
 import MainText from "../../components/common/BlueText";
@@ -15,9 +19,14 @@ import {
 import '../../index.css';
 
 const CreateUsers: React.FC = () => {
+    let isDuplicate: boolean = false;
+    let createChecker: boolean = true;
+
+    const [isValidNickname, setIsValidNickname] = useState(true);
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [isValid, setIsValid] = useState(true);
+    const [nickname, setNickname] = useState('');
 
     const [myAddress, setMyAddress] = useState('');
     const [myCoords, setCoords] = useState<{x: number, y: number}>({x: 0.0, y: 0.0});
@@ -25,21 +34,47 @@ const CreateUsers: React.FC = () => {
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
     };
-    
     const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setConfirmPassword(e.target.value);
         setIsValid(e.target.value === password);
     };
 
+    const handleNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setNickname(e.target.value);
+    };
     const handleMyAddress = (seletctAddr: string, y:number, x:number) => {
         setMyAddress(seletctAddr);
         setCoords({x, y});
     };
+
+    const handleCheckNickname = () => {
+        const nickCheckEmail = NICKNAKME_CHECK + nickname;
+        console.log("nickname => " + nickCheckEmail);
+        axios.get(nickCheckEmail)
+            .then(response => {
+                const stat = response.status;
+                console.log(response);
+                if (stat == 200) {
+                    setIsValidNickname(response.data["isDuplicate"]);
+                    if (isDuplicate)
+                        console.log(nickname + " can be made");
+                    isDuplicate = false;
+                }
+                else {
+                    window.alert("네트워크 에러가 발생하였습니다.\n 잠시 후 시도하여주십시오");
+                    createChecker = false;
+                }
+            })
+            .catch(error => console.error("Check Email error : " + error))
+    };
     return (
         <div>
-            <TopBar text="로그인" />
+            <TopBar text="회원가입" />
             <TextContainer>
-                <MainText fontWeight={700}> 간단한 회원가입으로 </MainText>
+                <MainText fontWeight={700}> 
+                    간단한 회원가입
+                    <b style={{fontWeight:400}}>으로</b>
+                </MainText>
                 <MainText fontWeight={400}> 
                     필요한 치과와 정보를 확인하세요!
                 </MainText>
@@ -72,14 +107,21 @@ const CreateUsers: React.FC = () => {
 
             <BlackTextContainer>
                 <BlackText> 개인 정보 입력</BlackText>
-                <ButtonContainer>
+                <ButtonContainer style={{paddingBottom: "7px"}}>
                     <input className="blueTextBox blueDefault" placeholder="이름을 입력하세요" />
                     <br />
                     <ButtonContainerSmall>
-                        <input className="blueTextBox blueDefault" placeholder="닉네임을 입력하세요" style={{width:'235px'}}/>
+                        <input className="blueTextBox blueDefault" placeholder="닉네임을 입력하세요" style={{width:'235px'}}
+                            onChange={handleNickname} value={nickname}/>
                         <div className="spacing" style={{marginLeft: '5px', marginRight:'5px'}}/>
-                        <div className="blueButtonSmall blueDefault" style={{width: '105px'}}> 중복확인</div>
+                        <div className="blueButtonSmall blueDefault" style={{width: '105px'}}
+                            onClick={handleCheckNickname}> 중복확인</div>
                     </ButtonContainerSmall>
+                {!isValidNickname && nickname && (
+                    <TextCheckContainer color="red" textAlign="left">
+                    중복된 닉네임입니다. 
+                    </TextCheckContainer>
+                )}
                     <br />
                     <input className="blueTextBox blueDefault" placeholder="생년월일 8자리 (YYYYMMDD)" />
                     <br />
@@ -107,7 +149,7 @@ const CreateUsers: React.FC = () => {
                 <BlackText> 서비스 이용약관 동의</BlackText>
                 <br />
                 <CheckboxContainer>
-                    <input type="checkbox" className="custom-checkbox" />
+                    <input type="checkbox" className="custom-checkbox"/>
                     <BlackText> 이용약관 전체 동의</BlackText>
                 </CheckboxContainer>
 

@@ -99,7 +99,7 @@ button:focus-visible {
 .blueTextBox {
   display: block;
   position: relative;
-  border: 2px solid #0047AD;
+  border: 2px solid #B3B3B3;
   background-color: white;
 
   text-align: left;
@@ -184,8 +184,11 @@ button:focus-visible {
   border-radius: 20px;
   background-color: gray;
   cursor: pointer;
+  background-image: url("assets/grayCheck.png");
+  background-size: cover;
+  background-position: center;
 }
-
+/*
 .custom-checkbox::before {
   border-color: black;
   content: '';
@@ -198,21 +201,13 @@ button:focus-visible {
   border-width: 0 4px 4px 0;
   transform: rotate(45deg);
 }
+*/
 .custom-checkbox:checked {
-  background-color: #0047AD;
-  border-color: #0047AD;
+  background-image: url("assets/blueCheck.png");
 }
 
 .custom-checkbox:checked::after {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 7px;
-  width: 8px;
-  height: 12px;
-  border: solid white;
-  border-width: 0 4px 4px 0;
-  transform: rotate(45deg);
+  background-image: url("assets/blueCheck.png");
 }
 
 .custom-small-checkbox {
@@ -226,35 +221,16 @@ button:focus-visible {
   border-radius: 20px;
   background-color: white;
   cursor: pointer;
-}
-
-.custom-small-checkbox::before {
-  border-color: black;
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 7px;
-  width: 8px;
-  height: 12px;
-  border: solid black;
-  border-width: 0 4px 4px 0;
-  transform: rotate(45deg);
+  background-image: url("assets/grayCheckNoCircle.png");
+  background-size: cover;
+  background-position: center;
 }
 .custom-small-checkbox:checked {
-  background-color: white;
-  border-color: white;
+  background-image: url(assets/blueCheckNoCircle.png);
 }
 
 .custom-small-checkbox:checked::after {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 7px;
-  width: 8px;
-  height: 12px;
-  border: solid #0047AD;
-  border-width: 0 4px 4px 0;
-  transform: rotate(45deg);
+  background-image: url(assets/blueCheckNoCircle.png);
 }
 /* -- < Baejh724 추가 csscs 내용들 /> --*/
 

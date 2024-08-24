@@ -1,8 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; 
-import {
-   denstinyBlue 
-} from "../../color"
+import { useNavigate } from "react-router-dom";
 import search from "../../assets/Search.png";
 
 interface TapBarProps {
@@ -25,7 +22,7 @@ const TapBarMyProfile: React.FC<TapBarProps> = ({ text }) => {
                 style={{ position: 'absolute', left: '346px', top: '13px', width: '24px' }} 
                 onClick={handleBackClick} 
             />
-            <div className="font-noto font-medium text-base" style={{ position: 'absolute', fontWeight: 700 ,left: '24px', top: '14px', color: denstinyBlue}}>
+            <div className="font-noto font-medium text-denstinyBlue" style={{ position: 'absolute', fontWeight: 700 ,left: '24px', top: '14px'}}>
                 {text}
             </div>
         </div>

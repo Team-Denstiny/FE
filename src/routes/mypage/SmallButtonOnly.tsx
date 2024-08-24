@@ -1,11 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; 
-import nextBarGray from '../../assets/NextBarGray.png'
-import {
-   denstinyBlue 
-} from "../../color"
-import search from "../../assets/Search.png";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import logout_handler from "../../components/common/Logout";
 
 interface TapBarProps {
     name: string; 
@@ -18,15 +14,16 @@ const TextContainer = styled.div`
 
 `
 
-const SmallButtonOnly: React.FC<TapBarProps> = ({name, link}) => {
+export const SmallButtonOnly: React.FC<TapBarProps> = ({name, link}) => {
     const navigate = useNavigate(); 
-    const handleBackClick = () => {
+
+    const handleFrontClick = () => {
         navigate(link); // 메인 페이지 이동
     };
 
     return (
         <button className="w-[390px] h-[35px] flex items-center justify-between relative"
-            onClick={handleBackClick}
+            onClick={handleFrontClick}
             style={{border: 'none'}}> 
             <TextContainer>
                 <div className="blackText" style={{fontWeight:300,fontSize:'13px', color: 'gray'}}> {name} </div>
@@ -36,4 +33,28 @@ const SmallButtonOnly: React.FC<TapBarProps> = ({name, link}) => {
     );
 }
 
-export default SmallButtonOnly;
+interface TapBarPropsBack {
+    name: string,
+    link: string,
+};
+
+export const SmallButtonOnlyBack: React.FC<TapBarPropsBack> = ({name, link}) => {
+    const navigate = useNavigate();
+
+    const onClickHandler = () => {
+        logout_handler(link);
+        navigate("/");
+    };
+
+    return (
+        <button className="w-[390px] h-[35px] flex items-center justify-between relative"
+            onClick={onClickHandler}
+            style={{border: 'none'}}> 
+            <TextContainer>
+                <div className="blackText" style={{fontWeight:300,fontSize:'13px', color: 'gray'}}> {name} </div>
+
+            </TextContainer> 
+        </button>
+    );
+
+}
