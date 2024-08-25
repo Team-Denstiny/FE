@@ -1,7 +1,7 @@
 import React from 'react';
-import kakaoButton from '../../assets/kakao-logo.png'
-import naverButton from '../../assets/naver-logo.png'
-import './Button.css';
+import kakaoButton from '../../../assets/kakao-logo.png';
+import naverButton from '../../../assets/naver-logo.png';
+import './LoginButton.css';
 
 interface ButtonProps {
     type: 'kakao' | 'naver';

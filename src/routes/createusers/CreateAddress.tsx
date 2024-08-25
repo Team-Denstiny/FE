@@ -3,15 +3,15 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import {
     SERVER_ENDPOINT
-} from "../../address";
+} from "../../Address";
 import AddressSearch from "../../components/common/AddressSearch";
-import TopBar from "../../components/common/TopBar";
 import {
     ButtonContainer,
     GrayText,
     MainText,
     TextContainer
-} from "../../components/common/Utility";
+} from "../../components/common/LoginDesigns/Utility";
+import TopBar from "../../components/common/TopBar";
 
 const CreateUsers: React.FC = () => {
     const [myAddress, setMyAddress] = useState('');

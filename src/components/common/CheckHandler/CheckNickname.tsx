@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { CREATE_NICKNAKME_CHECK } from "../../../address";
+import { CREATE_NICKNAKME_CHECK } from "../../../Address";
 import { expiredChecker } from "../ExpiredChecker/ExpiredTokenProcessor";
 
 const checkNickname = async (email: string) => {

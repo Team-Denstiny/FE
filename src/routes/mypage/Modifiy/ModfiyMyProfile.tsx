@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import {
-    USERID
-} from "../../../GlobalVariable";
-import { CHANGE_MY_INFO, GET_MY_INFO } from "../../../address";
+import { CHANGE_MY_INFO, GET_MY_INFO } from "../../../Address";
 import checkNickname from "../../../components/common/CheckHandler/CheckNickname";
+import LoginCheck from "../../../components/common/CheckHandler/LoginCheck";
 import { TokenAxiosGet, TokenAxiosPatch } from "../../../components/common/GetWithToken/TokenGet";
-import LoginCheck from "../../../components/common/LoginCheck";
-import TapBar from "../../../components/common/TopBar";
 import {
     BlackText,
     BlackTextContainer,
     ButtonContainer,
     ButtonContainerSmall,
     TextCheckContainer
-} from '../../../components/common/Utility';
+} from '../../../components/common/LoginDesigns/Utility';
+import TapBar from "../../../components/common/TopBar";
+import {
+    USERID
+} from "../../../GlobalVariable";
 
 
 const ModifyMyPage: React.FC = () => {
@@ -75,7 +75,6 @@ const ModifyMyPage: React.FC = () => {
         LoginCheck("로그인 부터 하쇼@@@", "false");
         GetData();
         console.log(nickname);
-
     }, [])
 
     const letsChange = async () => {

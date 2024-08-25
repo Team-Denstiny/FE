@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import search from "../../assets/Search.png";
+import search from "../../../assets/Search.png";
 
 interface TapBarProps {
     text: string; 

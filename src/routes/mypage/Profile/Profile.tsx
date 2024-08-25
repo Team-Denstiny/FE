@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { GET_MY_INFO } from "../../../address";
+import { GET_MY_INFO } from "../../../Address";
 import DefaultImg from "../../../assets/defaultProfile.png";
+import BigButton from "../../../components/common/Buttons/BigButton";
+import SmallButton from "../../../components/common/Buttons/SmallButton";
+import LoginCheck from "../../../components/common/CheckHandler/LoginCheck";
 import { TokenAxiosGet } from "../../../components/common/GetWithToken/TokenGet";
-import LoginCheck from "../../../components/common/LoginCheck";
-import Navbar from "../../../components/common/Navbar";
 import {
   BlackText,
   VerticalLine
-} from '../../../components/common/Utility';
+} from '../../../components/common/LoginDesigns/Utility';
+import Navbar from "../../../components/common/Navbar";
 import {
   ACCESS_TOKEN,
   USERID
 } from "../../../GlobalVariable";
-import SmallButton from "../MyPage/SmallButton";
-import TapBarMyProfile from "../TopBarMyProfile";
-import BigButton from "./BigButton";
+import TapBarMyProfile from "./TopBarMyProfile";
 
 const Profile: React.FC = () => {
     const userId = localStorage.getItem(USERID);
@@ -63,7 +63,7 @@ const Profile: React.FC = () => {
             <SmallButton name="내가 작성한 글" link="../myWrite"></SmallButton>
             <SmallButton name="좋아요" link="../myLike"></SmallButton>
             <SmallButton name="댓글" link="../myTalk"></SmallButton>
-            <Navbar text="abs" />
+            <Navbar text="profile" />
         </div>
     )
 }

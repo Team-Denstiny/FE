@@ -1,11 +1,13 @@
 import axios from "axios";
+import { LOGOUT } from "../../Address";
 import {
     ACCESS_TOKEN,
     LOGIN_CHECK,
     USERID
 } from "../../GlobalVariable";
 
-const logout_handler = async (link:string) => {
+const logout_handler = async () => {
+    const link = LOGOUT;
     console.log("logout url : " + link);
     try {
         const response = await axios.post(link, {}, { withCredentials: true });

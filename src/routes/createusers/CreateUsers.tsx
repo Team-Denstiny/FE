@@ -5,12 +5,8 @@ import {
     CREATE_EMAIL_CHECK,
     CREATE_NICKNAKME_CHECK,
     CREATE_REGISTER
-} from "../../address";
+} from "../../Address";
 import AddressSearch from "../../components/common/AddressSearch";
-import BlackText from "../../components/common/BlackText";
-import MainText from "../../components/common/BlueText";
-import { GrayText } from "../../components/common/GrayText";
-import TopBar from "../../components/common/TopBar";
 import {
     BlackTextContainer,
     ButtonContainer,
@@ -18,7 +14,11 @@ import {
     CheckboxContainer,
     TextCheckContainer,
     TextContainer
-} from '../../components/common/Utility';
+} from '../../components/common/LoginDesigns/Utility';
+import BlackText from "../../components/common/TextContainer/BlackText";
+import MainText from "../../components/common/TextContainer/BlueText";
+import { GrayText } from "../../components/common/TextContainer/GrayText";
+import TopBar from "../../components/common/TopBar";
 import '../../index.css';
 
 const CreateUsers: React.FC = () => {

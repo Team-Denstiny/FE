@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom';
 import {
     KAKAO_LOGIN,
     NAVER_LOGIN
-} from '../../address';
-import Button from './Button';
+} from '../../../Address';
+import Button from './LoginButton';
 
 const LoginPage: React.FC = () => {
     const location = useLocation();

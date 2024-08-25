@@ -1,24 +1,24 @@
 import axios from "axios";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LOGIN_POST } from "../../address";
-import MainText from "../../components/common/BlueText";
-import { GrayLink } from "../../components/common/GrayText";
-import LoginCheck from "../../components/common/LoginCheck";
-import TapBar from "../../components/common/TopBar";
+import { LOGIN_POST } from "../../Address";
+import LoginCheck from "../../components/common/CheckHandler/LoginCheck";
 import {
     ButtonContainer,
     FindContainer,
     MiddleTextContainer,
     TextContainer
-} from '../../components/common/Utility';
+} from '../../components/common/LoginDesigns/Utility';
+import MainText from "../../components/common/TextContainer/BlueText";
+import { GrayLink } from "../../components/common/TextContainer/GrayText";
+import TapBar from "../../components/common/TopBar";
 import {
     ACCESS_TOKEN,
     LOGIN_CHECK,
     USERID
 } from "../../GlobalVariable";
 import '../../index.css';
-import LoginPage from "./LoginPage";
+import LoginPage from "./oAuth/LoginPage";
 
 
 const SigninPage: React.FC = () => {

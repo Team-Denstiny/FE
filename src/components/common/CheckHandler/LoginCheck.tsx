@@ -1,4 +1,4 @@
-import { LOGIN_CHECK } from "../../GlobalVariable";
+import { LOGIN_CHECK } from "../../../GlobalVariable";
 
 const LoginCheck = (alertText="", defaultCheck="true") => {
         const login_check = localStorage.getItem(LOGIN_CHECK);

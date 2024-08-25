@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
-import { GET_MY_NEW_TOKEN, LOGOUT } from '../../../address';
+import { GET_MY_NEW_TOKEN, LOGOUT } from '../../../Address';
 import { ACCESS_TOKEN } from '../../../GlobalVariable';
 import logout_handler from '../Logout';
 

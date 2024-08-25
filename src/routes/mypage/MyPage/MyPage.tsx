@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from "react";
 import {
-    GET_MY_INFO,
-    LOGOUT
-} from "../../../address";
+    GET_MY_INFO
+} from "../../../Address";
 import DeafultImg from "../../../assets/defaultProfileMain.png";
-import ProfileImg from "../../../components/common/ProfileImg";
+import SmallButton from "../../../components/common/Buttons/SmallButton";
+import {
+    SmallButtonOnly,
+    SmallButtonOnlyBack
+} from "../../../components/common/Buttons/SmallButtonOnly";
+import ProfileImg from "../../../components/common/LoginDesigns/ProfileImg";
 import {
     BlackText,
     VerticalLine
-} from '../../../components/common/Utility';
+} from '../../../components/common/LoginDesigns/Utility';
 import {
     USERID
 } from "../../../GlobalVariable";
-import TapBarMyPage from "../TopBarMyPage";
 import { PutInfo } from "./MyInfo";
-import SmallButton from "./SmallButton";
-import {
-    SmallButtonOnly, SmallButtonOnlyBack
-} from "./SmallButtonOnly";
+import TapBarMyPage from "./TopBarMyPage";
 
 import { useNavigate } from "react-router-dom";
+import LoginCheck from "../../../components/common/CheckHandler/LoginCheck";
 import { TokenAxiosGet } from "../../../components/common/GetWithToken/TokenGet";
-import LoginCheck from "../../../components/common/LoginCheck";
+import logout_handler from "../../../components/common/Logout";
 
 
 const MyPage: React.FC = () => {
@@ -81,7 +82,7 @@ const MyPage: React.FC = () => {
 
             
             <div style={{marginBottom:'12px'}} />
-            <SmallButtonOnlyBack name="로그아웃" link={LOGOUT}/>
+            <SmallButtonOnlyBack name="로그아웃" handler={logout_handler}/>
             <SmallButtonOnly name="회원탈퇴" link="./delete" />      
         </div>
     )

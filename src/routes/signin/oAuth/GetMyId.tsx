@@ -3,13 +3,13 @@ import axios from 'axios';
 import { useState } from 'react';
 import {
   SERVER_ENDPOINT
-} from "../../address";
+} from "../../../Address";
 import {
   ACCESS_TOKEN,
   LOGIN_CHECK,
   USERID
-} from "../../GlobalVariable";
-import RedirectHome from '../../redirect/GoHome';
+} from "../../../GlobalVariable";
+import RedirectHome from '../../../redirect/GoHome';
 
 function GetMyId() {
   const [authToken, setAuthToken] = useState<string | null>(null);

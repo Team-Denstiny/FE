@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import './defaultImg.css'
-import DefaultImg from "../../assets/defaultProfile.png"
-import DefaultImgMain from "../../assets/defaultProfileMain.png"
+import React, { useEffect, useState } from 'react';
+import DefaultImg from "../../../assets/defaultProfile.png";
+import DefaultImgMain from "../../../assets/defaultProfileMain.png";
+import './defaultImg.css';
 
 interface ImageComponentProps {
     imageUrl?: string;

@@ -2,17 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import nextBar from '../../../assets/NextBar.png';
-import ProfileImg from "../../../components/common/ProfileImg";
+import ProfileImg from "../LoginDesigns/ProfileImg";
 
 interface TapBarProps {
     name: string | undefined; 
     email: string | undefined;
     imgUrl: string | undefined;
 }
-
-const ButtonContainer = `
-
-`
 
 const TextContainer = styled.div`
     position: absolute;

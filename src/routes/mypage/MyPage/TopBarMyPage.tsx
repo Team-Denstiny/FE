@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import back from "../../assets/Back.png";
+import back from "../../../assets/Back.png";
 
 interface TapBarProps {
     text: string; 
@@ -10,7 +10,7 @@ const TapBarMyPage: React.FC<TapBarProps> = ({ text }) => {
     const navigate = useNavigate(); 
 
     const handleBackClick = () => {
-        navigate(-1); // 이전 페이지로 이동
+        navigate("/profile"); // 이전 페이지로 이동
     };
 
     const handleModifyClick = () => {

@@ -7,8 +7,8 @@ import Layout2 from "../routes/Layout2";
 import ModifyMyPage from "../routes/mypage/Modifiy/ModfiyMyProfile";
 import MyPage from "../routes/mypage/MyPage/MyPage";
 import Profile from "../routes/mypage/Profile/Profile";
-import GetMyId from "../routes/signin/GetMyId";
-import ResendPage from "../routes/signin/Resend";
+import GetMyId from "../routes/signin/oAuth/GetMyId";
+import ResendPage from "../routes/signin/oAuth/oAuthMiddleHandler";
 import SigninPage from "../routes/signin/SigninPage";
 
 export const mainRouter = [

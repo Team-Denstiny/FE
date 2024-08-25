@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { CREATE_EMAIL_CHECK } from "../../../address";
+import { CREATE_EMAIL_CHECK } from "../../../Address";
 import { expiredChecker } from "../ExpiredChecker/ExpiredTokenProcessor";
 
 const checkEmailFunc = async (email: string) => {
