@@ -1,7 +1,9 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, useLocation } from "react-router-dom";
 import CreateAddress from "../routes/createusers/CreateAddress";
 import CreateUsers from "../routes/createusers/CreateUsers";
 import HomePage from "../routes/home/HomePage";
+import SearchDetail from "../routes/home/SearchDetailPage";
+import SearchPage from "../routes/home/SearchPage";
 import Layout from "../routes/Layout";
 import Layout2 from "../routes/Layout2";
 import ModifyMyPage from "../routes/mypage/Modifiy/ModfiyMyProfile";
@@ -10,6 +12,16 @@ import Profile from "../routes/mypage/Profile/Profile";
 import GetMyId from "../routes/signin/oAuth/GetMyId";
 import ResendPage from "../routes/signin/oAuth/oAuthMiddleHandler";
 import SigninPage from "../routes/signin/SigninPage";
+
+const SearchRoute = () => {
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    if (params.has('q')) {
+        return <SearchDetail/>;
+    } else {
+        return <SearchPage />;
+    }
+};
 
 export const mainRouter = [
 
@@ -79,6 +91,14 @@ export const mainRouter = [
         element: (
             <Layout>
                 <ModifyMyPage />
+            </Layout>
+        )
+    },
+    {
+        path:"/search",
+        element:(
+            <Layout>
+                <SearchRoute/>
             </Layout>
         )
     }
