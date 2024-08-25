@@ -1,13 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import nextBar from '../../assets/NextBar.png';
-import ProfileImg from "../../components/common/ProfileImg";
+import nextBar from '../../../assets/NextBar.png';
+import ProfileImg from "../../../components/common/ProfileImg";
 
 interface TapBarProps {
-    name: string; 
-    email: string;
-    imgUrl: string;
+    name: string | undefined; 
+    email: string | undefined;
+    imgUrl: string | undefined;
 }
 
 const ButtonContainer = `

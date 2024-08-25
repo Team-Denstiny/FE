@@ -13,6 +13,7 @@ import {
     TextContainer
 } from '../../components/common/Utility';
 import {
+    ACCESS_TOKEN,
     LOGIN_CHECK,
     USERID
 } from "../../GlobalVariable";
@@ -50,17 +51,18 @@ const SigninPage: React.FC = () => {
             'password': formValues.userPasswd,
         };
 
-        axios.post(LOGIN_POST, headers, { withCredentials: true })
+        axios.post(LOGIN_POST, headers, {withCredentials: true})
             .then(response => {
                 const resp_check = response.data["result"]
                 if (resp_check) {
-                    const resp = resp_check["resultCode"];
+                    const resp = resp_check["result_code"];
                     const my_id = response.data["body"]["id"];
+                    const my_access = response.headers["authorization"];
                     if (resp == 200) {
-                        console.log("성공~ : ", my_id);
+                        console.log("성공~ : " + my_id + ", 내 토큰 : " + my_access);
                         localStorage.setItem(LOGIN_CHECK, "true");
+                        localStorage.setItem(ACCESS_TOKEN, my_access);
                         localStorage.setItem(USERID, my_id);
-                        navigate("/");
                     }
                 } 
                 else {
@@ -72,6 +74,7 @@ const SigninPage: React.FC = () => {
             .catch(error => {
                 console.error("Error : ", error)
             });
+        navigate("/");
     };
 
     return (

@@ -5,22 +5,29 @@ import {
     USERID
 } from "../../GlobalVariable";
 
-const logout_handler = (link:string) => {
+const logout_handler = async (link:string) => {
     console.log("logout url : " + link);
+    try {
+        const response = await axios.post(link, {}, { withCredentials: true });
+        const status_code = response.status;
+        if (status_code == 200) {
+            console.log("log out 성공~");
+            localStorage.setItem(USERID, "");
+            localStorage.setItem(ACCESS_TOKEN, "");
+            localStorage.setItem(LOGIN_CHECK, "false");
+        }
+        else {
+            console.log("로그 아웃 실패 ㅠㅠ");
+        }
 
-    axios.post(link, {}, {withCredentials:true})
-        .then(response => {
-            const status_code = response.status;
-            if (status_code == 200) {
-                console.log("log out 성공~");
-                localStorage.setItem(USERID, "");
-                localStorage.setItem(ACCESS_TOKEN, "");
-                localStorage.setItem(LOGIN_CHECK, "false");
-            }
-            else {
-                console.log("로그 아웃 실패 ㅠㅠ");
-            }
-        }).catch(error => console.error(name + " button error : ", error));
+    } catch (error) {
+            console.error("button error : ", error);
+            localStorage.setItem(USERID, "");
+            localStorage.setItem(ACCESS_TOKEN, "");
+            localStorage.setItem(LOGIN_CHECK, "false");
+    }
+
+    window.location.href = "/signin";
 }
 
 export default logout_handler;

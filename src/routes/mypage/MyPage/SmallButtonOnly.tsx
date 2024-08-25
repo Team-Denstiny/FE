@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import logout_handler from "../../components/common/Logout";
+import logout_handler from "../../../components/common/Logout";
 
 interface TapBarProps {
     name: string; 
@@ -43,7 +43,6 @@ export const SmallButtonOnlyBack: React.FC<TapBarPropsBack> = ({name, link}) => 
 
     const onClickHandler = () => {
         logout_handler(link);
-        navigate("/");
     };
 
     return (

@@ -29,6 +29,7 @@ export const ButtonContainer = styled.div`
 
 export const BlackTextContainer = styled.div`
     padding-top:20px;
+    text-align: left;
 `
 
 export const ButtonContainer = styled.div` 

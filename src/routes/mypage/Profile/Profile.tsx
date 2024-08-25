@@ -1,48 +1,52 @@
-import axios from "axios";
-import React, { useEffect } from "react";
-import { GET_MY_INFO } from "../../address";
-import test from "../../assets/test.jpg";
-import LoginCheck from "../../components/common/LoginCheck";
-import Navbar from "../../components/common/Navbar";
+import React, { useEffect, useState } from "react";
+import { GET_MY_INFO } from "../../../address";
+import DefaultImg from "../../../assets/defaultProfile.png";
+import { TokenAxiosGet } from "../../../components/common/GetWithToken/TokenGet";
+import LoginCheck from "../../../components/common/LoginCheck";
+import Navbar from "../../../components/common/Navbar";
 import {
   BlackText,
   VerticalLine
-} from '../../components/common/Utility';
+} from '../../../components/common/Utility';
 import {
   ACCESS_TOKEN,
   USERID
-} from "../../GlobalVariable";
+} from "../../../GlobalVariable";
+import SmallButton from "../MyPage/SmallButton";
+import TapBarMyProfile from "../TopBarMyProfile";
 import BigButton from "./BigButton";
-import SmallButton from "./SmallButton";
-import TapBarMyProfile from "./TopBarMyProfile";
 
 const Profile: React.FC = () => {
     const userId = localStorage.getItem(USERID);
     const userToken = localStorage.getItem(ACCESS_TOKEN);
     const apiAddress = GET_MY_INFO + userId;
-    const userName = "홍길동";
-    const userProfileImg = test;
-    const email = "baejh724@gmail.com"
-    useEffect(() => {
-      LoginCheck("로그인 부터 하쇼", "false");
-    });
-    axios.get(apiAddress, {withCredentials: true })
-      .then(response => {
-        const status = response.data['result']['result_code']
-        if (status == 200) {
-          const token = response.headers['authorization']; // 응답 헤더에서 토큰을 추출
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching auth token:', error);
-      });
 
+    const [userName, setUserName] = useState<string | undefined>(undefined);
+    const [profileImg, setProfileImg] = useState<string | undefined>(undefined);
+    const [email, setEmail] = useState<string | undefined>(undefined);
+    const GetData = async () => {
+      const ret_objs = await TokenAxiosGet(apiAddress, "/profile");
+      setUserName(ret_objs["name"]);
+      if (ret_objs["profile_img"] == null)
+        setProfileImg(DefaultImg);
+      else
+        setProfileImg(ret_objs["profile_img"]);
+      setEmail(ret_objs["email"]);
+
+      console.log("name : " + userName);
+    }; 
+
+    useEffect(() => {
+      console.log("debug : my token : " + userToken);
+      LoginCheck("로그인 부터 하쇼", "false");
+      GetData();
+    });
+    
     return (
         <div>
             <TapBarMyProfile text="마이페이지"></TapBarMyProfile>
-            <BigButton imgUrl={userProfileImg} name={userName} email={email}></BigButton>
+            <BigButton imgUrl={profileImg} name={userName} email={email}></BigButton>
             <div style={{margin: '24px'}} />
-
             <BlackText fontSize="16px" style={{marginBottom: '-10px'}}> 병원 </BlackText>                
             <SmallButton name="방문 병원" link="../myVisitHospital"></SmallButton>
             <SmallButton name="상담 병원" link="../myConsult"></SmallButton>

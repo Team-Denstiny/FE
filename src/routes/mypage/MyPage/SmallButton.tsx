@@ -1,11 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; 
-import nextBarGray from '../../assets/NextBarGray.png'
-import {
-   denstinyBlue 
-} from "../../color"
-import search from "../../assets/Search.png";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import nextBarGray from '../../../assets/NextBarGray.png';
 
 interface TapBarProps {
     name: string; 
