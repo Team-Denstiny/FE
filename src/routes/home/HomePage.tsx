@@ -1,17 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { GET_MY_INFO } from "../../Address";
 import logo from "../../assets/main/logo.png";
 import navimg1 from "../../assets/main/navimg.png";
 import navimg2 from "../../assets/main/navimg2.png";
 import navimg3 from "../../assets/main/navimg3.png";
 import search from "../../assets/main/search.png";
 import top from "../../assets/main/topimage.png";
+import { TokenAxiosGet } from "../../components/common/GetWithToken/TokenGet";
 import Navbar from "../../components/common/Navbar";
 import MonthCalendar from "../../components/main/Calender";
+import { USERID } from "../../GlobalVariable";
 
 const HomePage: React.FC = () => {
-    const userName = '배별하';
     const navigate = useNavigate();
+    const [userName, setUserName] = useState<string | undefined>("배별하(기본값)");
+    const defaultName = "로그인 전";
+    const userId = localStorage.getItem(USERID);
+
+    const GetData = async () => {
+        if (!userId) {
+            setUserName(defaultName);
+            return;
+        }
+        const apiAddr = GET_MY_INFO + userId;
+        const ret_name_obj = await TokenAxiosGet(apiAddr, "/");
+        if (ret_name_obj["name"] == null)
+            setUserName(defaultName);
+        else
+            setUserName(ret_name_obj["name"]);
+    }
+
+    useEffect(() => {
+        GetData();
+    })
 
     return (
         <div>
@@ -25,7 +47,7 @@ const HomePage: React.FC = () => {
                 <img src={navimg2}></img>
                 <img src={navimg3}></img>
             </div>
-            <div className="font-noto font-bold text-base pl-5">
+            <div className="font-noto font-bold text-base text-black pl-5">
                 {userName}님의 예약 일정
             </div>
             <MonthCalendar/>

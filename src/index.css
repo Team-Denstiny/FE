@@ -232,6 +232,10 @@ button:focus-visible {
 .custom-small-checkbox:checked::after {
   background-image: url(assets/blueCheckNoCircle.png);
 }
+
+.saturday-tile {
+  color: blue;
+}
 /* -- < Baejh724 추가 csscs 내용들 /> --*/
 
 
