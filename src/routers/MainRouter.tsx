@@ -12,6 +12,7 @@ import Profile from "../routes/mypage/Profile/Profile";
 import GetMyId from "../routes/signin/oAuth/GetMyId";
 import ResendPage from "../routes/signin/oAuth/oAuthMiddleHandler";
 import SigninPage from "../routes/signin/SigninPage";
+import SearchPage2 from "../routes/home/SearchPage2";
 
 const SearchRoute = () => {
     const location = useLocation();
@@ -101,7 +102,16 @@ export const mainRouter = [
                 <SearchRoute/>
             </Layout>
         )
+    },
+    {
+        path:"/search2",
+        element:(
+            <Layout>
+                <SearchPage2/>
+            </Layout>
+        )
     }
+    
 ];
 
 const router = createBrowserRouter(mainRouter);
