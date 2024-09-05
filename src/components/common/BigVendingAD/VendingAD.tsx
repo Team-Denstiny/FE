@@ -1,36 +1,59 @@
 import React from 'react';
 import './VendingAD.css'; // Assuming you place the CSS in a separate file
+import gps from '../../../assets/gps.png'
 import shopimg from "../../../assets/shopimg1.png";
+import { VerticalLine } from '../LoginDesigns/Utility';
+import {
+    GRAY, LIGHT_GRAY
+}from "../../../Color";
 
-const ADButton: React.FC = () => {
+interface ButtonProps {
+    name?: string,
+    state?: string,
+    exitTime?: string,
+    dist ?: string,
+    tags : string[],
+    onClick?: () => void;
+}
+const ADButton: React.FC<ButtonProps> = ({name, state, exitTime, dist, tags, onClick}) => {
   return (
-    <button className="Vstyled-button0" disabled>
-        <button className="Vstyled-button1">
-            똑똑플란트 치과의원
-        </button>
-        <button className="Vstyled-button2">
-            진료 중
-        </button>
-        <button className="Vstyled-button3">
-            23:50 접수마감
-        </button>
-        <button className="Vstyled-button4">
-            500m ★8.9 (102)
-        </button>
-        <button className="Vstyled-button5">
-            임플란트
-        </button>
-        <button className="Vstyled-button6">
-            충치치료
-        </button>
-        <button className="Vstyled-button7">
-            치아교정
-        </button>
-        <button className="Vstyled-button8">
-            
-        </button>
-        
+    <div>
+
+    <button className="Vstyled-container" disabled style={{marginTop: '10px'}}>
+        <p className="ADButton-text" style={{fontSize: '20px'}}>{name} </p>
+        <br />
+
+        <div className="flex justify-start gap-2">
+            <p className="ADButton-text" style={{fontSize: '13px'}}>{state}</p>
+            <p className="ADButton-text" style={{fontSize: '13px', color:GRAY, fontWeight: 400}}>{exitTime}</p>
+        </div>
+
+        <div className='flex pt-1 pb-1 gap-1 items-center justify-start'>
+            <img src={gps} style={{width: '9px', height:"13px"}}/>
+            <p className="ADButton-text" style={{color:'black', fontSize: '13px'}}>{dist}</p>
+        </div>
+
+        <div className='w-[340px] gap-2 flex relative pr-2 flex-wrap'>
+          {tags.map((term, index) => (
+              <div key={index} className='flex pl-1 pr-1 pt-1 pb-1 h-[16px] items-center justify-center'
+                style={{backgroundColor: LIGHT_GRAY, borderRadius: '4px'}}>
+
+                  <div className='font-noto text-base text-textgray' 
+                        style={{fontSize:'11px', color: GRAY}}>{term}</div>
+              </div>
+          ))}
+        </div>
+
+        <img src={shopimg} style={{
+            position: 'absolute',
+            width:'88px', 
+            height:'88px',
+            top:'1px',
+            right: '1px'}} />
+
     </button>
+    <VerticalLine backgroundColor='#D3D3D3' style={{marginTop: '12px', marginBottom: '12px'}}/>
+    </div>
   );
 };
 

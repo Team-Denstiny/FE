@@ -5,7 +5,10 @@ import search from "../../assets/search/search.png";
 import back from "../../assets/Back.png"
 import de from "../../assets/search/delete.png"
 import TapBar from "../../components/common/TopBar";
-import RoundRectangle from "../../components/common/SmallBlueButton/RoundRectangle";
+
+import "../../components/common/SmallBlueButton/RoundRectangle.css"
+import RoundRectangle from '../../components/common/SmallBlueButton/RoundRectangle';
+
 import ADButton from "../../components/common/BigVendingAD/VendingAD";
 
 interface SearchBarProps {
@@ -32,13 +35,30 @@ const SearchPage2: FC<SearchBarProps> = () => {
                 </div>
 
             </div>
-            <RoundRectangle text=""> 
+            <div className='top-button-container'>
+                <RoundRectangle text='현위치: 서울 강남구' width='120px' />
+                <RoundRectangle text='거리 순 ▼' width='64px' />
+            </div>
 
-            </RoundRectangle>
-              <ADButton>
+            <ADButton 
+                    name="통통플란트의원" 
+                    state="진료중" 
+                    tags={["임플란트", "충치치료", "치아교정"]} 
+                    exitTime='23:50 접수마감' 
+                    dist='500m'/>
 
-              </ADButton>
-
+            <ADButton 
+                    name="통통플란트의원" 
+                    state="진료중" 
+                    tags={["임플란트", "충치치료", "치아교정"]} 
+                    exitTime='23:50 접수마감' 
+                    dist='500m'/>
+            <ADButton 
+                    name="통통플란트의원" 
+                    state="진료중" 
+                    tags={["임플란트", "충치치료", "치아교정"]} 
+                    exitTime='23:50 접수마감' 
+                    dist='500m'/>
 
             
             

@@ -1,36 +1,34 @@
-.Vstyled-button0 {
-  /* 병원1 */
-
-position: absolute;
-width: 350px;
-height: 120px;
-left: calc(50% - 360px/2);/*20px;*/
-top: 120px;
- 
+.Vstyled-container {
+    /* 병원1 */
+    position: relative; /*가장 바깥 컨테이너는 항상 relative라고 생각할 것*/
+    width: 350px;
+    height: 120px;
+    left: 10px;
+    display: flex;
+    flex-direction: column; /* 상하로 배치 */
+    align-items: flex-start; /* 왼쪽 정렬 */
+    justify-content: flex-start; /* 상단 정렬 */
+    /*20px;*/
 }
-.Vstyled-button1 {
-/* 똑똑플란트치과의원 */
+.ADButton-text {
+    /* 똑똑플란트치과의원 */
+    position: relative; /*내부 컨테이너는 절대위치로 조정해도됨 */
 
-position: absolute;
-width: 166px;
-left: calc(50% - 166px/2 - 92px);
-top: -2.5%;
-bottom: 78.33%;
-
-font-family: 'Noto Sans KR';
-font-style: normal;
-font-weight: 700;
-font-size: 18px;
-line-height: 29px;
-/* identical to box height */
-
-color: #000000;
+    line-height: 1;
+    text-align: left;
+    font-family: 'Noto Sans KR';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 18px;
+    padding-bottom: 2px;
+    /* identical to box height */
+    color: #000000;
 }
 
 .Vstyled-button2 {
 /* 진료 중 */
 
-position: absolute;
+position: relative;
 width: 137px;
 left: calc(50% - 220px);
 top: 36.67%;
@@ -95,13 +93,13 @@ background-color: #cccccc;
 }
 .Vstyled-button6 {
     /* 충치치료 */
-    
+
     position: absolute;
     width: 41px;
     height: 16px;
     left: calc(50% - 123px);
     top: calc(50% + 35px);
-    
+
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
@@ -109,43 +107,45 @@ background-color: #cccccc;
     line-height: 16px;
     /* identical to box height */
     text-align: center;
-    
+
+    color: #000000;
+    background-color: #aeaeae;
+}
+.Vstyled-button7 {
+    /* 치아교정 */
+
+    position: absolute;
+    width: 41px;
+    height: 16px;
+    left: calc(50% - 75px);
+    top: calc(50% + 35px);
+
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 16px;
+    /* identical to box height */
+    text-align: center;
+
     color: #000000;
     background-color: #cccccc;
-    }
-    .Vstyled-button7 {
-        /* 치아교정 */
-        
-        position: absolute;
-        width: 41px;
-        height: 16px;
-        left: calc(50% - 75px);
-        top: calc(50% + 35px);
-        
-        font-family: 'Noto Sans KR';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 10px;
-        line-height: 16px;
-        /* identical to box height */
-        text-align: center;
-        
-        color: #000000;
-        background-color: #cccccc;
-        }
-        .Vstyled-button8{
-            /* image 2 */
+}
+.Vstyled-button8 {
+    /* image 2 */
 
-        position: absolute;
-        width: 88px;
-        height: 88px;
-        left: 262px;
-        top: 0px;
-        
-        
-        background-image: url("../../../assets/shopimg1.png"); /* Use url() to reference the image */
-        background-size: cover; /* Ensures the image covers the entire button area */
-        background-position: center; 
-        border-radius: 10px;
+    position: absolute;
+    width: 88px;
+    height: 88px;
+    left: 262px;
+    top: 0px;
 
-        }
+
+    background-image: url("../../../assets/shopimg1.png");
+    /* Use url() to reference the image */
+    background-size: cover;
+    /* Ensures the image covers the entire button area */
+    background-position: center;
+    border-radius: 10px;
+
+}

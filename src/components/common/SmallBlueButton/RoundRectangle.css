@@ -1,42 +1,22 @@
-.styled-button0 {
+.top-button-container {
     /* 필터 */
-
-position: absolute;
-width: 390px;
-height: 56px;
-left: calc(50% - 390px/2);
-top: 40px;/*144px;*/
-
-
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    width: 390px;
+    height: 56px;
 }
-.styled-button1 {
-/* 위치 */
+.styled-button {
+    /* 위치 */
+    box-sizing: border-box;
 
-box-sizing: border-box;
-
-position: absolute;
-left: 5.13%;
-right: 64.1%;
-top: 32.14%;
-bottom: 17.86%;
-
-border: 1px solid #0047AD;
-border-radius: 20px;
-font-size: 10px;
-}
-.styled-button2 {
-/* 위치 */
-
-box-sizing: border-box;
-
-position: absolute;
-left: 78.46%;
-right: 5.13%;
-top: 32.14%;
-bottom: 17.86%;
-
-border: 1px solid #0047AD;
-border-radius: 30px;
-font-size: 10px;
-
+    height: 28px;
+    color: #0047AD;
+    border: 1px solid #0047AD;
+    font-weight: bold;
+    border-radius: 20px;
+    font-size: 10px;
 }
