@@ -17,6 +17,7 @@ import ExpertSearch from "../routes/Search/Expert/ExpertSearch";
 import LayoutGray from "../routes/LayoutOnlyGray";
 import OpenHospital from "../routes/Search/OpenHospital/OpenHospital";
 import HospiInfo from "../routes/home/HospiInfo";
+import ReviewPage from "../routes/Search/OpenHospital/ReviewPage";
 
 const SearchRoute = () => {
     const location = useLocation();
@@ -136,6 +137,14 @@ export const mainRouter = [
         element: (
             <Layout>
                 <HospiInfo />
+            </Layout>
+        )
+    },
+    {
+        path: "/search/hospital/review",
+        element: (
+            <Layout>
+                <ReviewPage />
             </Layout>
         )
     }
