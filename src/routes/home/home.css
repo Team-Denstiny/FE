@@ -1,0 +1,14 @@
+.blue-tag-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 32px;
+    font-size: 13px;
+    color: black;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    background: rgba(0, 71, 173, 0.1);
+    border-radius: 10px;
+}

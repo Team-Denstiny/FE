@@ -13,6 +13,10 @@ import GetMyId from "../routes/signin/oAuth/GetMyId";
 import ResendPage from "../routes/signin/oAuth/oAuthMiddleHandler";
 import SigninPage from "../routes/signin/SigninPage";
 import SearchPage2 from "../routes/home/SearchPage2";
+import ExpertSearch from "../routes/Search/Expert/ExpertSearch";
+import LayoutGray from "../routes/LayoutOnlyGray";
+import OpenHospital from "../routes/Search/OpenHospital/OpenHospital";
+import HospiInfo from "../routes/home/HospiInfo";
 
 const SearchRoute = () => {
     const location = useLocation();
@@ -108,6 +112,30 @@ export const mainRouter = [
         element:(
             <Layout>
                 <SearchPage2 />
+            </Layout>
+        )
+    },
+    {
+        path: "/search/expert",
+        element: (
+            <LayoutGray>
+                <ExpertSearch />
+            </LayoutGray>
+        )
+    },
+    {
+        path: "/search/open",
+        element: (
+            <LayoutGray>
+                <OpenHospital />
+            </LayoutGray>
+        )
+    },
+    {
+        path: "/search/hospital/:id",
+        element: (
+            <Layout>
+                <HospiInfo />
             </Layout>
         )
     }

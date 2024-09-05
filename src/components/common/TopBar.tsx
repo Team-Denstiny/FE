@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import back from "../../assets/Back.png";
 
 interface TapBarProps {
-    text: string; 
+    text: string,
 }
 
-const TapBar: React.FC<TapBarProps> = ({ text }) => {
+const TapBar: React.FC<TapBarProps> = ({ text}) => {
     const navigate = useNavigate(); 
 
     const handleBackClick = () => {

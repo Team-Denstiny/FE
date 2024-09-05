@@ -202,6 +202,7 @@ button:focus-visible {
   transform: rotate(45deg);
 }
 */
+
 .custom-checkbox:checked {
   background-image: url("assets/blueCheck.png");
 }
@@ -236,14 +237,120 @@ button:focus-visible {
 .saturday-tile {
   color: blue;
 }
+
+
+/** **/
+.search-button-container {
+  position: relative;
+  display: flex; 
+
+  gap: 20px;
+  margin-left: 20px;
+
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  align-items: center;
+  justify-content: space-between;
+  width: 350px;
+  background-color: white;
+}
+
+
+
+.blueBorderButton {
+  display: inline-block;
+  background-color:#0047AD;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+
+  line-height: 0px;
+
+  font-weight: 500;
+}
+
+.break {
+  width: 150%;
+}
+
+.toggle-button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  padding: 10px 10px;
+  font-size: 16px;
+  font-family: 'Noto Sans KR', sans-serif;
+
+  color: #000;
+  font-weight: 700;
+  width: 320px;
+
+  cursor: pointer;
+  border: 2px solid white;
+  background-color: white;
+  text-align: left;
+}
+
+.toggle-button.checked {
+  color: #0047AD;
+  width: 320px;
+}
+
+.left-flex-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.blue-border-box {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 15px;
+  width: 350px;
+  height: 72px;
+
+  font-family: 'Noto Sans KR', sans-serif;
+  border: 1px solid #0047AD;
+  border-radius: 10px;
+
+}
+
+.blue-text-button {
+  position: absolute;
+  color: #0047AD;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  border: none;
+}
+
+.default-text {
+  margin-left: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+}
 /* -- < Baejh724 추가 csscs 내용들 /> --*/
 
-
+.relative {
+  position: relative;
+}
 .login-container {
   display: flex;
   justify-content: center;
   gap: 0 50px;
 }
+
+
 
 @media (prefers-color-scheme: light) {
   :root {
