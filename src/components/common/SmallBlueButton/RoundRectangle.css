@@ -1,36 +1,42 @@
-.styled-button {
+.styled-button0 {
+    /* 필터 */
+
+position: absolute;
+width: 390px;
+height: 56px;
+left: calc(50% - 390px/2);
+top: 40px;/*144px;*/
+
+
+}
+.styled-button1 {
 /* 위치 */
 
 box-sizing: border-box;
 
 position: absolute;
-left: 10px;
+left: 5.13%;
 right: 64.1%;
-top: 10px;
+top: 32.14%;
+bottom: 17.86%;
+
+border: 1px solid #0047AD;
+border-radius: 20px;
+font-size: 10px;
+}
+.styled-button2 {
+/* 위치 */
+
+box-sizing: border-box;
+
+position: absolute;
+left: 78.46%;
+right: 5.13%;
+top: 32.14%;
 bottom: 17.86%;
 
 border: 1px solid #0047AD;
 border-radius: 30px;
+font-size: 10px;
 
-
-/* 현위치 : 서울 강남구 */
-
-position: absolute;
-width: 92px;
-height: 16px;
-left: calc(50% - 92px/2);
-top: calc(50% - 16px/2 - 1px);
-
-font-family: 'Noto Sans KR';
-font-style: normal;
-font-weight: 500;
-font-size: 11px;
-line-height: 16px;
-/* identical to box height */
-
-color: #0047AD;
-
-
-
-
-  }
+}

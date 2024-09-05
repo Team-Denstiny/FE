@@ -107,7 +107,7 @@ export const mainRouter = [
         path:"/search2",
         element:(
             <Layout>
-                <SearchPage2/>
+                <SearchPage2 />
             </Layout>
         )
     }

@@ -6,7 +6,7 @@ import back from "../../assets/Back.png"
 import de from "../../assets/search/delete.png"
 import TapBar from "../../components/common/TopBar";
 import RoundRectangle from "../../components/common/SmallBlueButton/RoundRectangle";
-
+import ADButton from "../../components/common/BigVendingAD/VendingAD";
 
 interface SearchBarProps {
     placeholder?: string;
@@ -35,6 +35,9 @@ const SearchPage2: FC<SearchBarProps> = () => {
             <RoundRectangle text=""> 
 
             </RoundRectangle>
+              <ADButton>
+
+              </ADButton>
 
 
             

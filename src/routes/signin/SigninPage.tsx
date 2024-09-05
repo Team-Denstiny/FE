@@ -84,7 +84,7 @@ const SigninPage: React.FC = () => {
             <TextContainer> 
 
             <MainText fontWeight={400}>
-                언제, 어디서든 Hi Hi
+                언제, 어디서든
                 <br />
                 치과 정보와 시간이 필요할 땐
             </MainText>

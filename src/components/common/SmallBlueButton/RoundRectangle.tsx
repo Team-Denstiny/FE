@@ -6,11 +6,16 @@ interface ButtonProps {
     onClick?: () => void;
   }
   
-  const RoundRectangle: React.FC<ButtonProps> = ({ text, onClick }) => {
+  const RoundRectangle: React.FC<ButtonProps> = () => {
     return (
-      <button className="styled-button" onClick={onClick}>
-        현위치: {text}
-      </button>
+        <button className="styled-button0" disabled>
+            <button className="styled-button1">
+                현위치: 서울 강남구
+            </button>
+            <button className="styled-button2">
+                거리순 ▽
+            </button>
+        </button>
     );
   };
 
