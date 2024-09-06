@@ -6,6 +6,8 @@ import { VerticalLine } from '../LoginDesigns/Utility';
 import {
     GRAY, LIGHT_GRAY
 }from "../../../Color";
+import { useNavigate } from 'react-router-dom';
+import HospiInfo from '../../../routes/home/HospiInfo';
 
 interface ButtonProps {
     name?: string,
@@ -13,13 +15,21 @@ interface ButtonProps {
     exitTime?: string,
     dist ?: string,
     tags : string[],
-    onClick?: () => void;
+    id ?: string
 }
-const ADButton: React.FC<ButtonProps> = ({name, state, exitTime, dist, tags, onClick}) => {
+const ADButton: React.FC<ButtonProps> = ({name, state, exitTime, dist, tags, id}) => {
+  const navigate = useNavigate();
+  
+  const hospiInfo = (event: React.MouseEvent<HTMLButtonElement>) => {
+    console.log("button clicked");
+    console.log("Button Clicked : " + id + event)
+    navigate("/search/hospital/" + id);
+  };
+
   return (
     <div>
 
-    <button className="Vstyled-container" disabled style={{marginTop: '10px'}}>
+    <button className="Vstyled-container" style={{marginTop: '10px'}} onClick={hospiInfo}>
         <p className="ADButton-text" style={{fontSize: '20px'}}>{name} </p>
         <br />
 

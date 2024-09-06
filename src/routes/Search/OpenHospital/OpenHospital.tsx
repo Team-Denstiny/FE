@@ -37,15 +37,13 @@ const OpenHospital: FC<SearchBarProps> = () => {
 
             <br />
             <BlackText fontSize="14px"> 위치를 선택하세요 </BlackText> 
-            <div className='search-button-container' style={{paddingBottom: '0px'}}>
+            <div className='search-button-container' >
 
                 <button onClick={toggleColors} className={`toggle-button ${isToggledUp ? 'checked' : ''}`}>
                         현위치
                         <br />
                         <GrayText>{userPos}</GrayText>
                 </button>
-            </div>
-            <div className='search-button-container' style={{paddingBottom: '20px', justifyContent:'center'}}>
                 <button onClick={toggleColors} className={`toggle-button ${!isToggledUp ? 'checked' : ''}`}>
                         집
                         <GrayText> {userHouse}</GrayText>

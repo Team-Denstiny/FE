@@ -5,10 +5,11 @@ import search from "../../assets/search/search.png";
 import back from "../../assets/Back.png"
 import de from "../../assets/search/delete.png"
 import TapBar from '../../../components/common/TopBar';
-import { BlackText, ButtonContainer, GrayText } from '../../../components/common/LoginDesigns/Utility';
+import { BlackText, ButtonContainer, GrayText, VerticalLine } from '../../../components/common/LoginDesigns/Utility';
 import BigButton from '../../../components/common/Buttons/BigButton';
 import SmallButton from '../../../components/common/Buttons/SmallButton';
 import OvalButton from '../../../components/common/Buttons/Button';
+import { BLUE } from '../../../Color';
 
 
 
@@ -36,39 +37,30 @@ const ExpertSearch: FC<SearchBarProps> = () => {
             <br />
             <BlackText fontSize="14px"> 원하는 치과 진료를 선택하세요 </BlackText> 
 
-            <div className='search-button-container' style={{paddingTop: '20px'}}>
-                <button className="blueButtonSmall blueDefault" style={{width:'138px'}}> 치과 전체 </button>
-                <button className="blueButtonSmall blueDefault" style={{width:'138px'}}> 임플란트 </button>
-            </div>
             <div className='search-button-container'>
-                <button className="blueButtonSmall blueDefault" style={{width:'138px'}}> 충치치료 </button>
-                <button className="blueButtonSmall blueDefault" style={{width:'138px'}}> 치아교정 </button>
-            </div>
-            <div className='search-button-container'>
-                <button className="blueButtonSmall blueDefault" style={{width:'138px'}}> 사랑니 발치 </button>
-                <button className="blueButtonSmall blueDefault" style={{width:'138px'}}> 치과 스케일링 </button>
-            </div>
-            <div className='search-button-container'>
-                <button className="blueButtonSmall blueDefault" style={{width:'138px'}}> 잇몸치료 </button>
-                <button className="blueButtonSmall blueDefault" style={{width:'138px'}}> 치아미백 </button>
-            </div>
-            <div className='search-button-container' style={{paddingBottom: '20px'}}>
-                <button className="blueButtonSmall blueDefault" style={{width:'138px'}}> 라미네이트 </button>
-                <button className="blueButtonSmall blueDefault" style={{width:'138px'}}> 기타 </button>
+                <button className="blueButtonSmall blackDefault" style={{width:'138px'}}> 치과 전체 </button>
+                <button className="blueButtonSmall blackDefault" style={{width:'138px'}}> 임플란트 </button>
+                <button className="blueButtonSmall blackDefault" style={{width:'138px'}}> 충치치료 </button>
+                <button className="blueButtonSmall blackDefault" style={{width:'138px'}}> 치아교정 </button>
+                <button className="blueButtonSmall blackDefault" style={{width:'138px'}}> 사랑니 발치 </button>
+                <button className="blueButtonSmall blackDefault" style={{width:'138px'}}> 치과 스케일링 </button>
+                <button className="blueButtonSmall blackDefault" style={{width:'138px'}}> 잇몸치료 </button>
+                <button className="blueButtonSmall blackDefault" style={{width:'138px'}}> 치아미백 </button>
+                <button className="blueButtonSmall blackDefault" style={{width:'138px'}}> 라미네이트 </button>
+                <button className="blueButtonSmall blackDefault" style={{width:'138px'}}> 기타 </button>
             </div>
 
             <br />
             <BlackText fontSize="14px"> 위치를 선택하세요 </BlackText> 
-            <div className='search-button-container' style={{paddingBottom: '0px'}}>
+            <div className='search-button-container' style={{gap:'5px'}}>
 
                 <button onClick={toggleColors} className={`toggle-button ${isToggledUp ? 'checked' : ''}`}>
                         현위치
                         <br />
                         <GrayText>{userPos}</GrayText>
                 </button>
-            </div>
-            <div className='search-button-container' style={{paddingBottom: '20px', justifyContent:'center'}}>
-                <button onClick={toggleColors} className={`toggle-button ${!isToggledUp ? 'checked' : ''}`}>
+                <button onClick={toggleColors} 
+                        className={`toggle-button ${!isToggledUp ? 'checked' : ''}`} >
                         집
                         <GrayText> {userHouse}</GrayText>
                 </button>

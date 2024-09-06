@@ -13,7 +13,7 @@ interface SettingbarProps{
 const SettingBar: React.FC<SettingbarProps> = ({location, sorting}) =>{
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const [changeSort, setChangeSort] = useState<string>(sorting)
-    const options = ["관련순", "거리순", "평점순", "리뷰순"]
+    const options = ["관련순", "거리순", "리뷰순"]
 
     const openModal = () =>{
         setIsOpen(true)
