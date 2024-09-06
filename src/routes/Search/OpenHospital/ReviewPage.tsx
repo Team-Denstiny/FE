@@ -14,7 +14,7 @@ const ReviewPage: FC<ReviewTexting> = () => {
                 <RoundRectangle text='최신 순 ▼' width='64px' />
             </div>
             <div>
-                <ReviewButton text=' ' />
+                <ReviewButton textday='2024.07.06' text='아주 좋고 편리합니다' tags={["충치치료", "치아교정"]}/>
             </div>
         </div>
     );

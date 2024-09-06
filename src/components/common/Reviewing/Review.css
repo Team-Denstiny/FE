@@ -1,0 +1,17 @@
+.Day-text {
+       position: relative; 
+    left: '40px';
+    bottom: '0';
+    
+    /* identical to box height */
+    color: #7a7a7a;
+}
+
+.-text {
+        position: relative; 
+    left: '0px';
+    bottom: '0';
+    
+    /* identical to box height */
+    color: #717171;
+}
