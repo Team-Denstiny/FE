@@ -22,7 +22,7 @@ const SortingModal: React.FC<SortingModalProps> = ({ options, select, isOpen, so
                 <div className="pl-6 pt-5 ">
                     <Modal.Header closeButton>
                         <Modal.Title>
-                            <div className='font-noto font-semibold text-[13px]'>정렬 기준을 선택하세요</div>
+                            <div className='font-noto font-semibold text-[13px] text-black'>정렬 기준을 선택하세요</div>
                         </Modal.Title>
                     </Modal.Header>
 
@@ -31,7 +31,7 @@ const SortingModal: React.FC<SortingModalProps> = ({ options, select, isOpen, so
                             {options.map((option, index) => (
                                 <div 
                                  key={index} 
-                                 className={`font-noto font-regular text-[13px] cursor-pointer p-2 flex items-center gap-[202px] ${option === sort ? 'text-blue font-semibold' : ''} `} 
+                                 className={`font-noto font-regular text-[13px] text-black cursor-pointer p-2 flex items-center gap-[202px] ${option === sort ? 'text-blue font-semibold' : ''} `} 
                                  onClick={() => select(option)} 
                                 >
                                  {option}
