@@ -1,6 +1,5 @@
 import React from 'react';
 import './Review.css'; 
-import UserIcon from "../../../assets/UserImg.png";
 import ReviewRating from './ReviewRating';
 import {
     GRAY, LIGHT_GRAY
@@ -8,13 +7,14 @@ import {
 
 interface ReviewText{
     textday: string,
-    text?: string,
+    text: string,
     tags:string[];
+    UserIcon: string;
 }
 
-const ReviewButton: React.FC<ReviewText> = ({textday, text, tags}) => {
+const ReviewButton: React.FC<ReviewText> = ({textday, text, tags, UserIcon}) => {
     return (
-        <div>
+        <div className="container">
             <div style={{ display: 'flex'}}>
             <img src={UserIcon} style={{
             position: 'relative',
