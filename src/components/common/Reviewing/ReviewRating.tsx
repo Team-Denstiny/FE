@@ -44,7 +44,7 @@ const ReviewRating: React.FC<StarRatingProps> = ({ totalStars = 5 }) => {
       })}
       <div style = {{display: 'flex', fontSize:'15px'}}>
         <br></br>
-      <p style={{ marginTop: '1em' }}>{rating}.0 </p>
+      <p style={{ fontWeight: 'bold', marginTop: '1em' }}>{rating}.0 </p>
       </div>
     </div>
   );

@@ -25,7 +25,8 @@ const ReviewCommentPage: FC<ReviewTexting> = () => {
             <div>
                 <ReviewComment textday='2024.07.06' 
                             text='후기 남깁니다' 
-                            UserIcon = {UserIcon1} />
+                            UserIcon = {UserIcon1} 
+                            name='이재혁' />
             </div>
             <br></br>
             <img src={BarImg} style={{
@@ -40,7 +41,8 @@ const ReviewCommentPage: FC<ReviewTexting> = () => {
             <div>
                 <ReviewComment textday='2024.07.06' 
                             text='후기 남깁니다' 
-                            UserIcon = {UserIcon1} />
+                            UserIcon = {UserIcon1} 
+                            name='이재혁' />
             </div>
             <br></br>
             <img src={BarImg} style={{
@@ -55,7 +57,8 @@ const ReviewCommentPage: FC<ReviewTexting> = () => {
             <div>
                 <ReviewComment textday='2024.07.06' 
                             text='후기 남깁니다' 
-                            UserIcon = {UserIcon1} />
+                            UserIcon = {UserIcon1} 
+                            name='이재혁' />
             </div>
         </div>
     );
