@@ -29,6 +29,7 @@ const ReviewRating: React.FC<StarRatingProps> = ({ totalStars = 5 }) => {
           <span
             key={index}
             style={{
+              marginRight: '10px',
               cursor: 'pointer',
               fontSize: '1.5rem',
               color: starValue <= (hoverRating || rating) ? '#FFD700' : '#C0C0C0'
@@ -41,6 +42,10 @@ const ReviewRating: React.FC<StarRatingProps> = ({ totalStars = 5 }) => {
           </span>
         );
       })}
+      <div style = {{display: 'flex', fontSize:'15px'}}>
+        <br></br>
+      <p style={{ marginTop: '1em' }}>{rating}.0 </p>
+      </div>
     </div>
   );
 };
