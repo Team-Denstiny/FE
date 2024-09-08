@@ -17,7 +17,8 @@ const ReviewCommentPage: FC<ReviewTexting> = () => {
             <ReviewButton textday='2024.07.06' 
                             text='아주 좋고 편리합니다' 
                             tags={["충치치료", "치아교정"]}
-                            UserIcon = {UserIcon1} />
+                            UserIcon = {UserIcon1} 
+                            name='이재혁' />
             </div>
             <br></br>
             <br></br>

@@ -10,9 +10,10 @@ interface ReviewText{
     text: string,
     tags:string[];
     UserIcon: string;
+    name: string;
 }
 
-const ReviewButton: React.FC<ReviewText> = ({textday, text, tags, UserIcon}) => {
+const ReviewButton: React.FC<ReviewText> = ({textday, text, tags, UserIcon,name}) => {
     return (
         <div className="container">
             <div style={{ display: 'flex'}}>
@@ -23,7 +24,13 @@ const ReviewButton: React.FC<ReviewText> = ({textday, text, tags, UserIcon}) => 
             top:'1px',
             left: '1px',
             marginRight: '10px'}} />
-            <p className="Day-text" style={{fontSize: '15px'}}><br /><br />{textday} </p>
+            <div>
+                <p style={{fontSize: '14px', fontWeight: 'bold' }}><br></br>{name}</p>
+                <p className="Day-text" style={{fontSize: '15px'}}>{textday} </p>
+            </div>
+                <button className="button" style={{display: 'flex', marginLeft: 'auto'}}>
+                
+                </button>
             </div>
             <div style={{ textAlign: 'center', marginTop: '10px' }}>
                 <ReviewRating totalStars={5} />

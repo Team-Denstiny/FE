@@ -1,0 +1,25 @@
+.container {
+    /* 필터 */
+    position: relative;
+    padding-left: '20px';
+    width: 390px;
+    height: auto;
+
+}
+
+.container2 {
+    /* 필터 */
+    position: relative;
+    width: 250px;
+    height: auto;
+}
+.button {
+    position: 'relative';
+    width: 20px;
+    height: 20px;
+    top: 1px;
+    right: 1px;
+    background-image: url('../../../assets/OptionImg.png');
+    background-Size: cover; /* 이미지 크기를 버튼에 맞게 조정 */
+    background-Position: center;
+}
