@@ -36,7 +36,7 @@ const ReviewButton: React.FC<ReviewText> = ({textday, text, tags, UserIcon,name}
                 <ReviewRating totalStars={5} />
             </div>
             <div>
-            <p className="-text" style={{fontSize: '20px'}}>{text} </p>
+            <p className="-text" style={{fontSize: '19px'}}>{text} </p>
             </div>
             <div className='w-[340px] gap-2 flex relative pr-2 flex-wrap'>
           {tags.map((term, index) => (
