@@ -18,3 +18,8 @@ export const CREATE_REGISTER = SERVER_DOMAIN + "/api/users/register";
 export const NAVER_LOGIN = SERVER_DOMAIN + "/oauth2/authorization/naver";
 export const KAKAO_LOGIN = SERVER_DOMAIN + "/oauth2/authorization/kakao";
 
+
+/////// find /////////////
+export const FIND_DOMAIN = SERVER_DOMAIN + "/api/find";
+export const FIND_OPEN = FIND_DOMAIN + "/open-dentist";
+

@@ -66,7 +66,7 @@ const CreateUsers: React.FC = () => {
 
             <ButtonContainer>
                 <br /> <br />
-                <button className="blueButton blueDefault" onClick={submitHandler}> 회원가입 완료하기</button>
+                <button className="blueButton whiteDefault" onClick={submitHandler}> 회원가입 완료하기</button>
                 <br /> <br />
             </ButtonContainer>
         </div>

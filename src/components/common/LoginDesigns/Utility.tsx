@@ -35,8 +35,10 @@ export const BlackTextContainer = styled.div`
 export const ButtonContainer = styled.div` 
     display: flex;
     padding-top: 10px;
+
     flex-direction: column; /* 요소들을 세로로 나열 */
     align-items: center; /* 수평 중앙 정렬 */
+    color: white;
     justify-content: center; /* 수직 중앙 정렬 *
 `
 export const CheckboxContainer = styled.div`

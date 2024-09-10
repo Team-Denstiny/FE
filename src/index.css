@@ -141,6 +141,20 @@ button:focus-visible {
   outline: none;
 }
 
+.whiteDefault {
+  width: 350px;
+  height: 40px;
+  color: white;
+  padding: 20px 20px;
+
+  font-family: 'Noto Sans KR', sans-serif;
+  font-style: normal;
+  font-size: 16px;
+
+  border-radius: 50px;
+  box-sizing: border-box; /* 패딩과 테두리 포함한 크기 계산 */
+  outline: none; /* 포커스 시 테두리 제거 */
+}
 .blueDefault {
   width: 350px;
   height: 40px;

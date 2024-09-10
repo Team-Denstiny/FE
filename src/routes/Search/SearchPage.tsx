@@ -32,7 +32,7 @@ const SearchPage: FC<SearchBarProps> = () => {
     const handleClearTerms = () => {
         clearSearchTerms();
     };
-    
+
 
     return (
         

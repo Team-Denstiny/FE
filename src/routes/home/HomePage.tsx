@@ -10,7 +10,7 @@ import top from "../../assets/main/topimage.png";
 import { TokenAxiosGet } from "../../components/common/GetWithToken/TokenGet";
 import Navbar from "../../components/common/Navbar";
 import MonthCalendar from "../../components/main/Calender";
-import { USERID } from "../../GlobalVariable";
+import { USERID, ADDR, NAME } from "../../GlobalVariable";
 
 const HomePage: React.FC = () => {
     const navigate = useNavigate();
@@ -19,16 +19,26 @@ const HomePage: React.FC = () => {
     const userId = localStorage.getItem(USERID);
 
     const GetData = async () => {
+        const savedName = localStorage.getItem(NAME);
+        if (savedName != null && savedName != "") {
+            setUserName(savedName);
+            return;
+        }
+
         if (!userId) {
             setUserName(defaultName);
             return;
         }
+
         const apiAddr = GET_MY_INFO + userId;
         const ret_name_obj = await TokenAxiosGet(apiAddr, "/");
         if (ret_name_obj["name"] == null)
             setUserName(defaultName);
-        else
+        else {
+            localStorage.setItem(NAME, ret_name_obj["name"]);
+            localStorage.setItem(ADDR, ret_name_obj["address"]);
             setUserName(ret_name_obj["name"]);
+        }
     }
 
     useEffect(() => {
@@ -43,7 +53,7 @@ const HomePage: React.FC = () => {
             </div>
             <img src={top}></img>
             <div className="flex relative gap-5 pt-6 pl-5 pb-12">
-                <img src={navimg1}></img>
+                <img src={navimg1} onClick={() => navigate('/search2?open=dist')}></img>
                 <img src={navimg2}></img>
                 <img src={navimg3}></img>
             </div>

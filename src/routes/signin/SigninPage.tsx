@@ -102,7 +102,7 @@ const SigninPage: React.FC = () => {
                 <input className="blueTextBox blueDefault" type="password" placeholder="비밀번호"
                     name="userPasswd" value={formValues.userPasswd} onChange={handleChange}/>
                 <br />
-                <button className="blueButton blueDefault" type="submit"> 로그인 </button>
+                <button className="blueButton whiteDefault" type="submit"> 로그인 </button>
             </ButtonContainer>
             </form>
 

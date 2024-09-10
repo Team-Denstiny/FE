@@ -15,9 +15,11 @@ interface ButtonProps {
     exitTime?: string,
     dist ?: string,
     tags : string[],
-    id ?: string
+    id ?: string,
+    imgLink ?: string,
+    subway ?: string
 }
-const ADButton: React.FC<ButtonProps> = ({name, state, exitTime, dist, tags, id}) => {
+const ADButton: React.FC<ButtonProps> = ({name, state, exitTime, dist, tags, id, imgLink, subway}) => {
   const navigate = useNavigate();
   
   const hospiInfo = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -26,7 +28,12 @@ const ADButton: React.FC<ButtonProps> = ({name, state, exitTime, dist, tags, id}
     navigate("/search/hospital/" + id);
   };
 
-  return (
+  if (dist == "0") {
+    dist = "가까운 지하철 역이 없습니다";
+  } else {
+    dist += " m";
+  }
+  return  (
     <div>
 
     <button className="Vstyled-container" style={{marginTop: '10px'}} onClick={hospiInfo}>
@@ -40,7 +47,7 @@ const ADButton: React.FC<ButtonProps> = ({name, state, exitTime, dist, tags, id}
 
         <div className='flex pt-1 pb-1 gap-1 items-center justify-start'>
             <img src={gps} style={{width: '9px', height:"13px"}}/>
-            <p className="ADButton-text" style={{color:'black', fontSize: '13px'}}>{dist}</p>
+            <p className="ADButton-text" style={{color:'black', fontSize: '13px'}}>{subway} {dist}</p>
         </div>
 
         <div className='w-[340px] gap-2 flex relative pr-2 flex-wrap'>
@@ -53,8 +60,8 @@ const ADButton: React.FC<ButtonProps> = ({name, state, exitTime, dist, tags, id}
               </div>
           ))}
         </div>
-
-        <img src={shopimg} style={{
+        
+        <img src={imgLink} style={{
             position: 'absolute',
             width:'88px', 
             height:'88px',
@@ -62,7 +69,7 @@ const ADButton: React.FC<ButtonProps> = ({name, state, exitTime, dist, tags, id}
             right: '1px'}} />
 
     </button>
-    <VerticalLine backgroundColor='#D3D3D3' style={{marginTop: '12px', marginBottom: '12px'}}/>
+    <VerticalLine backgroundColor='#D3D3D3' style={{marginTop: '6px', marginBottom: '6px'}}/>
     </div>
   );
 };
