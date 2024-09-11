@@ -12,6 +12,7 @@ import Profile from "../routes/mypage/Profile/Profile";
 import GetMyId from "../routes/signin/oAuth/GetMyId";
 import ResendPage from "../routes/signin/oAuth/oAuthMiddleHandler";
 import SigninPage from "../routes/signin/SigninPage";
+import ReviewPage from "../routes/review/hospi";
 
 const SearchRoute = () => {
     const location = useLocation();
@@ -99,6 +100,14 @@ export const mainRouter = [
         element:(
             <Layout>
                 <SearchRoute/>
+            </Layout>
+        )
+    },
+    {
+        path: "/review/hospi",
+        element: (
+            <Layout>
+                <ReviewPage />
             </Layout>
         )
     }
