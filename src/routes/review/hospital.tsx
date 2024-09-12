@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
+import nextIcon from "../../assets/NextBar.png";
+import TapBar from '../../components/common/TopBar';
 import './ReviewPage.css';
-import SearchHeader from '../../components/common/SearchHeader';
-import backIcon from '../../assets/Back.png';  // 백 아이콘 이미지 경로를 적절히 수정하세요
-import searchIcon from '../../assets/search/search.png';  // 검색 아이콘 이미지 경로를 적절히 수정하세요
 
 const ReviewPage: React.FC = () => {
   const [hospitalName, setHospitalName] = useState('똑똑플란트치과의원');
@@ -18,27 +17,19 @@ const ReviewPage: React.FC = () => {
   };
 
   return (
+    <div>
+    <TapBar text="후기 작성" />
     <div className="review-page">
-      <SearchHeader 
-        onSearch={handleSearch}
-        backIcon={backIcon}
-        searchIcon={searchIcon}
-      />
-      <header>
-        <h1>후기작성</h1>
-        <button className="close-button">×</button>
-      </header>
-      <main>
         <input
           type="text"
           value={hospitalName}
           onChange={(e) => setHospitalName(e.target.value)}
           className="hospital-input"
         />
-        <div className="rating-section"> 
+        <button className="rating-section text-black"> 
           <span>별점 선택하기</span>
-          <span className="arrow">›</span>
-        </div>
+          <img src={nextIcon} className='h-[15px]'/>
+        </button>
         <textarea
           value={reviewText}
           onChange={(e) => setReviewText(e.target.value)}
@@ -50,8 +41,12 @@ const ReviewPage: React.FC = () => {
             <button key={index} className="tag-button">{tag}</button>
           ))}
         </div>
-        <button className="submit-button">등록하기</button>
-      </main>
+          constructor(parameters) {
+            
+          }
+        <button className="blueButton blueDefault" type="submit"> 로그인 </button>
+    </div>
+
     </div>
   );
 };

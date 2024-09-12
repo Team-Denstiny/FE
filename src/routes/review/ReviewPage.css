@@ -33,6 +33,10 @@
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
+    color: black;
+    /*배경 색깔 표시해줄 것 */
+    background-color: white;
+    /**/
     border: 1px solid #e0e0e0;
     border-radius: 5px;
   }
@@ -54,27 +58,23 @@
   
   .tags {
     display: flex;
+
+    /* font 지정 해줘야됨*/
+    color: black;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13;
+
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
   }
   
   .tag-button {
-    background-color: #f0f0f0;
-    border: none;
+    background-color: white;
+    border:1px solid #0047AD;
     padding: 5px 10px;
     border-radius: 15px;
     font-size: 14px;
     cursor: pointer;
   }
   
-  .submit-button {
-    width: 100%;
-    padding: 15px;
-    background-color: #1a73e8;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }

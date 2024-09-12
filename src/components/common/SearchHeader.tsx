@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import searchIcon from "../../assets/search/search.png";
-import backIcon from "../../assets/Back.png"
 
 
 interface SearchHeaderProps {
@@ -25,7 +23,7 @@ const SearchHeader: React.FC<SearchHeaderProps> = ({ onSearch, backIcon, searchI
   return (
     <div className='h-[48px] flex items-center relative gap-1 pl-5 shadow'>
       <img src={backIcon} className='h-[24px]' onClick={() => navigate(-1)} alt="Back" />
-      <div className="w-[322px] h-[32px] bg-searchgray rounded-full flex items-center">
+      <div className="w-[322px] h-[32px] bg-searchgray rounded-full text-black flex items-center">
         <input 
           type="text" 
           value={searchTerm} 
