@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './ReviewPage.css';
 import SearchHeader from '../../components/common/SearchHeader';
-//import backIcon from '../assets/back.png';  // 백 아이콘 이미지 경로를 적절히 수정하세요
-//import searchIcon from '../assets/search.png';  // 검색 아이콘 이미지 경로를 적절히 수정하세요
+import backIcon from '../../assets/Back.png';  // 백 아이콘 이미지 경로를 적절히 수정하세요
+import searchIcon from '../../assets/search/search.png';  // 검색 아이콘 이미지 경로를 적절히 수정하세요
 
 const ReviewPage: React.FC = () => {
   const [hospitalName, setHospitalName] = useState('똑똑플란트치과의원');
@@ -21,8 +21,8 @@ const ReviewPage: React.FC = () => {
     <div className="review-page">
       <SearchHeader 
         onSearch={handleSearch}
-        //backIcon={backIcon}
-        //searchIcon={searchIcon}
+        backIcon={backIcon}
+        searchIcon={searchIcon}
       />
       <header>
         <h1>후기작성</h1>
@@ -35,7 +35,7 @@ const ReviewPage: React.FC = () => {
           onChange={(e) => setHospitalName(e.target.value)}
           className="hospital-input"
         />
-        <div className="rating-section">
+        <div className="rating-section"> 
           <span>별점 선택하기</span>
           <span className="arrow">›</span>
         </div>

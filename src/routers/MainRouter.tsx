@@ -12,7 +12,8 @@ import Profile from "../routes/mypage/Profile/Profile";
 import GetMyId from "../routes/signin/oAuth/GetMyId";
 import ResendPage from "../routes/signin/oAuth/oAuthMiddleHandler";
 import SigninPage from "../routes/signin/SigninPage";
-import ReviewPage from "../routes/review/hospi";
+import ReviewPage from "../routes/review/hospital";
+import StarRating from "../routes/review/starRating";
 
 const SearchRoute = () => {
     const location = useLocation();
@@ -104,13 +105,22 @@ export const mainRouter = [
         )
     },
     {
-        path: "/review/hospi",
+        path: "/review/hospital",
         element: (
             <Layout>
                 <ReviewPage />
             </Layout>
         )
+    },
+    {
+        path: "/review/starRating",
+        element: (
+            <Layout>
+                <StarRating />
+            </Layout>
+        )
     }
+
 ];
 
 const router = createBrowserRouter(mainRouter);
