@@ -14,6 +14,9 @@ import ResendPage from "../routes/signin/oAuth/oAuthMiddleHandler";
 import SigninPage from "../routes/signin/SigninPage";
 import ReviewPage from "../routes/review/hospital";
 import StarRating from "../routes/review/starRating";
+import MyWritesPage from "../routes/mypage/writes/MyWritesPage";
+import MyLikesPage from "../routes/mypage/good/MyLikesPage";
+import CommunityPage from "../routes/community/CommunityPage";
 
 const SearchRoute = () => {
     const location = useLocation();
@@ -117,6 +120,30 @@ export const mainRouter = [
         element: (
             <Layout>
                 <StarRating />
+            </Layout>
+        )
+    },
+    {
+        path: "/mypage/writes",
+        element: (
+            <Layout>
+                <MyWritesPage />
+            </Layout>
+        )
+    },
+    {
+        path: "/mypage/good",
+        element: (
+            <Layout>
+                <MyLikesPage />
+            </Layout>
+        )
+    },
+    {
+        path: "/community/all",
+        element: (
+            <Layout>
+                <CommunityPage />
             </Layout>
         )
     }

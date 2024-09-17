@@ -10,6 +10,12 @@ const StarRating: React.FC = () => {
   const handleRatingClick = (rating: number) => {
     setSelectedRating(rating);
   };
+  const handleSearch = (term: string) => {
+    // 여기에 검색 로직을 구현합니다.
+    console.log('Searching for:', term);
+    // 예를 들어, 병원 이름을 검색어로 설정할 수 있습니다.
+  };
+
 
   const renderStars = (count: number) => {
     return (
@@ -26,7 +32,7 @@ const StarRating: React.FC = () => {
   return (
     <div className="star-rating-container">
         <SearchHeader 
-        //onSearch={handleSearch}
+        onSearch={handleSearch}
         backIcon={backIcon}
         searchIcon={searchIcon}
       />
