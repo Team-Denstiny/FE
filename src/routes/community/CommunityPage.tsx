@@ -20,10 +20,10 @@ const posts: Post[] = [
     date: '2024.07.06',
     title: '제목제목제목',
     content: '내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용...',
-    images: ['pizza.png', 'pizza.png'],
+    images: ['pizza.png', 'pizza.png', 'pizza.png'],
     likes: 10,
-    comments: 5,
-    views: 100
+    comments: 10,
+    views: 10
   },
   {
     id: 2,
@@ -32,9 +32,9 @@ const posts: Post[] = [
     title: '제목제목제목',
     content: '내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용...',
     images: ['pizza.png', 'pizza.png'],
-    likes: 15,
-    comments: 8,
-    views: 120
+    likes: 10,
+    comments: 10,
+    views: 10
   },
   {
     id: 3,
@@ -43,9 +43,9 @@ const posts: Post[] = [
     title: '제목제목제목',
     content: '내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용...',
     images: [],
-    likes: 5,
-    comments: 2,
-    views: 80
+    likes: 10,
+    comments: 10,
+    views: 10
   },
   {
     id: 4,
@@ -54,28 +54,20 @@ const posts: Post[] = [
     title: '제목제목제목',
     content: '내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용...',
     images: ['pizza.png'],
-    likes: 20,
+    likes: 10,
     comments: 10,
-    views: 150
+    views: 10
   }
 ];
 
 const CommunityPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('전체');
-  const [searchTerm, setSearchTerm] = useState('');
 
   return (
     <div className="community-page">
       <header>
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="커뮤니티"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button className="search-button">🔍</button>
-        </div>
+        <input type="text" placeholder="커뮤니티" />
+        <button className="search-button">🔍</button>
       </header>
       <nav>
         {['전체', '진료', '지역', '자유'].map((tab) => (
@@ -93,30 +85,31 @@ const CommunityPage: React.FC = () => {
           <div key={post.id} className="post">
             <div className="post-header">
               <div className="avatar"></div>
-              <div>
-                <div className="author">{post.author}</div>
-                <div className="date">{post.date}</div>
+              <div className="post-info">
+                <span className="author">{post.author}</span>
+                <span className="date">{post.date}</span>
               </div>
+              <button className="more-options">⋯</button>
             </div>
-            <h3>{post.title}</h3>
-            <p>{post.content}</p>
+            <h3 className="post-title">{post.title}</h3>
+            <p className="post-content">{post.content}</p>
             {post.images.length > 0 && (
-              <div className="post-images">
+              <div className={`post-images image-count-${post.images.length}`}>
                 {post.images.map((image, index) => (
                   <img key={index} src={image} alt={`Post image ${index + 1}`} />
                 ))}
               </div>
             )}
             <div className="post-footer">
-              <span>❤️ {post.likes}</span>
-              <span>💬 {post.comments}</span>
-              <span>👁️ {post.views}</span>
+              <button>❤️ {post.likes}</button>
+              <button>💬 {post.comments}</button>
+              <button>👁️ {post.views}</button>
             </div>
           </div>
         ))}
       </main>
       <footer>
-        <button>🏠</button>
+        <button className="active">🏠</button>
         <button>❤️</button>
         <button>➕</button>
         <button>💬</button>
