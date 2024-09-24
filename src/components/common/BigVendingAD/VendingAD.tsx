@@ -7,7 +7,7 @@ import {
     GRAY, LIGHT_GRAY
 }from "../../../Color";
 import { useNavigate } from 'react-router-dom';
-import HospiInfo from '../../../routes/home/HospiInfo';
+import HospiInfo from '../../../routes/Hospital/Hospital';
 
 interface ButtonProps {
     name?: string,

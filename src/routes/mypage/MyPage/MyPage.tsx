@@ -54,9 +54,17 @@ const MyPage: React.FC = () => {
 
     useEffect(() => {
         LoginCheck("로그인 부터 하쇼@@", "false");
-        GetData();
-    })
+        const getData = async () => {
+            await GetData();
+        }
+        getData();
+    }, [])
 
+    if (!name) {
+      return (
+        <div className="flex justify-center text-blue font-bold font-noto mt-[100px]"> 로딩 중 ... </div>
+      )
+    }
     return (
         <div>
             <TapBarMyPage text="회원정보 수정" />

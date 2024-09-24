@@ -7,6 +7,7 @@ export default {
     extend: {
       colors: { 
         gray: '#F2F2F2', 
+        fontGray: "#7E8689",
         denstiniyBlue: '#0047AD',
         textgray:'#7E8689',
         searchgray: '#E6EAED',

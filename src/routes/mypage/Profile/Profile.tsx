@@ -40,8 +40,13 @@ const Profile: React.FC = () => {
       console.log("debug : my token : " + userToken);
       LoginCheck("로그인 부터 하쇼", "false");
       GetData();
-    });
+    }, []);
     
+    if (!userName) {
+      return (
+        <div className="flex justify-center text-blue font-bold font-noto mt-[100px]"> 로딩 중 ... </div>
+      )
+    }
     return (
         <div>
             <TapBarMyProfile text="마이페이지"></TapBarMyProfile>

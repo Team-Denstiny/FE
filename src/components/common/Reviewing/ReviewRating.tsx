@@ -1,51 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
+import GrayStar from "../../../assets/graystar.png";
+import YellowStar from "../../../assets/star.png";
 
 interface StarRatingProps {
-  totalStars?: number;
+  totalStars: number; // 사용자가 선택한 별점
 }
 
-const ReviewRating: React.FC<StarRatingProps> = ({ totalStars = 5 }) => {
-  const [rating, setRating] = useState<number>(0);  // 선택된 별점 (0~5)
-  const [hoverRating, setHoverRating] = useState<number>(0);  // 마우스 호버 중인 별점
-
-  const handleClick = (star: number) => {
-    setRating(star);
-  };
-
-  const handleMouseOver = (star: number) => {
-    setHoverRating(star);
-  };
-
-  const handleMouseLeave = () => {
-    setHoverRating(0);
-  };
+const ReviewRating: React.FC<StarRatingProps> = ({ totalStars }) => {
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
-      {[...Array(totalStars)].map((_, index) => {
+    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+      {[...Array(5)].map((_, index) => {
         const starValue = index + 1;
 
         return (
-          <span
-            key={index}
-            style={{
-              marginRight: '10px',
-              cursor: 'pointer',
-              fontSize: '1.5rem',
-              color: starValue <= (hoverRating || rating) ? '#FFD700' : '#C0C0C0'
-            }}
-            onClick={() => handleClick(starValue)}
-            onMouseOver={() => handleMouseOver(starValue)}
-            onMouseLeave={handleMouseLeave}
-          >
-            ★
+          <span key={index} className='mr-[5px]'>
+            <img
+              src={starValue <= totalStars ? YellowStar : GrayStar} // totalStars에 따라 색상 결정
+              alt={`${starValue} star`}
+              className='w-[12px] h-[12px]' // 원하는 크기로 조절
+            />
           </span>
         );
       })}
-      <div style = {{display: 'flex', fontSize:'15px'}}>
-        <br></br>
-      <p style={{ fontWeight: 'bold', marginTop: '1em' }}>{rating}.0 </p>
-      </div>
+      <p className='flex font-[15px] text-black font-bold'>{totalStars}.0</p>
     </div>
   );
 };

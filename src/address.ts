@@ -22,4 +22,10 @@ export const KAKAO_LOGIN = SERVER_DOMAIN + "/oauth2/authorization/kakao";
 /////// find /////////////
 export const FIND_DOMAIN = SERVER_DOMAIN + "/api/find";
 export const FIND_OPEN = FIND_DOMAIN + "/open-dentist";
+export const FIND_DIST = FIND_DOMAIN + "/dentist";
+export const FIND_REVIEW = FIND_DOMAIN + "/cat-dentist";
 
+
+export const NO_INGA_DOMAIN = SERVER_DOMAIN + "/api/public/find";
+
+export const HOSPI_ALL_REVIEW = SERVER_DOMAIN + "/api/public/review";

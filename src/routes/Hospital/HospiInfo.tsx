@@ -6,57 +6,35 @@ import { BlackText, GrayLink, GrayText, VerticalLine } from "../../components/co
 import {BLUE} from "../../Color";
 import { collapseToast } from "react-toastify";
 import Map from "../../components/common/Map/map";
-import './home.css'
-const HospiInfo: React.FC = () => {
-    const navigate = useNavigate();
-    const [hospiName, setHospiName] = useState<string>("똑똑플란트치과의원");
-    const [hospiPos, setHospiPos] = useState<string>("서울 강남구 강남대로 432");
-    const [subway, setSubway] = useState<string>("지하철 없음");
+import { NO_INGA_DOMAIN } from "../../Address";
+import axios from "axios";
+import { getTodayDay } from "../../components/common/GetDay";
+import './hospital.css';
+import { hospiInfoInterface } from "./HospiInterface";
 
-    const [breakTime, setBreakTime] = useState<string>("확인 필요");
-    const [runTime, setRunTime] = useState<string>("09:00 ~ 18:00");
-
-    const [xpos, setXpos] = useState<number>(37.5665);
-    const [ypos, setYpos] = useState<number>(126.978);
-
-    const { id } = useParams();
-
-    const [tags, setTags] = useState<string[]>(["임플란트", "충치치료", "치아교정", "사랑니발치"]);
-    const today = new Date();
-
-    const options: Intl.DateTimeFormatOptions = {weekday: 'long'};
-    const dayOfWeek = today.toLocaleDateString('ko-KR', options);
-
-    const GetData = async () => {
-        if (!id) {
-            window.alert("id 오류");
-            navigate(-1) ;
-            return;
-        }
-        console.log("id " + id);
-        /*
-        const apiAddr = GET_MY_INFO + userId;
-        const ret_name_obj = await TokenAxiosGet(apiAddr, "/");
-        if (ret_name_obj["name"] == null)
-            setUserName(defaultName);
-        else
-            setUserName(ret_name_obj["name"]);
-        */
+interface hospiRet {
+    hospiInfo: hospiInfoInterface | undefined;
+};
+const HospiInfo: React.FC<hospiRet> = ({hospiInfo}) => {
+    if (!hospiInfo) {
+        return <div>병원 정보를 불러오는 중입니다...</div>;
     }
+    const hospiPos = hospiInfo.hospiPos;
+    const subway = hospiInfo.subway;
+    const breakTime = hospiInfo.breakTime;
+    const runTime = hospiInfo.runTime;
+    const xpos = hospiInfo.xpos;
+    const ypos = hospiInfo.ypos;
+    const tags = hospiInfo.tags;
+
+    const dayOfWeek = getTodayDay() + "요일";
+
 
     useEffect(() => {
-        GetData();
+        console.log("debug : " + hospiInfo);
     })
-
     return (
         <div>
-            <TapBar text={hospiName} />
-
-            <div className="left-flex-container pb-[10px] pt-[20px]">
-                <BlackText fontSize="20px"> {hospiName} </BlackText>
-                <GrayText fontSize="13px" paddingLeft="20px"> {hospiPos}</GrayText>
-            </div>
-
             <div className="left-flex-container pb-[10px] pt-[20px]">
                 <button className="blue-text-button" style={{top:'27px', right:'20px'}}>목록보기</button>
                 <div style={{justifyContent:'left'}}>
@@ -100,13 +78,15 @@ const HospiInfo: React.FC = () => {
                 <BlackText> 진료 항목</BlackText>
             </div>
 
-            <div className='w-[340px] flex relative pt-2'>
-            {tags.map((term, index) => (
-                <div key={index} className='flex pl-2 pr-1 pt-2 pb-2 h-[32px] items-center justify-center'>
-                    <div className="blue-tag-button">{term}</div>
-                </div>
-            ))}
+            <div className='w-[340px] flex flex-wrap relative pl-10'> 
+                {tags.map((term, index) => (
+                    <div key={index} className='flex-grow pl-1 pr-1 pt-2 pb-2 mt-2 h-[32px] flex items-center justify-center'>
+                        <div className="blue-tag-button" style={{ flex: '1 1 auto', minWidth: '80px' }}>{term}</div>
+                    </div>
+                ))}
             </div>
+
+
         </div>
     )
 }

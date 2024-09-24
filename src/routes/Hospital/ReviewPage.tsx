@@ -1,17 +1,21 @@
 import React, { FC, useState } from 'react';
-import RoundRectangle from '../../../components/common/SmallBlueButton/RoundRectangle';
-import ReviewButton from '../../../components/common/Reviewing/Review';
-import SettingBar from '../../../components/search/Settingbar';
-import UserIcon1 from '../../../assets/UserImg.png';
+import RoundRectangle from '../../components/common/SmallBlueButton/RoundRectangle';
+import ReviewButton from '../../components/common/Reviewing/Review';
+import SettingBar from '../../components/search/Settingbar';
+import UserIcon1 from '../../assets/UserImg.png';
 
 interface ReviewTexting {
     RText?: string;
 }
 
 const ReviewPage: FC<ReviewTexting> = () => {
+
+    const [viewOpt, setViewOpt] = useState("최신순");
+
     return (
         <div>
             <div className='top-button-container'>
+                <SettingBar location="전체" sorting={viewOpt} />
                 <SettingBar location="서울 강남구" sorting="거리순" />
             </div>
             <div>

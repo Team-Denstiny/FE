@@ -16,9 +16,8 @@ import SearchPage2 from "../routes/Search/SearchPage2";
 import ExpertSearch from "../routes/Search/Expert/ExpertSearch";
 import LayoutGray from "../routes/LayoutOnlyGray";
 import OpenHospital from "../routes/Search/OpenHospital/OpenHospital";
-import HospiInfo from "../routes/home/HospiInfo";
-import ReviewPage from "../routes/Search/OpenHospital/ReviewPage";
-import ReviewCommentPage from "../routes/Search/OpenHospital/ReviewComment";
+import HospiInfo from "../routes/Hospital/Hospital";
+import ReviewPage from "../routes/Hospital/ReviewPage";
 
 const SearchRoute = () => {
     const location = useLocation();
@@ -149,15 +148,6 @@ export const mainRouter = [
             </Layout>
         )
     },
-    {
-        path: "/search/hospital/reviewComment",
-        element: (
-            <Layout>
-                <ReviewCommentPage />
-            </Layout>
-        )
-    }
-    
 ];
 
 const router = createBrowserRouter(mainRouter);
