@@ -72,22 +72,28 @@ const Hospital: React.FC = () => {
                     setHospiPos(body["addr"]);
 
                     const subwayCheck = body["subway_name"];
+                    let subway_line;
                     if (subwayCheck) {
                         const subwayDist = body["dist"];
                         const subwayInfo = body["subway_info"];
-
-                        const subway_line = subwayInfo + " " + subwayCheck + " " + subwayDist + "m"
-                        setSubway(subway_line);
+                        
+                        if (subwayDist && subwayInfo) {
+                            subway_line = subwayInfo + " " + subwayCheck + " " + subwayDist + "m"
+                            setSubway(subway_line);
+                        }
                     }
                     const todayDay = getTodayDay(); // 오늘 날짜
                     const timeCheck = body["time_data_map"][todayDay];
+                    let breakTimeCheck: string = "";
+                    let runTimeCheck: string = "";
+                
                     if (timeCheck) {
-                        const breakTimeCheck = timeCheck["break_time"];
+                        breakTimeCheck = timeCheck["break_time"];
                         if (breakTimeCheck) {
                             setBreakTime(breakTimeCheck[0] + " ~ " + breakTimeCheck[1]);
                         }
 
-                        const runTimeCheck = timeCheck["work_time"];
+                        runTimeCheck = timeCheck["work_time"];
                         if (runTimeCheck) {
                             setRunTime(runTimeCheck[0] + " ~ " + runTimeCheck[1]);
                         }
@@ -98,11 +104,11 @@ const Hospital: React.FC = () => {
                     setTags(body["category"]);
                     
                     setRetHospiInfo({
-                        hospiName: hospiName,
-                        hospiPos: hospiPos,
-                        subway: subway,
-                        breakTime: breakTime,
-                        runTime: runTime,
+                        hospiName: body["name"],
+                        hospiPos: body["addr"],
+                        subway: subway_line,
+                        breakTime: breakTimeCheck[0] + " ~ " + breakTimeCheck[1],
+                        runTime: runTimeCheck[0] + " ~ " + runTimeCheck[1],
                         xpos: body["latitude"],
                         ypos: body["longitude"],
                         tags: body["category"],
