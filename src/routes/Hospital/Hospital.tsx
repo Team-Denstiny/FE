@@ -96,16 +96,16 @@ const Hospital: React.FC = () => {
                     setYpos(body["longitude"]);
                     setXpos(body["latitude"]);
                     setTags(body["category"]);
-
+                    
                     setRetHospiInfo({
                         hospiName: hospiName,
                         hospiPos: hospiPos,
                         subway: subway,
                         breakTime: breakTime,
                         runTime: runTime,
-                        xpos: xpos,
-                        ypos: ypos,
-                        tags: tags,
+                        xpos: body["latitude"],
+                        ypos: body["longitude"],
+                        tags: body["category"],
                     });
 
                     console.log("debug : " + retHospiInfo?.tags);
@@ -139,7 +139,7 @@ const Hospital: React.FC = () => {
     }
 
     useEffect(() => {
-        if (id) {
+        if (id && xpos && ypos) {
 
             setHospiId(id);
             console.log("hospiId : " + hospiId);

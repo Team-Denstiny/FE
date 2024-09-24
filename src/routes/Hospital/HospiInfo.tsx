@@ -29,6 +29,7 @@ const HospiInfo: React.FC<hospiRet> = ({hospiInfo}) => {
 
     const dayOfWeek = getTodayDay() + "요일";
 
+    console.log(xpos, ", ", ypos);
 
     useEffect(() => {
         console.log("debug : " + hospiInfo);

@@ -8,6 +8,7 @@ interface MapProps {
 const Map: React.FC<MapProps> = ({ latitude, longitude }) => {
   const mapContainer = useRef<HTMLDivElement>(null);
 
+  console.log("in Map :: " + latitude, ", ", longitude);
   useEffect(() => {
     if (mapContainer.current) {
       const map = new kakao.maps.Map(mapContainer.current, {
