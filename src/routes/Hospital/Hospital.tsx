@@ -139,7 +139,7 @@ const Hospital: React.FC = () => {
                 content: review.content
             // 필요한 다른 속성들 추가
             }));
-
+            console.log(reviews_obj[0].date);
             setReviews(reviews_cvt);
             setReviewCnt(reviews_cvt.length);
     }

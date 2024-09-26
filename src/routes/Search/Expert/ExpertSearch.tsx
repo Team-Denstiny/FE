@@ -20,8 +20,8 @@ interface SearchBarProps {
 const ExpertSearch: FC<SearchBarProps> = () => {
     const navigate = useNavigate();
     const [isToggledUp, setIsToggledUp] = useState(false);
-    const [userPos, setUserPos] = useState("서울 강남구 봉은사 5길");
-    const [userHouse, setUserHouse] = useState("우리 집!");
+    const [userPos, setUserPos] = useState("경기 수원시 영통동");
+    const [userHouse, setUserHouse] = useState("서울시 강남구 논현동");
 
     const toggleColors = () => {
         setIsToggledUp(!isToggledUp);
@@ -35,7 +35,7 @@ const ExpertSearch: FC<SearchBarProps> = () => {
         <div>
             <TapBar text='전문 병원 검색' />
             <br />
-            <BlackText fontSize="14px"> 원하는 치과 진료를 선택하세요 </BlackText> 
+            <BlackText fontSize="14px"> 배준형님의 원하는 치과 진료를 선택하세요 </BlackText> 
 
             <div className='search-button-container'>
                 <button className="blueButtonSmall blackDefault" style={{width:'138px'}}> 치과 전체 </button>
