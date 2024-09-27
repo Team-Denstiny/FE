@@ -17,8 +17,6 @@ const HospitalCard : React.FC<HospitalCardProps> = ({imgurl, name, status, lasto
     return(
 
         <div>
-            
-
         </div>
 
     )

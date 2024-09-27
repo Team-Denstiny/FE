@@ -6,14 +6,17 @@ import { BlackText, GrayLink, GrayText, VerticalLine } from "../../components/co
 import {BLUE} from "../../Color";
 import { collapseToast } from "react-toastify";
 import Map from "../../components/common/Map/map";
-import { HOSPI_ALL_REVIEW, NO_INGA_DOMAIN } from "../../Address";
+import { GET_MY_INFO, HOSPI_ALL_REVIEW, NO_INGA_DOMAIN } from "../../Address";
 import axios from "axios";
 import { getTodayDay } from "../../components/common/GetDay";
 
 import HospiInfo from "./HospiInfo";
-import ReviewCommentPage from "./ReviewComment";
+import ReviewCommentPage from "./Review/ReviewComment";
 import { hospiInfoInterface, reviewInterface } from "./HospiInterface";
-import { TokenAxiosGet } from "../../components/common/GetWithToken/TokenGet";
+import { TokenAxiosDelete, TokenAxiosGet, TokenAxiosPost } from "../../components/common/GetWithToken/TokenGet";
+
+import EmptyHeart from "../../assets/emptyHeart.png";
+import FillHeart from "../../assets/fillHeart.png";
 
 const Hospital: React.FC = () => {
     const navigate = useNavigate();
@@ -42,6 +45,7 @@ const Hospital: React.FC = () => {
     const [reviews, setReviews] = useState<reviewInterface[]>();
 
     const [retHospiInfo, setRetHospiInfo] = useState<hospiInfoInterface>();
+    const [jjim, setJjim] = useState(false);
 
     const switchButton1 = () => {
         setIsClicked(1);
@@ -99,6 +103,10 @@ const Hospital: React.FC = () => {
                         }
                     }
 
+                    if (!subway_line) {
+                        subway_line = "지하철 없음";
+                    }
+
                     setYpos(body["longitude"]);
                     setXpos(body["latitude"]);
                     setTags(body["category"]);
@@ -136,13 +144,55 @@ const Hospital: React.FC = () => {
                 date: review.date,
                 nick_name: review.nick_name,
                 user_id: review.user_id,
-                content: review.content
+                content: review.content,
+                image_url: review.image_url
             // 필요한 다른 속성들 추가
             }));
             console.log(reviews_obj[0].date);
             setReviews(reviews_cvt);
             setReviewCnt(reviews_cvt.length);
     }
+
+    const jjimClick = async () => {
+
+        console.log("hospiId : " + hospiId);
+        const userId = await localStorage.getItem(USERID);
+        
+        if (jjim) {
+            const deleteUrl = GET_MY_INFO + userId + "/bookmark/" + hospiId;
+            console.log("bookmark delete : " + deleteUrl);
+            const data = await TokenAxiosDelete(deleteUrl, ".");
+            console.log("data : " + data);
+            window.alert(hospiName + "병원이 찜(★) 목록에서 삭제되었습니다");
+            setJjim(!jjim);
+        }
+        else {
+            const bookmarkUrl = GET_MY_INFO + userId + "/bookmark";
+            console.log("bookmark url : " + bookmarkUrl) ;
+            const data = await TokenAxiosPost(bookmarkUrl, ".", {"hospital_id": hospiId});
+            console.log("data : " + data);
+            window.alert(hospiName + "병원이 찜(★) 목록에 추가되었습니다");
+            setJjim(!jjim);
+        }
+    }
+
+
+    const reviewDeleteHandler = async (reviewId: string) => {
+        const userId = localStorage.getItem(USERID);
+        const putUrl = GET_MY_INFO + userId + "/review/"+hospiId+"/"+reviewId;
+        console.log("delete review Id : "  + reviewId);
+        console.log("delete url : " + putUrl);
+        
+        const data = await TokenAxiosDelete(putUrl, ".");
+        if (!data) {
+            window.alert("댓글 삭제에 실패했습니다");
+
+        }
+        else {
+            window.alert("댓글이 삭제되었습니다.");
+            await GetData();
+        }
+      }
 
     useEffect(() => {
         if (id && xpos && ypos) {
@@ -170,8 +220,11 @@ const Hospital: React.FC = () => {
         <div>
             <TapBar text={hospiName} />
 
-            <div className="left-flex-container pb-[10px] pt-[20px]">
-                <BlackText fontSize="20px"> {hospiName} </BlackText>
+            <div className="flex-container pb-[10px] pt-[20px]">
+                <div className="flex justify-between itemAlign-center pl-[20px] pr-[30px] text-black text-[20px] font-noto font-bold">
+                    <div>{hospiName}</div>
+                    <img src={jjim ? FillHeart : EmptyHeart} onClick={jjimClick} className="h-[20px] w-[20px]"/>
+                </div>
                 <GrayText fontSize="13px" paddingLeft="20px"> {hospiPos}</GrayText>
             </div>
 
@@ -189,7 +242,11 @@ const Hospital: React.FC = () => {
             </div>
             
             { isClicked == 1 ? 
-                <HospiInfo hospiInfo={retHospiInfo} /> : <ReviewCommentPage reviews={reviews}/>
+                <HospiInfo hospiInfo={retHospiInfo} /> : <ReviewCommentPage 
+                                                            reviews={reviews} 
+                                                            hospiName={hospiName} 
+                                                            hospiId={hospiId} 
+                                                            reviewInReivewDeleteHandler={(reviews:string) => reviewDeleteHandler(reviews)}/>
             }
 
         </div>

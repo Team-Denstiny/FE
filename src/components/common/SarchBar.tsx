@@ -34,7 +34,7 @@ const SearchBar: React.FC<SearchBarProps> = ({placeholder}) => {
                     value={searchTerm}
                     onChange={handleChange}
                     placeholder="검색어를 입력하세요"
-                    className="h-[32px] w-[290px] bg-searchgray rounded-full py-2 px-4 outline-none text-black text-base font-noto"
+                    className="h-[32px] w-[290px] bg-searchgray rounded-full py-2 px-4 outline-none text-black font-noto"
                 />
                 <img src={search} onClick={() => handleSearch(searchTerm)} />
 

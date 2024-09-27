@@ -166,7 +166,7 @@ const SearchPage2: FC<SearchBarProps> = () => {
                         name={item.name}
                         state="진료중"
                         tags={["임플란트", "충치치료"]}
-                        exitTime={item.today_work[1] + ' 접수 마감'}
+                        exitTime={item.today_work ? item.today_work[1] +" 접수 마감": "병원 제공 시간 없음"}
                         dist={String(item.dist)}
                         id={item.id}
                         imgLink={item.img}

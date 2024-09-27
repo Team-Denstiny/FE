@@ -5,6 +5,7 @@ export interface reviewInterface {
     nick_name: string;
     user_id: number;
     content: string;
+    image_url: string;
 };
 
 export interface hospiInfoInterface {

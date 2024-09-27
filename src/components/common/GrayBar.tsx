@@ -3,11 +3,12 @@ import BarImg from "../../assets/BarImg.png";
 
 interface ReviewTexting {
     RText?: string;
+    height ?: string
 }
 
-const GrayBar: FC<ReviewTexting> = () => {
+const GrayBar: FC<ReviewTexting> = ({height='2px'}) => {
     return (
-            <img src={BarImg} className='relative w-[370px] h-[2px] t-[1px] mt-[10px] mb-[10px]' />
+            <img src={BarImg} className={`relative w-[370px] h-[${height}] t-[1px] mt-[10px] mb-[10px]`} />
     );
 }
 

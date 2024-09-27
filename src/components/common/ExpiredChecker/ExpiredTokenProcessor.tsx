@@ -34,7 +34,7 @@ export const expiredChecker = async (error: AxiosError, redirectLink:string) => 
                 const result_code = body["result_code"];
                 console.log(body["result_description"]);
                 if (result_code === 2001) {
-                    getNewToken();
+                    await getNewToken();
                 }
                 else if (result_code === 2006)  {
                     console.log("로그인 만료?");

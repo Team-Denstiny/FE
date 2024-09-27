@@ -14,6 +14,11 @@ import {
     VerticalLine
 } from '../../../components/common/LoginDesigns/Utility';
 import {
+    ADDR,
+    NAME,
+    NICKNAME,
+    USER_LATITUDE,
+    USER_LONGITUDE,
     USERID
 } from "../../../GlobalVariable";
 import { PutInfo } from "./MyInfo";
@@ -50,6 +55,14 @@ const MyPage: React.FC = () => {
         else
             setImg(myData["profile_img"]);
         console.log(myData["name"]);
+
+        
+        localStorage.setItem(NAME, myData["name"]);
+        localStorage.setItem(ADDR, myData["address"]);
+        localStorage.setItem(USER_LONGITUDE, myData["longitude"]);
+        localStorage.setItem(USER_LATITUDE, myData["latitude"]);
+        localStorage.setItem(NICKNAME, myData["nick_name"]);
+
     };
 
     useEffect(() => {
@@ -59,6 +72,7 @@ const MyPage: React.FC = () => {
         }
         getData();
     }, [])
+
 
     if (!name) {
       return (

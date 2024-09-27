@@ -1,0 +1,100 @@
+.star-rating-container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative;
+  }
+  
+  h1 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: normal;
+  }
+  
+  .close-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #007AFF;
+    cursor: pointer;
+  }
+  
+  main {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  p {
+    margin-top: 0;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .star-rating {
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .star-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .star {
+    font-size: 24px;
+    color: #D8D8D8;
+    margin-right: 2px;
+  }
+  
+  .star.filled {
+    color: #FFD700;
+  }
+  
+  .score {
+    font-size: 18px;
+    color: #333;
+    margin-left: 10px;
+  }
+  
+  .check {
+    color: #007AFF;
+    margin-left: auto;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #007AFF;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: auto;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }

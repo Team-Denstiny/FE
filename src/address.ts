@@ -26,6 +26,10 @@ export const FIND_DIST = FIND_DOMAIN + "/dentist";
 export const FIND_REVIEW = FIND_DOMAIN + "/cat-dentist";
 
 
+export const API_PUBLIC = SERVER_DOMAIN + "/api/public";
 export const NO_INGA_DOMAIN = SERVER_DOMAIN + "/api/public/find";
+export const FIND_HOSPITAL_BY_NAME = NO_INGA_DOMAIN + "/by-name";
 
 export const HOSPI_ALL_REVIEW = SERVER_DOMAIN + "/api/public/review";
+
+export const REVIEW_COMMENT = API_PUBLIC + "/review-comment";

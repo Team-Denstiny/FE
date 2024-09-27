@@ -7,6 +7,7 @@ export const LOGIN_CHECK = "loginCheck";
 export const ADDR = "userAddr";
 export const NAME = "userName";
 export const GU = "UserGu";
+export const NICKNAME = "userNickname";
 export const USER_LATITUDE = "userLatitude";
 export const USER_LONGITUDE = "userLongitude";
 

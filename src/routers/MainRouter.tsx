@@ -2,7 +2,7 @@ import { createBrowserRouter, useLocation } from "react-router-dom";
 import CreateAddress from "../routes/createusers/CreateAddress";
 import CreateUsers from "../routes/createusers/CreateUsers";
 import HomePage from "../routes/home/HomePage";
-import SearchDetail from "../routes/home/SearchDetailPage";
+import SearchDetail from "../routes/Search/SearchDetailPage";
 import SearchPage from "../routes/Search/SearchPage";
 import Layout from "../routes/Layout";
 import Layout2 from "../routes/Layout2";
@@ -17,7 +17,10 @@ import ExpertSearch from "../routes/Search/Expert/ExpertSearch";
 import LayoutGray from "../routes/LayoutOnlyGray";
 import OpenHospital from "../routes/Search/OpenHospital/OpenHospital";
 import HospiInfo from "../routes/Hospital/Hospital";
-import ReviewPage from "../routes/Hospital/ReviewPage";
+import ReviewCommentPage from "../routes/Hospital/Review/ReviewComment";
+import StarRating from "../routes/Hospital/Review/starRatingPage";
+import WriteReview from "../routes/Hospital/Review/WriteReview";
+import ReviewInReview from "../routes/Hospital/Review/ReviewAndReview";
 
 const SearchRoute = () => {
     const location = useLocation();
@@ -141,10 +144,18 @@ export const mainRouter = [
         )
     },
     {
-        path: "/search/hospital/review",
+        path: "/search/hospital/:id/review",
         element: (
             <Layout>
-                <ReviewPage />
+                <WriteReview />
+            </Layout>
+        )
+    },
+    {
+        path: "/search/hospital/:id/reviews",
+        element: (
+            <Layout>
+                <ReviewInReview />
             </Layout>
         )
     },

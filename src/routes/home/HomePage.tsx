@@ -10,7 +10,7 @@ import top from "../../assets/main/topimage.png";
 import { TokenAxiosGet } from "../../components/common/GetWithToken/TokenGet";
 import Navbar from "../../components/common/Navbar";
 import MonthCalendar from "../../components/main/Calender";
-import { USERID, ADDR, NAME, GU } from "../../GlobalVariable";
+import { USERID, ADDR, NAME, GU, USER_LONGITUDE, USER_LATITUDE, NICKNAME } from "../../GlobalVariable";
 
 const HomePage: React.FC = () => {
     const navigate = useNavigate();
@@ -47,6 +47,9 @@ const HomePage: React.FC = () => {
             }
             localStorage.setItem(NAME, ret_name_obj["name"]);
             localStorage.setItem(ADDR, addr);
+            localStorage.setItem(NICKNAME, ret_name_obj["nick_name"]);
+            localStorage.setItem(USER_LONGITUDE, ret_name_obj["longitude"]);
+            localStorage.setItem(USER_LATITUDE, ret_name_obj["latitude"]);
             setUserName(ret_name_obj["name"]);
             console.log(localStorage.getItem(GU));
         }

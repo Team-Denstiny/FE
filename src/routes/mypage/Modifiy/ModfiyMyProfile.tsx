@@ -21,7 +21,7 @@ const ModifyMyPage: React.FC = () => {
     const myAddress = GET_MY_INFO + userId;
     const myModifyAddr = CHANGE_MY_INFO + userId;
 
-    const [nickname, setNickname] = useState('');
+    const [nickname, setNickname] = useState();
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [addr, setAddr] = useState('');
@@ -117,7 +117,11 @@ const ModifyMyPage: React.FC = () => {
         }
         
     };
-
+    if (!nickname) {
+      return (
+        <div className="flex justify-center text-blue font-bold font-noto mt-[100px]"> 로딩 중 ... </div>
+      )
+    }
     return (
         <div>
             <TapBar text="회원정보 수정" />
@@ -167,7 +171,7 @@ const ModifyMyPage: React.FC = () => {
 
             <ButtonContainer>
                 <br /> <br />
-                <button className="blueButton blueDefault"
+                <button className="blueButton whiteDefault"
                     onClick={letsChange}> 변경하기</button>
                 <br /> <br />
             </ButtonContainer>

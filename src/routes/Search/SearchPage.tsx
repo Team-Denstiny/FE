@@ -33,6 +33,13 @@ const SearchPage: FC<SearchBarProps> = () => {
         clearSearchTerms();
     };
 
+    const [searchParams] = useSearchParams();
+
+    console.log(searchParams);
+    if (searchParams.get('q')) {
+        const params = searchParams.get("q");
+        console.log("params : " + params);
+    }
 
     return (
         
@@ -68,11 +75,7 @@ const SearchPage: FC<SearchBarProps> = () => {
                 ))}
                 </div>
             </div>
-           
-
-
-
-
+        
 
 
         </div>

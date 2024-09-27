@@ -42,11 +42,13 @@ const Profile: React.FC = () => {
       GetData();
     }, []);
     
+    /*
     if (!userName) {
       return (
         <div className="flex justify-center text-blue font-bold font-noto mt-[100px]"> 로딩 중 ... </div>
       )
     }
+      */
     return (
         <div>
             <TapBarMyProfile text="마이페이지"></TapBarMyProfile>
