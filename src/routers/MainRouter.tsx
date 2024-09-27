@@ -21,6 +21,9 @@ import ReviewCommentPage from "../routes/Hospital/Review/ReviewComment";
 import StarRating from "../routes/Hospital/Review/starRatingPage";
 import WriteReview from "../routes/Hospital/Review/WriteReview";
 import ReviewInReview from "../routes/Hospital/Review/ReviewAndReview";
+import MyWritesPage from "../routes/mypage/writes/MyWritesPage";
+import MyLikesPage from "../routes/mypage/good/MyLikesPage";
+import CommunityPage from "../routes/Community/CommunityPage";
 
 const SearchRoute = () => {
     const location = useLocation();
@@ -159,7 +162,27 @@ export const mainRouter = [
             </Layout>
         )
     },
+    {
+        path: "/mypage/good",
+        element: (
+            <Layout>
+                <MyLikesPage />
+            </Layout>
+        )
+    },
+    {
+        path: "/community/all",
+        element: (
+            <Layout>
+                <CommunityPage />
+            </Layout>
+        )
+    }
+
 ];
 
 const router = createBrowserRouter(mainRouter);
+
+
+
 export default router;
