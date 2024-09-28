@@ -68,7 +68,7 @@ const ReviewButton: React.FC<ReviewText> = ({textday, text, tags, UserIcon,name,
         console.log("별 수 : " + selectedRating);
     }
     return (
-        <div className={`pl-[${(index != undefined && index >= 0) ? '20px' : '40px'}] relative mt-[15px]`}>
+        <div className={`pl-[20px] ml-[${(index != undefined && index >= 0) ? '0px' : '20px'}] relative mt-[15px]`}>
 
             <div className='flex justify-between' style={{alignItems:'center'}}>
                 <img src={UserIcon ? UserIcon : DefaultImg} className='relative rounded-full object-cover w-[50px] h-[50px] t-[1px] l-[1px] mr-[10px]' />
@@ -78,9 +78,6 @@ const ReviewButton: React.FC<ReviewText> = ({textday, text, tags, UserIcon,name,
             </div>
 
             <button className="button ml-auto mr-[15px]" onClick={buttonClick}/> 
-            </div>
-            <div style={{ textAlign: 'center', marginTop: '10px' }}>
-                <ReviewRating totalStars={5} />
             </div>
 
 

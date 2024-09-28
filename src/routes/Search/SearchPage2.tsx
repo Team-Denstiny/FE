@@ -174,9 +174,12 @@ const SearchPage2: FC<SearchBarProps> = () => {
                         />
                 ))
             }
-        <button onClick={getMoreId} className='flex relative text-black'>
-            더보기
-        </button>
+        <div className='flex justify-center'>
+
+            <button onClick={getMoreId} className='blueButton whiteDefault'>
+                더 불러오기
+            </button>
+        </div>
 
 
         </div>

@@ -32,6 +32,18 @@
     height: 150px;
 }
 
+.community-modal {
+    position: var(--modal-position);
+    top: var(--modal-top);
+    left: var(--modal-left);
+    transform: var(--modal-transform);
+    width: var(--modal-width);
+    background-color: var(--modal-bg-color);
+    border-radius: var(--modal-border-radius);
+    user-select: none;
+    height: 100px;
+}
+
 .modal-overlay {
     position: fixed;
     top: 0;

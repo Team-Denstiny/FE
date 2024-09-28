@@ -47,9 +47,16 @@ const SearchRandering: FC<SearchBarProps> = ({retQuery, getMoreId}) => {
                         />
                 ))
             }
-        <button onClick={getMoreId} className='flex relative text-black'>
-            더보기
-        </button>
+        {
+            getMoreId ? <div>
+                </div>:<div> </div>
+        }
+        <div className='flex justify-center'>
+
+            <button onClick={getMoreId} className='blueButton whiteDefault'>
+                더 불러오기
+            </button>
+        </div>
 
 
         </div>

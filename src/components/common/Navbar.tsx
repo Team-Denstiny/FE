@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import community from "../../assets/Navbar/community.png";
+import communityClick from "../../assets/Navbar/communityClick.png";
 import heart from "../../assets/Navbar/heart.png";
 import heartClick from "../../assets/Navbar/heartClick.png";
 import home from "../../assets/Navbar/home.png";
@@ -33,7 +34,7 @@ const Navbar: React.FC<NavbarProps> = ({ text }) => {
             heartImg = heartClick;
             break;
         case 'community':
-            communityImg = community;
+            communityImg = communityClick;
             break;
         case 'profile':
             profileImg = profileClick;

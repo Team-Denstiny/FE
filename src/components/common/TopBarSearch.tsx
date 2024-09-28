@@ -1,20 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; 
 import back from "../../assets/Back.png";
+import search from "../../assets/Search.png";
 
 interface TapBarProps {
     text: string,
-    clickHandler ?: () => void;
+    searchHandler ?: () => void
 }
 
-const TapBar: React.FC<TapBarProps> = ({ text,clickHandler }) => {
+const TapBarSearch: React.FC<TapBarProps> = ({ text, searchHandler}) => {
     const navigate = useNavigate(); 
 
     const handleBackClick = () => {
-        if (!clickHandler)
-            navigate(-1); // 이전 페이지로 이동
-        else
-            clickHandler();
+        navigate(-1); // 이전 페이지로 이동
     };
 
     return (
@@ -29,8 +27,14 @@ const TapBar: React.FC<TapBarProps> = ({ text,clickHandler }) => {
             <div className="font-noto font-medium text-base" style={{ position: 'absolute', left: '154px', top: '14px', color: "black"}}>
                 {text}
             </div>
+            <img 
+                src={search} 
+                alt="search" 
+                className="ml-auto mr-[25px] w-[25px]" 
+                onClick={searchHandler} 
+            />
         </div>
     );
 }
 
-export default TapBar;
+export default TapBarSearch;

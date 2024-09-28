@@ -65,20 +65,27 @@ export const TokenAxiosPost = async (address: string, cur_address: string, heade
             withCredentials: true,
             headers: {"authorization": userToken}
         });
-
+        
+        console.log(response.status);
         const status_code = response.status;
         if (status_code === 200) {
             const bodies = response.data;
             if (bodies["result"]["result_code"] === 200) {
                 return bodies["body"];
             }
+            if (bodies["result"]["result_code"] === 201) {
+                console.log("result_code : " + bodies["result"]["result_code"]);
+                return bodies["body"];
+            }
+            else
+                return null;
         }
     } catch (error: AxiosError | any) {
         await expiredChecker(error, cur_address)
         if (depth == 3) return null;
         return await TokenAxiosPost(address, cur_address, headers);
     };
-    return null;
+    return true;
 };
 
 export const TokenAxiosDelete = async (address: string, cur_address: string, depth=0): Promise<any | null> => {
@@ -105,3 +112,30 @@ export const TokenAxiosDelete = async (address: string, cur_address: string, dep
     return null;
 
 }
+
+export const TokenAxiosPostMultipart = async (address: string, cur_address: string, headers?: Record<string, any>, depth=0): Promise<any | null> => {
+    const userToken = localStorage.getItem(ACCESS_TOKEN) ;
+
+    try {
+
+        const response = await axios.post(address, headers, {
+            withCredentials: true,
+            headers: {"authorization": userToken,
+                'Content-Type': 'multipart/form-data',
+            }
+        });
+
+        const status_code = response.status;
+        if (status_code === 200) {
+            const bodies = response.data;
+            if (bodies["result"]["result_code"] === 200) {
+                return bodies["body"];
+            }
+        }
+    } catch (error: AxiosError | any) {
+        await expiredChecker(error, cur_address)
+        if (depth == 3) return null;
+        return await TokenAxiosPost(address, cur_address, headers);
+    };
+    return null;
+};

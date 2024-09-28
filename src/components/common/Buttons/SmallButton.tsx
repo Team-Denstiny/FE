@@ -6,6 +6,7 @@ import nextBarGray from '../../../assets/NextBarGray.png';
 interface TapBarProps {
     name: string; 
     link: string;
+    fontBold ?: string | number;
 }
 
 
@@ -14,7 +15,7 @@ const TextContainer = styled.div`
 
 `
 
-const SmallButton: React.FC<TapBarProps> = ({name, link}) => {
+const SmallButton: React.FC<TapBarProps> = ({name, link, fontBold=300}) => {
     const navigate = useNavigate(); 
     const handleBackClick = () => {
         navigate(link); // 메인 페이지 이동
@@ -25,7 +26,7 @@ const SmallButton: React.FC<TapBarProps> = ({name, link}) => {
             onClick={handleBackClick}
             style={{border: 'none'}}> 
             <TextContainer>
-                <div className="blackText" style={{fontWeight:300,fontSize:'13px'}}> {name} </div>
+                <div className="blackText" style={{fontWeight:fontBold,fontSize:'13px'}}> {name} </div>
 
             </TextContainer>
                 <img src={nextBarGray} 

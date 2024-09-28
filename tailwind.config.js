@@ -11,7 +11,9 @@ export default {
         denstiniyBlue: '#0047AD',
         textgray:'#7E8689',
         searchgray: '#E6EAED',
-        blue:'#0047AD'
+        blue:'#0047AD',
+        blueWhite: 'rgba(0, 71, 173, 0.1)',
+        red: 'red',
       },
         fontFamily: {
         'noto': ['Noto Sans KR'], 

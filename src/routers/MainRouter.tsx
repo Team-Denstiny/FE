@@ -24,6 +24,8 @@ import ReviewInReview from "../routes/Hospital/Review/ReviewAndReview";
 import MyWritesPage from "../routes/mypage/writes/MyWritesPage";
 import MyLikesPage from "../routes/mypage/good/MyLikesPage";
 import CommunityPage from "../routes/Community/CommunityPage";
+import ComWrite from "../routes/Community/write/ComWrite";
+import DragAndDropUpload from "../routes/Community/write/test";
 
 const SearchRoute = () => {
     const location = useLocation();
@@ -163,7 +165,7 @@ export const mainRouter = [
         )
     },
     {
-        path: "/mypage/good",
+        path: "/heart",
         element: (
             <Layout>
                 <MyLikesPage />
@@ -171,12 +173,29 @@ export const mainRouter = [
         )
     },
     {
-        path: "/community/all",
+        path: "/community",
         element: (
             <Layout>
                 <CommunityPage />
             </Layout>
         )
+    },
+    {
+        path: "/community/write",
+        element: (
+            <Layout>
+                <ComWrite />
+            </Layout>
+        )
+    },
+    {
+        path: "/test",
+        element: (
+            <Layout>
+                <DragAndDropUpload />
+            </Layout>
+        )
+
     }
 
 ];
