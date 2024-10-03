@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CHANGE_MY_INFO, GET_MY_INFO } from "../../../Address";
+import { CHANGE_MY_INFO, GET_MY_INFO } from "../../../address";
 import checkNickname from "../../../components/common/CheckHandler/CheckNickname";
 import LoginCheck from "../../../components/common/CheckHandler/LoginCheck";
 import { TokenAxiosGet, TokenAxiosPatch } from "../../../components/common/GetWithToken/TokenGet";
@@ -14,6 +14,8 @@ import TapBar from "../../../components/common/TopBar";
 import {
     USERID
 } from "../../../GlobalVariable";
+import { AddressButton } from "../../../components/common/AddressSearch";
+import { userSet } from "../../../components/common/UserSet";
 
 
 const ModifyMyPage: React.FC = () => {
@@ -35,14 +37,18 @@ const ModifyMyPage: React.FC = () => {
     const [userPhone, setUserPhone] = useState('');
     const [userAddr, setUserAddr] = useState('');
     const [userAge, setUserAge] = useState('');
+    const [myCoords, setCoords] = useState<{x: number, y: number}>({x: 0.0, y: 0.0});
+
     const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUserName(e.target.value);
     };
     const handlePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUserPhone(e.target.value);
     };
-    const handleAddr = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setUserAddr(e.target.value);
+
+    const handleAddr = (seletctAddr: string, y:number, x:number) => {
+        setUserAddr(seletctAddr);
+        setCoords({x, y});
     };
     const handleAge = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUserAge(e.target.value);
@@ -78,7 +84,7 @@ const ModifyMyPage: React.FC = () => {
     }, [])
 
     const letsChange = async () => {
-        type MyDictionary = Record<string, string>;
+        type MyDictionary = Record<string, string | number>;
         let myDict: MyDictionary = {};
 
         if (userNickname != "")  {
@@ -99,8 +105,16 @@ const ModifyMyPage: React.FC = () => {
             myDict["birth_at"] = userAge.substring(0,4);
         if (userPhone != "")
             myDict["phone_number"] = userPhone;
-        if (userAddr != "")
+        if (userAddr != "") {
+            if (userAddr.indexOf("서울") == -1) {
+                window.alert("현재는 서울시만 지원됩니다.. 주소를 다시입력해주세요");
+                return false;
+            }
+            myDict["latitude"] = Number(myCoords.x);
+            myDict["longitude"] = Number(myCoords.y);
             myDict["address"] = userAddr;
+            console.log("lati : " + myCoords.x + ", longi : " + myCoords.y);
+        }
 
         console.log("change : " + myDict["address"]);
         const returns = await TokenAxiosPatch(myModifyAddr, "/profile/mypage/modify", myDict);
@@ -113,6 +127,7 @@ const ModifyMyPage: React.FC = () => {
                 "주소 : " + returns["address"]  + "\n"+
                 "이메일 : " + returns["email"]  + "\n"
                 );
+            await userSet();
             window.location.href = "/profile/mypage";
         }
         
@@ -163,8 +178,9 @@ const ModifyMyPage: React.FC = () => {
                         <div className="blueButtonSmall blueDefault" style={{width: '105px'}}> 인증하기</div>
                     </ButtonContainerSmall>
                     <br />
-                    <input className="blueTextBox blueDefault" placeholder={addr} 
-                        onChange={handleAddr} value={userAddr}/>
+
+                    <AddressButton myAddress={userAddr} handleMyAddress={handleAddr} />
+
                 </ButtonContainer>
             </BlackTextContainer>
 

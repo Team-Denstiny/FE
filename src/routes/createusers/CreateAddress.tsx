@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import {
     SERVER_ENDPOINT
-} from "../../Address";
-import AddressSearch from "../../components/common/AddressSearch";
+} from "../../address";
+import AddressSearch, { AddressButton, openPostcodePopup } from "../../components/common/AddressSearch";
 import {
     ButtonContainer,
     GrayText,
@@ -24,6 +24,12 @@ const CreateUsers: React.FC = () => {
     };
 
     const submitHandler = () => {
+
+        if (myAddress.indexOf("서울") == -1) {
+            window.alert("현재는 서울시만 지원됩니다.. 다시입력해주세요");
+            return;
+        }
+
         const payload = {
             "address": myAddress,
             "latitude": Number(myCoords.x),
@@ -34,7 +40,8 @@ const CreateUsers: React.FC = () => {
 
         const status = response.data['result']['result_code']
         if (status == 201) {
-            navigate("/getMyId");
+            window.alert("회원가입에 성공했습니다!\n다시 로그인 해주세요!");
+            navigate("/signin");
         }
       })
       .catch(error => {
@@ -43,27 +50,15 @@ const CreateUsers: React.FC = () => {
     }
     return (
         <div>
-            <TopBar text="주소 등록하기" />
+            <TopBar text="주소 등록하기" clickHandler={()=>navigate("/signin")}/>
             <TextContainer>
                 <MainText fontWeight={700}> Denstiny 를 사용하기 위해 </MainText>
                 <MainText fontWeight={400}> 
                     주소를 입력해주세요!
                 </MainText>
             </TextContainer>
-            <ButtonContainer>
-                    <div className="searchContainer" style={{ position: 'relative', width: '350px' }}>
-                        <input className="blueTextBox blueDefault" 
-                                placeholder="도로명, 지번, 건물명 검색" 
-                                value={myAddress}
-                                onChange={(e) => setMyAddress(e.target.value)}
-                                style={{width:'100%', paddingRight: '40px'}}/>
-                        <AddressSearch buttonSize="30px" onComplete={handleMyAddress}/>
-                    </div>
-            </ButtonContainer>
-            <GrayText paddingLeft="20px" fontWeight={500} fontSize="12px">
-                    주소를 입력하면 근처 병원을 쉽게 찾을 수 있어요
-            </GrayText>
 
+            <AddressButton myAddress={myAddress} handleMyAddress={handleMyAddress} />
             <ButtonContainer>
                 <br /> <br />
                 <button className="blueButton whiteDefault" onClick={submitHandler}> 회원가입 완료하기</button>

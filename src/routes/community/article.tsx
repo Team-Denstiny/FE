@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Post } from "./ComInterface";
 import OptImg from "../../assets/OptionImg.png";
 import GrayBar from "../../components/common/GrayBar";
 import eye from "../../assets/Community/eye.png";
 import haert from "../../assets/Community/heart.png";
+import filledHeart from "../../assets/fillHeart.png";
 import comment from "../../assets/Community/comment.png";
 import ComArticleModal from "../../components/common/Modal/ComArticleModal";
 import { USERID } from "../../GlobalVariable";
 import ArticleInArticle from "./articleInArticle";
 import { GET_MY_INFO } from "../../Address";
-import { TokenAxiosDelete } from "../../components/common/GetWithToken/TokenGet";
+import { TokenAxiosDelete, TokenAxiosPost } from "../../components/common/GetWithToken/TokenGet";
+import { heartCheck } from "../../components/common/LocalStorageFunc/jjimCheck";
+import { prevLoad_likePost } from "../../components/common/LocalStorageFunc/prevLoading";
 
 
 interface PostProps {
@@ -26,6 +29,10 @@ const Article:React.FC<PostProps> = ({post, boardId, writesHandler, deleteHandle
 
     const [isOpen, setIsOpen] = useState(false);
     const [flags, setFlags] = useState(false);
+    const [haertFlag, setHeartFlag] = useState(false);
+
+
+
     let options = ["신고하기"];
 
     const getUserId = localStorage.getItem(USERID);
@@ -45,6 +52,46 @@ const Article:React.FC<PostProps> = ({post, boardId, writesHandler, deleteHandle
         }
         setIsOpen(false);
     }
+
+
+    const heartClick = async () => {
+
+        const url = GET_MY_INFO + getUserId + "/heart";
+        if (!boardId) {
+            return;
+        }
+
+        const headers = {
+            "board_id": post.postId,
+        }
+        if (!haertFlag) {
+            const data = await TokenAxiosPost(url, ".", headers);
+            if (!data) {
+                return;
+            }
+            window.alert("해당 게시글에 좋아요를 추가했습니다");
+            post.likes++;
+        }
+        else {
+            const data = await TokenAxiosDelete(url, ".", headers);
+            if (!data) {
+                return;
+            }
+            window.alert("해당 게시글에 좋아요를 삭제했습니다");
+            post.likes--;
+
+        }
+        setHeartFlag(!haertFlag);
+        await prevLoad_likePost();
+
+    }
+
+    useEffect(() => {
+        const heartTmp = heartCheck(post.postId);
+        console.log("heart Flag : id=", post.postId, ", jjimCheck=", heartTmp);
+        setHeartFlag(heartTmp);
+    }, [])
+
     return (
         <div>
             <div key={post.id} className="bg-white border-b border-gray-300 p-4">
@@ -87,7 +134,7 @@ const Article:React.FC<PostProps> = ({post, boardId, writesHandler, deleteHandle
 
                 <div className="flex justify-start gap-4">
                     <button className="text-fontGray text-sm flex items-center gap-1">
-                        <img src={haert} className='w-[15px]' />
+                        <img src={haertFlag ? filledHeart : haert} className='w-[15px]' onClick={heartClick}/>
                         <div className='text-fontGray text-[15px]'> {post.likes}</div>
                     </button>
                     <button className="text-fontGray text-sm flex items-center gap-1" onClick={()=>setFlags(!flags)}>

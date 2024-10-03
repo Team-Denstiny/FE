@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   SERVER_ENDPOINT
 } from "../../../Address";
@@ -10,12 +10,24 @@ import {
   USERID
 } from "../../../GlobalVariable";
 import RedirectHome from '../../../redirect/GoHome';
+import { userSet } from '../../../components/common/UserSet';
+import { LoadingText } from '../../../components/common/LoadingText';
+import logo from "../../../assets/main/logo.png";
+import navimg1 from "../../../assets/main/navimg.png";
+import navimg2 from "../../../assets/main/navimg2.png";
+import navimg3 from "../../../assets/main/navimg3.png";
+import top from "../../../assets/main/topimage.png";
+import Layout from '../../Layout';
+import Layout2 from '../../Layout2';
+import { Navbar } from 'react-bootstrap';
 
 function GetMyId() {
   const [authToken, setAuthToken] = useState<string | null>(null);
   const [autoId, setAuthId] = useState<string | null>(null);
+  const [goPass, setGoPass]  = useState(false);
 
-    axios.get(SERVER_ENDPOINT, { 
+  const getData = async () => {
+    await axios.get(SERVER_ENDPOINT, { 
       withCredentials: true })
       .then(response => {
 
@@ -42,6 +54,38 @@ function GetMyId() {
       .catch(error => {
         console.error('Error fetching auth token:', error);
       });
+  }
+
+
+    useEffect(() => {
+      const getDatas = async () => {
+        await getData();
+        await userSet();
+        setGoPass(true);
+      }
+
+      console.log("Middle Get Data");
+      getDatas();
+    })
+
+    if (!goPass) {
+      return (
+        <Layout2>
+            <div className="flex relative pt-6 pb-12">
+                <img src={logo} style={{ position: 'absolute', left: '20px'}}  ></img>
+            </div>
+            <img src={top}></img>
+            <div className="flex relative gap-5 pt-6 pl-5 pb-12">
+                <img src={navimg1}></img>
+                <img src={navimg2}></img>
+                <img src={navimg3}></img>
+            </div>
+
+          <LoadingText text='사용자 정보를 가져오는 중 ...' />
+
+        </Layout2>
+    );
+    }
 
     return (
         <RedirectHome />

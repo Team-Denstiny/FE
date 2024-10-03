@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchIcon from '../../assets/Search.png';
+import { ButtonContainer, GrayText } from './LoginDesigns/Utility';
 
 declare global {
   interface Window {
@@ -38,9 +39,7 @@ const getCoordinatesFromAddress = async (address: string) => {
   }
 };
 
-
-const AddressSearch: React.FC<AddressSearchProps> = ({ onComplete, buttonSize}) => {
-  const openPostcodePopup = () => {
+export const openPostcodePopup = (onComplete:any) => {
     new window.daum.Postcode({
       oncomplete: async function (data: any) {
         const fullAddress = data.jibunAddress || data.roadAddress;
@@ -57,8 +56,44 @@ const AddressSearch: React.FC<AddressSearchProps> = ({ onComplete, buttonSize}) 
     }).open();
   };
 
+interface AddrButtonProp {
+  myAddress: string;
+  handleMyAddress ?: any; 
+}
+
+export const AddressButton: React.FC<AddrButtonProp> = ({myAddress, handleMyAddress}) => {
+
   return (
-    <button onClick={openPostcodePopup}
+    <div>
+      <ButtonContainer>
+        <div className="searchContainer" style={{ position: 'relative', width: '350px' }}>
+          <input className="blueTextBox blueDefault"
+            placeholder="도로명, 지번, 건물명 검색"
+            value={myAddress}
+            style={{ width: '100%', paddingRight: '40px', userSelect: 'none' }}
+            onClick={() => openPostcodePopup(handleMyAddress)}
+          />
+          <AddressSearch buttonSize="30px" onComplete={handleMyAddress} />
+        </div>
+      </ButtonContainer>
+      <GrayText paddingLeft="20px" fontWeight={500} fontSize="12px" style={{ paddingTop: '10px' }}>
+        주소를 입력해주세요!!
+        <br />
+        주소를 입력하면 근처 병원을 쉽게 찾을 수 있어요
+        <br />
+        현재는 서울시만 지원됩니다 ㅠㅠ
+        <br />
+        <p className='font-black font-bold'> (※ 돋보기 아이콘을 눌러주세요!!) </p>
+      </GrayText>
+    </div>
+  )
+
+}
+  
+const AddressSearch: React.FC<AddressSearchProps> = ({ onComplete, buttonSize}) => {
+
+  return (
+    <button onClick={()=>openPostcodePopup(onComplete)}
         style={{
         position: 'absolute',
         right: '5px',

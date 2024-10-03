@@ -6,17 +6,19 @@ import { BlackText, GrayLink, GrayText, VerticalLine } from "../../components/co
 import {BLUE} from "../../Color";
 import { collapseToast } from "react-toastify";
 import Map from "../../components/common/Map/map";
-import { NO_INGA_DOMAIN } from "../../Address";
+import { NO_INGA_DOMAIN } from "../../address";
 import axios from "axios";
 import { getTodayDay } from "../../components/common/GetDay";
 import './hospital.css';
 import { hospiInfoInterface } from "./HospiInterface";
+import HospitalModal from "../../components/common/Modal/HospitalModal";
 
 interface hospiRet {
     hospiInfo: hospiInfoInterface | undefined;
+    hospitalTime: object[] | undefined;
 };
-const HospiInfo: React.FC<hospiRet> = ({hospiInfo}) => {
-    if (!hospiInfo) {
+const HospiInfo: React.FC<hospiRet> = ({hospiInfo, hospitalTime}) => {
+    if (!hospiInfo || !hospitalTime) {
         return <div>병원 정보를 불러오는 중입니다...</div>;
     }
     const hospiPos = hospiInfo.hospiPos;
@@ -27,23 +29,29 @@ const HospiInfo: React.FC<hospiRet> = ({hospiInfo}) => {
     const ypos = hospiInfo.ypos;
     const tags = hospiInfo.tags;
 
-    const dayOfWeek = getTodayDay() + "요일";
+    const dayOfWeek = getTodayDay();
 
     console.log(xpos, ", ", ypos);
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const listHandler = () => {
+        setIsOpen(false);
+    }
     useEffect(() => {
         console.log("debug : " + hospiInfo);
     })
     return (
         <div>
             <div className="left-flex-container pb-[10px] pt-[20px]">
-                <button className="blue-text-button" style={{top:'27px', right:'20px'}}>목록보기</button>
+                <button className="blue-text-button" style={{top:'27px', right:'20px'}} onClick={()=>setIsOpen(true)}>목록보기</button>
                 <div style={{justifyContent:'left'}}>
                     <BlackText> 진료 시간</BlackText>
                 </div>
+                <HospitalModal options={hospitalTime} select={listHandler} isOpen={isOpen} sort="." today={dayOfWeek}/>
                 <div className="blue-border-box" > 
                     <div className="inline text-black pl-[10px] pt-[10px] pb-[10px]" style={{width:'175px'}}>
-                        <b>{dayOfWeek}</b>
+                        <b>{dayOfWeek}요일</b>
                         <br />
                         {runTime}
                     </div>
@@ -60,7 +68,11 @@ const HospiInfo: React.FC<hospiRet> = ({hospiInfo}) => {
             <VerticalLine style={{marginTop: '6px', marginBottom: '6px'}}/>
 
             <div className="left-flex-container pb-[10px] pt-[20px]">
-                <button className="blue-text-button" style={{top:'27px', right:'20px'}}>길찾기</button>
+                <button className="blue-text-button" style={{top:'27px', right:'20px'}}
+                    onClick={() => {
+                         window.open(`https://map.naver.com/p/search/${hospiInfo.hospiName}/place/${hospiInfo.hospiId}?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp`, '_blank');
+                    }}>
+                        길찾기</button>
                 <div style={{justifyContent:'left'}}>
                     <BlackText> 병원 위치</BlackText>
                     <br />

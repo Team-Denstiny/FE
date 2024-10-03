@@ -1,4 +1,5 @@
 import { LOGIN_CHECK } from "../../../GlobalVariable";
+import { userClear } from "../UserClear";
 
 const LoginCheck = (alertText="", defaultCheck="true") => {
         const login_check = localStorage.getItem(LOGIN_CHECK);
@@ -7,11 +8,13 @@ const LoginCheck = (alertText="", defaultCheck="true") => {
             if (alertText != "") { 
                 window.alert(alertText);
             }
-            if (defaultCheck == "false")
+            if (defaultCheck == "false") 
                 window.location.href = "/signin";
-            else
+            else {
                 window.location.href = "/";
+            }
         }
+        return true;
 }
 
 export default LoginCheck;

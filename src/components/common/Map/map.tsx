@@ -23,7 +23,7 @@ const Map: React.FC<MapProps> = ({ latitude, longitude }) => {
     }
   }, [latitude, longitude]);
 
-  return <div ref={mapContainer} style={{marginLeft:'20px', width:'350px', height:'216px' }} />;
+  return <div ref={mapContainer} style={{zIndex: 1049, marginLeft:'20px', width:'350px', height:'216px' }} />;
 };
 
 export default Map;

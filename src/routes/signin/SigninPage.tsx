@@ -19,6 +19,7 @@ import {
 } from "../../GlobalVariable";
 import '../../index.css';
 import LoginPage from "./oAuth/LoginPage";
+import TapBarHome from "../../components/common/TopBarHome";
 
 
 const SigninPage: React.FC = () => {
@@ -51,7 +52,7 @@ const SigninPage: React.FC = () => {
             'password': formValues.userPasswd,
         };
 
-        axios.post(LOGIN_POST, headers, {withCredentials: true})
+        await axios.post(LOGIN_POST, headers, {withCredentials: true})
             .then(response => {
                 const resp_check = response.data["result"]
                 if (resp_check) {
@@ -59,10 +60,10 @@ const SigninPage: React.FC = () => {
                     const my_id = response.data["body"]["id"];
                     const my_access = response.headers["authorization"];
                     if (resp == 200) {
+                        localStorage.setItem(USERID, my_id);
                         console.log("성공~ : " + my_id + ", 내 토큰 : " + my_access);
                         localStorage.setItem(LOGIN_CHECK, "true");
                         localStorage.setItem(ACCESS_TOKEN, my_access);
-                        localStorage.setItem(USERID, my_id);
                     }
                 } 
                 else {
@@ -79,7 +80,7 @@ const SigninPage: React.FC = () => {
 
     return (
         <div>
-            <TapBar text="로그인" />
+            <TapBarHome text="로그인" />
 
             <TextContainer> 
 

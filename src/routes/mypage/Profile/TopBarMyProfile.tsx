@@ -22,7 +22,7 @@ const TapBarMyProfile: React.FC<TapBarProps> = ({ text }) => {
                 style={{ position: 'absolute', left: '346px', top: '13px', width: '24px' }} 
                 onClick={handleBackClick} 
             />
-            <div className="font-noto font-medium text-denstinyBlue" style={{ position: 'absolute', fontWeight: 700 ,left: '24px', top: '14px'}}>
+            <div className="font-noto text-[14px] font-bold text-black" style={{ position: 'absolute', left: '24px', top: '14px'}}>
                 {text}
             </div>
         </div>

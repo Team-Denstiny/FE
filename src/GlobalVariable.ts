@@ -16,3 +16,7 @@ export const KAKAO_API_TOKEN = "";
 
 export const EMPTY_IMG = "empty.txt";
 export const PAGE_LOAD = 5;
+
+
+export const JJIM_HOSPI_LIST = "jjimHospiList";
+export const JJIM_POST_LIST = "jjimPostList";

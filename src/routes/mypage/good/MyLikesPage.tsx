@@ -11,6 +11,7 @@ import { RetQuery } from "../../Search/SearchInterface";
 import SearchRandering from "../../Search/SearchRander";
 import HospiInfo from "../../Hospital/HospiInfo";
 import Navbar from "../../../components/common/Navbar";
+import LoginCheck from "../../../components/common/CheckHandler/LoginCheck";
 
 
 const MyLikesPage: React.FC = () => {
@@ -54,6 +55,7 @@ const MyLikesPage: React.FC = () => {
 
 
     useEffect(() => {
+        const check = LoginCheck("회원 전용 기능입니다\n회원가입을 해주세요..", "false");
         setGoCheck(false);
         const fetechInitalData = async () => {
             const gu = await localStorage.getItem(GU);
@@ -66,7 +68,12 @@ const MyLikesPage: React.FC = () => {
  
     if (!viewGu || !goCheck) {
         return (
-            <div className="flex justify-center text-blue font-bold font-noto mt-[10px]"> 로딩 중 ... </div>
+            <div className="">
+                <SearchBar placeholder="검색어를 입력하세요" />
+                <SettingBar location={viewGu} sorting={viewOpt} />
+                <div className="flex justify-center text-blue font-bold font-noto mt-[10px]"> 로딩 중 ... </div>
+                <Navbar text="heart"></Navbar>
+            </div>
         );
     }
 
@@ -74,7 +81,7 @@ const MyLikesPage: React.FC = () => {
         return(
             <div>
                 <SearchBar placeholder="검색어를 입력하세요" />
-                <SettingBar location={viewGu} sorting={viewOpt} />
+                <SettingBar location={"로딩 중..."} sorting={"로딩 중..."} />
                 <div className="flex justify-center text-blue font-bold font-noto mt-[10px]"> 찾으시는 병원이 없습니다</div>
             </div>
         )

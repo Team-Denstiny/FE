@@ -1,9 +1,11 @@
 import axios, { AxiosHeaders, InternalAxiosRequestConfig } from 'axios';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { userSet } from '../../../components/common/UserSet';
 
 axios.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   const token = localStorage.getItem('authToken');
+
   if (token) {
     // headers가 undefined일 수 있으므로 빈 객체로 초기화
     if (!config.headers) {
@@ -25,6 +27,11 @@ function ResendPage() {
 
   useEffect(() => {
 
+    const getData = async () => {
+      await userSet();
+    }
+
+
     const queryParams = new URLSearchParams(location.search);
     const status = queryParams.get("status");
     if (status == "created") {
@@ -33,6 +40,7 @@ function ResendPage() {
     }
     else if (status == "logined") {
       console.log("메인 페이지로 이동"); 
+      getData();
       navigate('/getMyId');
     }
   }, [location.search, navigate]);

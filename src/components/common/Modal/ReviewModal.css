@@ -44,6 +44,18 @@
     height: 100px;
 }
 
+.hospital-modal {
+    z-index: 1051;
+    position: var(--modal-position);
+    top: var(--modal-top);
+    left: var(--modal-left);
+    transform: translate(-50%, -50%);
+    width: var(--modal-width);
+    background-color: var(--modal-bg-color);
+    border-radius: var(--modal-border-radius);
+    user-select: none;
+}
+
 .modal-overlay {
     position: fixed;
     top: 0;

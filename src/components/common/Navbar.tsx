@@ -45,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({ text }) => {
 
     console.log("my Img : " + profileImg);
     return (
-        <div className="w-[390px] h-[60px] flex relative" style={{paddingTop: '6px', paddingLeft: '36px', gap: '52px', position: 'fixed', bottom: '0',}}>
+        <div className="w-[390px] h-[60px] flex relative bg-gray" style={{paddingTop: '6px', paddingLeft: '36px', gap: '52px', position: 'fixed', bottom: '0',}}>
             <img src={homeImg} alt="home" style={{width: '40px', height: '52px'}} onClick={() => handleNavClick('')} />
             <img src={heartImg} alt="heart" style={{width: '40px', height: '52px'}} onClick={() => handleNavClick('heart')} />
             <img src={communityImg} alt="community" style={{width: '40px', height: '52px'}} onClick={() => handleNavClick('community')} />

@@ -6,7 +6,7 @@ import {
     CREATE_NICKNAKME_CHECK,
     CREATE_REGISTER
 } from "../../Address";
-import AddressSearch from "../../components/common/AddressSearch";
+import AddressSearch, { AddressButton } from "../../components/common/AddressSearch";
 import {
     BlackTextContainer,
     ButtonContainer,
@@ -119,6 +119,11 @@ const CreateUsers: React.FC = () => {
 
     const letsCreate = () => {
         //event.preventDefault();
+        if (myAddress.indexOf("서울") == -1) {
+            window.alert("현재는 서울시만 지원됩니다.. 주소를 다시입력해주세요");
+            return false;
+        }
+
         console.log("제출");
         const checkerFunc = ((element:string, text: string) => {
             if (element == "")  {
@@ -299,18 +304,9 @@ const CreateUsers: React.FC = () => {
                         <div className="blueButtonSmall blueDefault" style={{width: '105px'}}> 재전송</div>
                     </ButtonContainerSmall>
                     <br />
-                    <div className="searchContainer" style={{ position: 'relative', width: '350px' }}>
-                        <input className="blueTextBox blueDefault" 
-                                placeholder="도로명, 지번, 건물명 검색" 
-                                value={myAddress}
-                                onChange={(e) => setMyAddress(e.target.value)}
-                                style={{width:'100%', paddingRight: '40px'}}/>
-                        <AddressSearch buttonSize="30px" onComplete={handleMyAddress}/>
-                    </div>
+
+                    <AddressButton myAddress={myAddress} handleMyAddress={handleMyAddress} />
                 </ButtonContainer>
-                <GrayText paddingLeft="20px" fontWeight={500} fontSize="12px" style={{marginTop: "10px"}}>
-                    주소를 입력하면 근처 병원을 쉽게 찾을 수 있어요
-                </GrayText>
             </BlackTextContainer>
 
             <BlackTextContainer>
@@ -345,7 +341,7 @@ const CreateUsers: React.FC = () => {
             <form onSubmit={letsCreate} />
             <ButtonContainer>
                 <br /> <br />
-                <button className="blueButton blueDefault" onClick={letsCreate}> 회원가입 완료하기</button>
+                <button className="blueButton whiteDefault" onClick={letsCreate}> 회원가입 완료하기</button>
                 <br /> <br />
             </ButtonContainer>
         </div>

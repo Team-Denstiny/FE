@@ -42,8 +42,8 @@ export const expiredChecker = async (error: AxiosError, redirectLink:string) => 
                 else {
                     console.log("로그아웃 합니다");
                     window.alert("로그인 세션이 만료되어\n 로그아웃합니다!");
-                    logout_handler(LOGOUT);
-                    window.location.href = redirectLink;
+                    logout_handler();
+                    //window.location.href = redirectLink;
                 }
             }
         }

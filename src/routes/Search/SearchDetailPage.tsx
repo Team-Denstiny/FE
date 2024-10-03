@@ -113,7 +113,12 @@ const SearchDetail: React.FC = () => {
  
     if (!viewGu || !goCheck) {
         return (
-            <div className="flex justify-center text-blue font-bold font-noto mt-[10px]"> 로딩 중 ... </div>
+            <div>
+
+                <SearchBar placeholder='검색어를 입력하세요' />
+                <SettingBar location={"로드 중..."} sorting={"거리순"} />
+                <div className="flex justify-center text-blue font-bold font-noto mt-[10px]"> 로딩 중 ... </div>
+            </div>
         );
     }
 

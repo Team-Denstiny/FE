@@ -9,6 +9,7 @@ export const authString = "authorization";
 export const TokenAxiosGet = async (address: string, cur_address: string, depth=0): Promise<any | null> => {
     const userToken = localStorage.getItem(ACCESS_TOKEN) ;
 
+    if (depth==3) return null;
     try {
         const response = await axios.get(address, { 
             withCredentials: true, 
@@ -33,6 +34,7 @@ export const TokenAxiosGet = async (address: string, cur_address: string, depth=
 export const TokenAxiosPatch = async (address: string, cur_address: string, headers ?: object, depth=0): Promise<any | null> => {
     const userToken = localStorage.getItem(ACCESS_TOKEN);
     
+    if (depth==3) return null;
     try {
         const response = await axios.patch(address, headers, {
             withCredentials: true,
@@ -59,6 +61,7 @@ export const TokenAxiosPatch = async (address: string, cur_address: string, head
 export const TokenAxiosPost = async (address: string, cur_address: string, headers?: Record<string, any>, depth=0): Promise<any | null> => {
     const userToken = localStorage.getItem(ACCESS_TOKEN) ;
 
+    if (depth==3) return null;
     try {
 
         const response = await axios.post(address, headers, {
@@ -81,20 +84,23 @@ export const TokenAxiosPost = async (address: string, cur_address: string, heade
                 return null;
         }
     } catch (error: AxiosError | any) {
-        await expiredChecker(error, cur_address)
+        await expiredChecker(error, cur_address);
         if (depth == 3) return null;
-        return await TokenAxiosPost(address, cur_address, headers);
+        return await TokenAxiosPost(address, cur_address, headers, depth+1);
     };
     return true;
 };
 
-export const TokenAxiosDelete = async (address: string, cur_address: string, depth=0): Promise<any | null> => {
+export const TokenAxiosDelete = async (address: string, cur_address: string, header={}, depth=0): Promise<any | null> => {
     const userToken = localStorage.getItem(ACCESS_TOKEN) ;
+    console.log("token Axios delete fuck : " + depth);
+    if (depth==3) return null;
 
     try {
         const response = await axios.delete(address, { 
             withCredentials: true, 
-            headers: { "authorization" : userToken } 
+            headers: { "authorization" : userToken } ,
+            data: header
         });
 
         const status_code = response.status;
@@ -106,8 +112,8 @@ export const TokenAxiosDelete = async (address: string, cur_address: string, dep
         }
     } catch (error: AxiosError | any) {
         await expiredChecker(error, cur_address);
-        if (depth==3) return null;
-        return await TokenAxiosDelete(address, cur_address ,depth+1);
+        console.log("debugsss: depth" + depth);
+        return await TokenAxiosDelete(address, cur_address ,header, depth+1);
     };
     return null;
 
@@ -135,7 +141,7 @@ export const TokenAxiosPostMultipart = async (address: string, cur_address: stri
     } catch (error: AxiosError | any) {
         await expiredChecker(error, cur_address)
         if (depth == 3) return null;
-        return await TokenAxiosPost(address, cur_address, headers);
+        return await TokenAxiosPost(address, cur_address, headers, depth+1);
     };
     return null;
 };

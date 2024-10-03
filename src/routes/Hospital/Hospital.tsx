@@ -17,6 +17,8 @@ import { TokenAxiosDelete, TokenAxiosGet, TokenAxiosPost } from "../../component
 
 import EmptyHeart from "../../assets/emptyHeart.png";
 import FillHeart from "../../assets/fillHeart.png";
+import { jjimCheck } from "../../components/common/LocalStorageFunc/jjimCheck";
+import { prevLoad_LikeHospi } from "../../components/common/LocalStorageFunc/prevLoading";
 
 const Hospital: React.FC = () => {
     const navigate = useNavigate();
@@ -33,6 +35,7 @@ const Hospital: React.FC = () => {
 
     const { id } = useParams();
     const [hospiId, setHospiId] = useState<string|undefined> ();
+    const [hospiTime, setHospiTime] = useState<object[]|undefined> ();
 
     const [tags, setTags] = useState<string[]>(["임플란트", "충치치료", "치아교정", "사랑니발치"]);
     const today = new Date();
@@ -110,6 +113,7 @@ const Hospital: React.FC = () => {
                     setYpos(body["longitude"]);
                     setXpos(body["latitude"]);
                     setTags(body["category"]);
+                    setHospiTime(body["time_data_map"]);
                     
                     setRetHospiInfo({
                         hospiName: body["name"],
@@ -120,6 +124,7 @@ const Hospital: React.FC = () => {
                         xpos: body["latitude"],
                         ypos: body["longitude"],
                         tags: body["category"],
+                        hospiId: id
                     });
 
                     console.log("debug : " + retHospiInfo?.tags);
@@ -164,6 +169,7 @@ const Hospital: React.FC = () => {
             const data = await TokenAxiosDelete(deleteUrl, ".");
             console.log("data : " + data);
             window.alert(hospiName + "병원이 찜(★) 목록에서 삭제되었습니다");
+            await prevLoad_LikeHospi();
             setJjim(!jjim);
         }
         else {
@@ -172,6 +178,7 @@ const Hospital: React.FC = () => {
             const data = await TokenAxiosPost(bookmarkUrl, ".", {"hospital_id": hospiId});
             console.log("data : " + data);
             window.alert(hospiName + "병원이 찜(★) 목록에 추가되었습니다");
+            await prevLoad_LikeHospi();
             setJjim(!jjim);
         }
     }
@@ -203,16 +210,21 @@ const Hospital: React.FC = () => {
                 await GetData();
             };
             GetDataWrapper();
-
-            console.log("reviews : " + reviews);
+            const check = jjimCheck(id);
+            console.log("id : " + id + ", jjimCheck=" + check);
+            setJjim(check);
+            console.log("jjim : " + jjim);
         }
 
-    }, [id])
+    }, [])
 
     if (!hospiName) {
         return (
-            <div className='flex justify-center mt-[50px] font-noto text-bold font-[20px] text-blue h-[20px]'>
-                병원 정보 가져오는 중...
+            <div>
+                <TapBar text={"로드중..."} />
+                <div className='flex justify-center mt-[50px] font-noto text-bold font-[20px] text-blue h-[20px]'>
+                    병원 정보 가져오는 중...
+                </div>
             </div>
         )
     }
@@ -242,7 +254,7 @@ const Hospital: React.FC = () => {
             </div>
             
             { isClicked == 1 ? 
-                <HospiInfo hospiInfo={retHospiInfo} /> : <ReviewCommentPage 
+                <HospiInfo hospiInfo={retHospiInfo} hospitalTime={hospiTime} /> : <ReviewCommentPage 
                                                             reviews={reviews} 
                                                             hospiName={hospiName} 
                                                             hospiId={hospiId} 

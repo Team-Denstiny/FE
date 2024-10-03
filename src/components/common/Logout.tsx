@@ -5,6 +5,7 @@ import {
     LOGIN_CHECK,
     USERID
 } from "../../GlobalVariable";
+import { userClear } from "./UserClear";
 
 const logout_handler = async () => {
     const link = LOGOUT;
@@ -14,19 +15,14 @@ const logout_handler = async () => {
         const status_code = response.status;
         if (status_code == 200) {
             console.log("log out 성공~");
-            localStorage.setItem(USERID, "");
-            localStorage.setItem(ACCESS_TOKEN, "");
-            localStorage.setItem(LOGIN_CHECK, "false");
+            userClear();
         }
         else {
             console.log("로그 아웃 실패 ㅠㅠ");
         }
 
     } catch (error) {
-            console.error("button error : ", error);
-            localStorage.setItem(USERID, "");
-            localStorage.setItem(ACCESS_TOKEN, "");
-            localStorage.setItem(LOGIN_CHECK, "false");
+            userClear();
     }
 
     window.location.href = "/signin";

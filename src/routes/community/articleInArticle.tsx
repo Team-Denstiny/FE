@@ -31,6 +31,7 @@ const ArticleInArticle: React.FC<ReviewInReviewProps> = ({boardId, reviewId}) =>
   const url = GET_MY_INFO + getUserId + "/board/" + reviewId +"/comment" ;
   const getUserNickName = localStorage.getItem(NICKNAME);
   const [reviewTails, setReviewTails] = useState<boardIntefrace[]>();
+  const [canGo, setCanGo] = useState(false);
   const [reviewText, setReviewText] = useState("");
   
   const getData = async () => {
@@ -47,7 +48,7 @@ const ArticleInArticle: React.FC<ReviewInReviewProps> = ({boardId, reviewId}) =>
           image_url: review.image_url
           // 필요한 다른 속성들 추가
       }));
-
+      setCanGo(true);
       console.log("board_comment_id : " + reviews_cvt[0].comment_id)
       if (reviews_cvt) {
         setReviewTails(reviews_cvt);
@@ -96,9 +97,35 @@ const ArticleInArticle: React.FC<ReviewInReviewProps> = ({boardId, reviewId}) =>
   const reviewInReview = (review:string, idx:number) => {
 
   }
-  if (!reviewTails) {
+
+  if (!canGo) {
     return(
-        <div className='flex justify-center font-noto text-bold font-[20px] text-blue h-[20px]'> 대댓글 로딩 중 ... </div>
+        <div>
+            <div className='flex justify-center font-noto text-bold font-[20px] text-blue h-[20px]'> 대댓글 로딩 중 ... </div>
+        </div>
+    )
+  }
+  if (canGo && !reviewTails) {
+    return(
+        <div>
+            <div className='flex justify-center font-noto text-bold font-[20px] text-blue h-[20px]'> 대댓글이 하나도 없습니다 ㅠㅠ</div>
+            <div className='flex justify-center'>
+                <div className='font-noto text-black font-bold text-[15px] pt-10 ml-[40px]'> 
+                    {getUserNickName}
+                </div>
+                <div className='ml-auto mr-[10px]'></div>
+            </div>
+            <div className='flex justify-center pt-[5px]'>
+                <textarea className='review-textarea ml-[40px] mr-[40px] border-2 border-blue-500' 
+                    onChange={e => setReviewText(e.target.value)}
+                    placeholder="답글을 추가해주세요."
+                    />
+            </div>
+            <div className='flex justify-center'>
+                <button className='blueButton whiteDefault ml-[40px] mr-[40px]' onClick={onClickHandler}> 답글 달기</button>
+            </div>
+
+        </div>
     )
   }
   return (

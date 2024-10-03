@@ -19,6 +19,7 @@ import { GU } from '../../GlobalVariable';
 import { TokenAxiosGet, TokenAxiosPost } from '../../components/common/GetWithToken/TokenGet';
 import { assertBinary } from '@babel/types';
 import { useToastContainer } from 'react-toastify';
+import LoginCheck from '../../components/common/CheckHandler/LoginCheck';
 
 interface SearchBarProps {
     placeholder?: string;
@@ -46,7 +47,11 @@ const SearchPage2: FC<SearchBarProps> = () => {
     const [viewOpt, setViewOpt] = useState<string>();
     let get_url : string = "";
     let getOpt : string = "";
-    let gu: string|null = "";
+    let gu: string|null = localStorage.getItem(GU);
+    if (gu === null) {
+        console.log("gu miss");
+        gu = "강남구"
+    }
 
 
     const get_hospi_query = async () => {
@@ -133,8 +138,8 @@ const SearchPage2: FC<SearchBarProps> = () => {
     }
 
     useEffect(() => {
+        const check = LoginCheck("회원 전용 기능입니다\n회원가입을 해주세요..", "false");
         const fetechInitalData = async() => {
-            gu = await localStorage.getItem(GU);
             console.log("User Gu : " + gu);
             const url = await get_hospi_query();
             await GetPostProcess(url);
@@ -142,13 +147,16 @@ const SearchPage2: FC<SearchBarProps> = () => {
         }
         
         fetechInitalData();
-        setViewOpt(getOpt);
         console.log("정렬 : " + getOpt);
     }, [searchParams, viewOpt]);
    
     if (!viewGu || !viewOpt) {
         return (
-            <div className="flex justify-center text-blue font-bold font-noto mt-[10px]"> 로딩 중 ... </div>
+            <div>
+                <SearchBar placeholder='검색어를 입력하세요' />
+                <SettingBar location={"로드 중..."} sorting={"거리순"} />
+                <div className="flex justify-center text-blue font-bold font-noto mt-[10px]"> 로딩 중 ... </div>
+            </div>
         );
     }
     return (

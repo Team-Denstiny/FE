@@ -25,6 +25,8 @@ import { TokenAxiosGet } from '../../components/common/GetWithToken/TokenGet';
 import { GET_MY_INFO } from '../../Address';
 import { PAGE_LOAD, USERID } from '../../GlobalVariable';
 import { all } from 'axios';
+import { LoadingText } from '../../components/common/LoadingText';
+import LoginCheck from '../../components/common/CheckHandler/LoginCheck';
 
 const CommunityPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('전체');
@@ -41,6 +43,7 @@ const CommunityPage: React.FC = () => {
   const [curPageMed, setCurPageMed] = useState(-1);
   const [curPageLoc, setCurPageLoc] = useState(-1);
   const [curPageFree, setCurPageFree] = useState(-1);
+  const [loadComplete, setLoadComplete] = useState(false);
 
 
   const getAllCom = async (cate=1, page=0, size=PAGE_LOAD) => {
@@ -70,16 +73,16 @@ const CommunityPage: React.FC = () => {
         const PostCvt: Post[] = content.map((review: any) => ({
           id: review.writer,
           postId: review.board_id,
-          author: "임시" + review.writer,
-          date: "2024.07.06",
+          author: review.writer_nickname,
+          date: review.update_at,
           title: review.title,
           content: review.content,
           tags: ["임플란트", "기타"],
-          images: "",
+          images: review.imgs,
           likes: review.heart_count,
-          comments: 0,
+          comments: review.comment_count,
           views: review.view_count,
-          category: review.category
+          category: review.category,
       }));
       console.log("category: " + PostCvt[0].category);
 
@@ -151,12 +154,13 @@ const CommunityPage: React.FC = () => {
 
 
   useState(() => {
-    const initData = async() => {
+      const check = LoginCheck("회원 전용 기능입니다\n회원가입을 해주세요..", "false");
+      const initData = async() => {
       const allData = await allDataLoad() ;
+      setLoadComplete(true);
       const MediData = await allDataMed() ;
       const LocalData = await allDataLoc() ;
       const FreeData = await allDataFree();
-
 
     }
 
@@ -164,6 +168,35 @@ const CommunityPage: React.FC = () => {
     console.log("finish");
     console.log(articlesAll);
   });
+
+  if (!loadComplete) {
+    return (
+      <div>
+
+        <TapBarSearch text='커뮤니티' />
+        <div className="flex gap-0">
+          <button className={`flex-1 h-14 font-noto border-b-4 rounded-none 
+                    ${isClicked == 1 ? 'text-blue border-b-blue' : 'text-fontGray border-b-fontGray'}`} onClick={() => setIsClicked(1)}>
+            전체
+          </button>
+          <button className={`flex-1 h-14 font-noto border-b-4 rounded-none 
+                    ${isClicked == 2 ? 'text-blue border-b-blue' : 'text-fontGray border-b-fontGray'}`} onClick={() => setIsClicked(2)}>
+            진료
+          </button>
+          <button className={`flex-1 h-14 font-noto border-b-4 rounded-none 
+                    ${isClicked == 3 ? 'text-blue border-b-blue' : 'text-fontGray border-b-fontGray'}`} onClick={() => setIsClicked(3)}>
+            지역
+          </button>
+          <button className={`flex-1 h-14 font-noto border-b-4 rounded-none 
+                    ${isClicked == 4 ? 'text-blue border-b-blue' : 'text-fontGray border-b-fontGray'}`} onClick={() => setIsClicked(4)}>
+            자유
+          </button>
+        </div>
+        <LoadingText />
+        <Navbar text="community"></Navbar>
+      </div>
+    )
+  }
   const writesHandler = (idx: number) => {
 
   }
