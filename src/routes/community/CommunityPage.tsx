@@ -192,6 +192,9 @@ const CommunityPage: React.FC = () => {
             자유
           </button>
         </div>
+        <GrayBar />
+        <SmallButton name="글 쓰러 가기" link="./write" fontBold="bold"/>
+        <GrayBar />
         <LoadingText />
         <Navbar text="community"></Navbar>
       </div>
