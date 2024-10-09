@@ -5,7 +5,7 @@ export const jjimCheck = (id:string) => {
 
     const lists = getJsonList(JJIM_HOSPI_LIST);
 
-    if (!lists || lists.length == 0) {
+    if (!lists || (Array.isArray(lists) && lists.length === 0))  {
         setJsonList(JJIM_HOSPI_LIST, []);
         return false;
     }
@@ -17,7 +17,7 @@ export const heartCheck = (id:number) => {
 
     const lists = getJsonList(JJIM_POST_LIST);
 
-    if (!lists || lists.length == 0) {
+    if (!lists || (Array.isArray(lists) && lists.length === 0))  {
         setJsonList(JJIM_HOSPI_LIST, []);
         return false;
     }

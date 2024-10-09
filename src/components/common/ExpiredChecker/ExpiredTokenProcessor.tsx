@@ -29,7 +29,7 @@ export const expiredChecker = async (error: AxiosError, redirectLink:string) => 
     if (error.response) {
         const statusCode = error.response.status;
         if (statusCode === 401) {
-            const body: AxiosResponse = error.response.data;
+            const body: any = error.response.data;
             if ("result_code" in body && body["result_code"] === 2001) {
                 const result_code = body["result_code"];
                 console.log(body["result_description"]);

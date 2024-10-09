@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CHANGE_MY_INFO, GET_MY_INFO } from "../../../address";
+import { CHANGE_MY_INFO, GET_MY_INFO } from "../../../Address";
 import checkNickname from "../../../components/common/CheckHandler/CheckNickname";
 import LoginCheck from "../../../components/common/CheckHandler/LoginCheck";
 import { TokenAxiosGet, TokenAxiosPatch } from "../../../components/common/GetWithToken/TokenGet";

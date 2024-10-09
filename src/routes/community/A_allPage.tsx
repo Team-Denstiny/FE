@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { dataProp, Post } from './ComInterface';
 import ComModal from '../../components/common/Modal/ComModal';
 import Article from './article';
-import { tmpPosts } from './tmpData';
 import { GET_MY_INFO } from '../../Address';
 import { USERID } from '../../GlobalVariable';
 import { TokenAxiosGet } from '../../components/common/GetWithToken/TokenGet';

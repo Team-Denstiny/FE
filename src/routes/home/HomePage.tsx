@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useMatch, useNavigate } from "react-router-dom";
-import { GET_MY_INFO } from "../../address";
+import { GET_MY_INFO } from "../../Address";
 import logo from "../../assets/main/logo.png";
 import navimg1 from "../../assets/main/navimg.png";
 import navimg2 from "../../assets/main/navimg2.png";

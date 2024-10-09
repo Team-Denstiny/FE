@@ -26,7 +26,7 @@ const StarRating: React.FC = () => {
     return (
       <>
         {[...Array(5)].map((_, index) => (
-          <img key={index} className={index < count ? EmptyStar : GrayStar} />
+          <img key={index} className={`${index < count ? EmptyStar : GrayStar}`} />
         ))}
       </>
     );

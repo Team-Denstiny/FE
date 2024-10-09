@@ -136,7 +136,7 @@ const SearchDetail: React.FC = () => {
         <div className="relative">
             <SearchBar placeholder="검색어를 입력하세요" />
             <SettingBar location={viewGu} sorting={viewOpt} />
-            <SearchRandering retQuery={retQueries} getMoreId={GetPostProcess}> </SearchRandering>
+            <SearchRandering retQuery={retQueries} getMoreId={GetPostProcess} > </SearchRandering>
         </div>
 
     )

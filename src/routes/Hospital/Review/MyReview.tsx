@@ -66,6 +66,10 @@ const MyReview: React.FC  = () => {
 
     }
 
+    const reviewDeleteHandler = (review: string) => {
+        throw new Error("Function not implemented.");
+    }
+
     return (
         <div>
             <TapBar text="댓글"/>
@@ -91,7 +95,7 @@ const MyReview: React.FC  = () => {
                     name={review.nick_name}
                     reviewId={review.id}
                     index={-1}
-                    reviewInReivewHandler={(review:string, idx:number) => reviewInReview(review, idx)}
+                    reviewInReivewHandler={(review:any, idx:number) => ReviewInReview(review, idx)}
                     reviewInReivewDeleteHandler={(review:string) => reviewDeleteHandler(review)}
                     userId={review.user_id}
                     />

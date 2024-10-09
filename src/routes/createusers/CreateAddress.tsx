@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import {
     SERVER_ENDPOINT
-} from "../../address";
+} from "../../Address";
 import AddressSearch, { AddressButton, openPostcodePopup } from "../../components/common/AddressSearch";
 import {
     ButtonContainer,

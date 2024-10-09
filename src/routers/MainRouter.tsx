@@ -27,8 +27,8 @@ import CommunityPage from "../routes/Community/CommunityPage";
 import ComWrite from "../routes/Community/write/ComWrite";
 import DragAndDropUpload from "../routes/Community/write/test";
 import MyReview from "../routes/Hospital/Review/MyReview";
-import MyWrite from "../routes/community/MyWrite";
-import MyLike from "../routes/community/MyLike";
+import MyWrite from "../routes/Community/MyWrite";
+import MyLike from "../routes/Community/MyLike";
 
 const SearchRoute = () => {
     const location = useLocation();

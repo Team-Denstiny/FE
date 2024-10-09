@@ -6,7 +6,7 @@ import { BlackText, GrayLink, GrayText, VerticalLine } from "../../components/co
 import {BLUE} from "../../Color";
 import { collapseToast } from "react-toastify";
 import Map from "../../components/common/Map/map";
-import { NO_INGA_DOMAIN } from "../../address";
+import { NO_INGA_DOMAIN } from "../../Address";
 import axios from "axios";
 import { getTodayDay } from "../../components/common/GetDay";
 import './hospital.css';
@@ -15,7 +15,7 @@ import HospitalModal from "../../components/common/Modal/HospitalModal";
 
 interface hospiRet {
     hospiInfo: hospiInfoInterface | undefined;
-    hospitalTime: object[] | undefined;
+    hospitalTime: object[] | undefined | any;
 };
 const HospiInfo: React.FC<hospiRet> = ({hospiInfo, hospitalTime}) => {
     if (!hospiInfo || !hospitalTime) {

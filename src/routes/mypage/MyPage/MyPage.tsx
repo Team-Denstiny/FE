@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
     GET_MY_INFO
-} from "../../../address";
+} from "../../../Address";
 import DeafultImg from "../../../assets/defaultProfileMain.png";
 import SmallButton from "../../../components/common/Buttons/SmallButton";
 import {

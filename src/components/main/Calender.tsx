@@ -13,7 +13,7 @@ const MonthCalendar: React.FC = () => {
        <div className='flex justify-center items-center mt-[25px] bg-white'>
             <div className='text-black'>
                 <Calendar 
-                    onChange={setDate} 
+                    onChange={() => setDate} 
                     value={date}
                 />
             </div>

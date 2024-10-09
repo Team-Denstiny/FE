@@ -1,4 +1,9 @@
 {
+
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": false,
+    "noUnusedLocals": false
+  },
   "files": [],
   "references": [
     {

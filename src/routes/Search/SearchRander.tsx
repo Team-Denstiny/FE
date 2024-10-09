@@ -24,6 +24,7 @@ import {RetQuery} from "./SearchInterface";
 interface SearchBarProps {
     retQuery?: RetQuery[];
     getMoreId ?: () => {};
+    children?: React.ReactNode;
 }
 
 const SearchRandering: FC<SearchBarProps> = ({retQuery, getMoreId}) => {
